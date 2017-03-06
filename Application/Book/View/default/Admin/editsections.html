@@ -1,0 +1,202 @@
+<extend name="Public/base"/>
+
+<block name="body">
+
+    <div class="main-title">
+        <notempty name="title">
+            <h2>{$title}</h2>
+        </notempty>
+    </div>
+
+
+    <div class="with-padding">
+        <form action="__SELF__" method="post" class="form-horizontal">
+            <input type="hidden" name="book_id" value="{$book_id}">
+            <input type="hidden" name="section_id" value="{$section_id}">
+            <table class="table">
+                <thead>
+                <tr class="text-center">
+                    <th style="width: 100px">{:L("_TYPE_")}</th>
+                    <th style="width: 100px;">{:L("_EXPAND_SUB_CHAPTER_")}</th>
+                    <th style="width: 400px;">{:L("_TITLE_")}</th>
+                    <th style="width: 100px">{:L("_SORT_")}</th>
+                    <th style="width: 150px">{:L("_AUTHOR_ID_")}</th>
+                    <th style="width: 500px">{:L("_KEY_WORD_")}</th>
+                    <th style="width: 100px">{:L("_RELEASE_STATE_")}</th>
+                    <th style="width: 200px">{:L("_RELEASE_TIME_DELAYED_RELEASE_")}</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <volist name="list" id="one_section">
+                    <tr class="text-center">
+                        <input type="hidden" name="id[]" value="{$one_section.id}"/>
+                        <td>
+                            <select name="type[]" class="form-control">
+                                <eq name="one_section.type" value="0">
+                                    <option value="0" selected="selected">{:L("_CHAPTER_")}</option>
+                                    <option value="1">{:L("_ARTICLE_")}</option>
+                                    <else/>
+                                    <option value="0">{:L("_CHAPTER_")}</option>
+                                    <option value="1" selected="selected">{:L("_ARTICLE_")}</option>
+                                </eq>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="open_child[]" class="form-control">
+                                <eq name="one_section.open_child" value="0">
+                                    <option value="0" selected="selected">否</option>
+                                    <option value="1">是</option>
+                                    <else/>
+                                    <option value="0">否</option>
+                                    <option value="1" selected="selected">是</option>
+                                </eq>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="title[]" value="{$one_section.title}" class="form-control" placeholder={:L("_ENTER_THE_TITLE_NOT_REQUIRED_FILL_IN_THE_SYSTEM_THAT_DOES_NOT_EXIST_WITH_DOUBLE_")} />
+                        </td>
+                        <td>
+                            <input type="text" name="sort[]" value="{$one_section.sort}" class="form-control" placeholder={:L("_INPUT_SORT_VALUES_OPTIONAL_WITH_DOUBLE_")} />
+                        </td>
+                        <td>
+                            <input type="text" name="uid[]" value="{$one_section.uid}" class="form-control" placeholder={:L("_ENTER_AUTHOR_ID_")}({:L("_OPTIONAL_")}) />
+                        </td>
+                        <td>
+                            <input type="text" name="keywords[]" value="{$one_section.keywords}" class="form-control" placeholder={:L('_INPUT_KEY_WORDS_OPTIONAL_WITH_DOUBLE_')} />
+                        </td>
+                        <td>
+                            <select name="is_show[]" class="form-control">
+                                <eq name="one_section.is_show" value="0">
+                                    <option value="0" selected="selected">{:L("_DRAFT_")}</option>
+                                    <option value="1">{:L("_NORMAL_")}</option>
+                                    <else/>
+                                    <option value="0">{:L("_DRAFT_")}</option>
+                                    <option value="1" selected="selected">{:L("_NORMAL_")}</option>
+                                </eq>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="hidden" name="create_time[]" class="time-value" value="{$one_section.create_time}"/>
+                            <input type="text" class="form-datetime time form-control" value="{$one_section.create_time|time_format}" placeholder={:L("_PLEASE_ENTER_THE_PUBLISHING_TIME_WITH_DOUBLE_")} />
+                        </td>
+                    </tr>
+                </volist>
+                <php>
+                    $i=0;
+                    do{
+                </php>
+                <tr class="text-center">
+                    <input type="hidden" name="id[]" value=""/>
+                    <td>
+                        <select name="type[]" class="form-control">
+                            <option value="0" selected="selected">{:L("_CHAPTER_")}</option>
+                            <option value="1">{:L("_ARTICLE_")}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="open_child[]" class="form-control">
+                            <option value="0">否</option>
+                            <option value="1" selected="selected">是</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="title[]" value="" class="form-control" placeholder={:L("_ENTER_THE_TITLE_NOT_REQUIRED_FILL_IN_THE_SYSTEM_THAT_DOES_NOT_EXIST_WITH_DOUBLE_")} />
+                    </td>
+                    <td>
+                        <input type="text" name="sort[]" value="0" class="form-control" placeholder={:L("_INPUT_SORT_VALUES_OPTIONAL_WITH_DOUBLE_")} />
+                    </td>
+                    <td>
+                        <input type="text" name="uid[]" value="" class="form-control" placeholder={:L("_ENTER_AUTHOR_ID_")}({:L("_OPTIONAL_")}) />
+                    </td>
+                    <td>
+                        <input type="text" name="keywords[]" value="" class="form-control" placeholder={:L("_INPUT_KEY_WORDS_OPTIONAL_WITH_DOUBLE_")} />
+                    </td>
+                    <td>
+                        <select name="is_show[]" class="form-control">
+                            <option value="0">{:L("_DRAFT_")}</option>
+                            <option value="1" selected="selected">{:L("_NORMAL_")}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="hidden" name="create_time[]" class="time-value" value="{:time()}"/>
+                        <input type="text" class="form-datetime time form-control" value="{:time_format()}" placeholder={:L("_PLEASE_ENTER_THE_PUBLISHING_TIME_WITH_DOUBLE_")}/>
+                    </td>
+                </tr>
+                <php>
+                    $i++;
+                    }while($i<5);
+                </php>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+            <div class="form-item with-padding">
+                <button class="btn submit-btn ajax-post no-refresh" id="submit" type="submit" target-form="form-horizontal">{:L("_SURE_")}</button>
+                <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">{:L("_RETURN_")}</button>
+                <button class="btn btn-return" type="button" data-role="add-tr">{:L("_INCREASE_")}</button>
+            </div>
+        </form>
+    </div>
+</block>
+
+<block name="script">
+    <link href="__ZUI__/lib/datetimepicker/datetimepicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__ZUI__/lib/datetimepicker/datetimepicker.min.js"></script>
+    <script>
+        $('.form-datetime').datetimepicker({
+            language: "zh-CN",
+            autoclose: true,
+            format: 'yyyy-mm-dd hh:ii'
+        });
+        $('.time').change(function () {
+            var dateString = $(this).val();
+            var date = new Date(dateString);
+            var timestamp = date.getTime();
+            $(this).parents('td').children('.time-value').val(Math.floor(timestamp / 1000));
+        });
+        $('[data-role="add-tr"]').click(function(){
+            var html='';
+            for(var i=0;i<5;i++){
+                html+='<tr class="text-center">\
+                   <input type="hidden" name="id[]" value=""/>\
+                    <td>\
+                    <select name="type[]" class="form-control">\
+                    <option value="0" selected="selected">{:L("_CHAPTER_")}</option>\
+            <option value="1">{:L("_ARTICLE_")}</option>\
+            </select>\
+            </td>\
+            <td>\
+                        <select name="open_child[]" class="form-control">\
+                        <option value="0">否</option>\
+                <option value="1" selected="selected">是</option>\
+                </select>\
+                </td>\
+                    <td>\
+            <input type="text" name="title[]" value="" class="form-control" placeholder={:L("_ENTER_THE_TITLE_NOT_REQUIRED_FILL_IN_THE_SYSTEM_THAT_DOES_NOT_EXIST_WITH_DOUBLE_")} />\
+                    </td>\
+                    <td>\
+            <input type="text" name="sort[]" value="0" class="form-control" placeholder={:L("_INPUT_SORT_VALUES_OPTIONAL_WITH_DOUBLE_")} />\
+                    </td>\
+                    <td>\
+            <input type="text" name="uid[]" value="" class="form-control" placeholder={:L("_ENTER_AUTHOR_ID_")}({:L("_OPTIONAL_")}) />\
+                    </td>\
+                    <td>\
+            <input type="text" name="keywords[]" value="" class="form-control" placeholder={:L("_INPUT_KEY_WORDS_OPTIONAL_WITH_DOUBLE_")} />\
+                    </td>\
+                    <td>\
+            <select name="is_show[]" class="form-control">\
+                    <option value="0">{:L("_DRAFT_")}</option>\
+            <option value="1" selected="selected">{:L("_NORMAL_")}</option>\
+            </select>\
+            </td>\
+                    <td>\
+            <input type="hidden" name="create_time[]" class="time-value" value="{:time()}"/>\
+                    <input type="text" class="form-datetime time form-control" value="{:time_format()}" placeholder={:L("_PLEASE_ENTER_THE_PUBLISHING_TIME_WITH_DOUBLE_")} />\
+                    </td>\
+            </tr>';
+            }
+           $('tbody').append(html);
+        });
+    </script>
+</block>

@@ -1,0 +1,52 @@
+<div class="one_answer clearfix">
+    <div class="a_info">
+        <div class="answer_user" style="float:right;font-size:14px;">
+	        <img style="border-radius:3px;width: 40px;float: right;" src="{$answer.user.avatar128}"/>&nbsp;&nbsp;
+	        <a ucard="{$answer.uid}" href="{$answer.user.space_url}" style="color:#aaa;float: right;margin-top: 6px;margin-right: 3px;">{$answer.user.nickname}</a>&nbsp;
+	        {:W('Common/UserRank/render',array($answer['uid']))}
+        </div>
+        <div style="color:#999">
+            <notempty name="answer['support_user']">
+                <volist name="answer['support_user']" id="support_user">
+                    <a ucard="{$support_user.uid}" href="{$support_user.space_url}" style="color:#999">{$support_user.nickname}</a>&nbsp;
+                </volist>
+                {:L("_AGREE_WITH_SPACE_")}
+            </notempty>
+        </div>
+        <div class="a_content" style="float:left;font-size:14px;">{$answer.content|render}</div>
+        <div style="clear:both;"></div>
+        <div>
+	        <div class="support_block">
+		        <if condition="$answer['is_support']||$answer['is_oppose']">
+		            <a title={:L("_SUPPORT_WITH_DOUBLE_")} <eq name="answer['is_support']" value="1">class="butt already_do"<else/>class="butt"</eq>>
+		            <i class="icon icon-thumbs-up"></i>
+		            <span class="num">{$answer.support}</span>
+		            </a>
+		            <a title={:L("_OBJECT_NOT_SHOWING_YOUR_NAME_WITH_DOUBLE_")} <eq name="answer['is_oppose']" value="1">class="butt already_do"<else/>class="butt"</eq>>
+		             <i class="icon icon-thumbs-down"></i>
+		           	<span class="num">{$answer.oppose}</span>
+		            </a>
+		            <else/>
+		            <a title={:L("_SUPPORT_WITH_DOUBLE_")} class="butt can_do" data-role="answer-support" data-id="{$answer.id}">
+		                <i class="icon icon-thumbs-up"></i>
+		                <span class="num">{$answer.support}</span>
+		            </a>
+		            <a title={:L("_OBJECT_NOT_SHOWING_YOUR_NAME_WITH_DOUBLE_")} class="butt can_do" data-role="answer-oppose" data-id="{$answer.id}">
+		                <i class="icon icon-thumbs-down"></i>
+		                <span class="num">{$answer.oppose}</span>
+		            </a>
+		        </if>
+		    </div>
+	        <div class="q_black_info">
+	            {:L("_RECOVERY_TIME_WITH_COLON_WITH_SPACE_")}{$answer.create_time|friendlyDate}
+	            <if condition="check_auth('Question/Answer/edit',$answer['uid'])">
+	                &nbsp;&nbsp;<a href="{:U('Question/Answer/edit',array('answer_id'=>$answer['id']))}" style="color:#999">{:L("_EDIT_")}</a>
+	                &nbsp;&nbsp;<a href="{:U('Question/Answer/delAnswer',array('answer_id'=>$answer['id']))}" style="color:#999">{:L("_DELETE_")}</a>
+	            </if>
+	            <if condition="check_auth('Question/Answer/setBest',-1)|| (($question['uid'] eq is_login()) && !$question['best_answer'])">
+	                &nbsp;&nbsp;<a class="text-success" data-role="set-best" data-id="{$answer['id']}" data-question-id="{$question.id}" >{:L("_SET_TO_THE_BEST_ANSWER_")}</a>
+	            </if>
+	        </div>
+        </div>
+    </div>
+</div>

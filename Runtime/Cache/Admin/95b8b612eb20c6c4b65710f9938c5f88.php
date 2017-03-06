@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>Rank/userChangeRank?id=1

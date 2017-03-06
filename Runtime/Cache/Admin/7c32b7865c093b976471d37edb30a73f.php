@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>editAdv?id=10001

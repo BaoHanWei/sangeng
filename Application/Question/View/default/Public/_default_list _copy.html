@@ -1,0 +1,47 @@
+<div class="one_question clearfix">
+    <div class="clearfix">
+        <div class="pull-left">
+            <img style="border-radius:3px;width: 40px" src="{$data.user.avatar128}"/>
+        </div>
+        <div class="pull-left" style="padding-left: 10px;width: 658px">
+            <p class="q_title text-ellipsis" style="font-size: 15px">
+                问：<a target="_blank" href="{:U('Question/Index/detail',array('id'=>$data['id']))}">{$data.title}</a>
+            </p>
+            <!--<if condition="$data['img']">
+                <p><img src="{$data['img']}" style="margin-top: 10px;max-width: 100%;max-height: 200px;"/></p>
+            </if>-->
+            <if condition="$data['status'] eq 2">
+                <div>&nbsp;&nbsp;<span style="color: #D79F39;">{:L("_PENDING_AUDIT_")}</span></div>
+            </if>
+            <if condition="$data['status'] eq 0">
+                <div> &nbsp;&nbsp;<span style="color: #A6A6A6;">{:L("_AUDIT_FAILURE_")}</span></div>
+            </if>
+            <div class="q_black_info">
+                {$data.user.space_link}{:L("_INITIATE_A_QUESTION_")}
+              {:L("_SHARE_WITH_SPACE_")}{$data.answer_num}{:L("_PEOPLE_ANSWER_")}&nbsp;&nbsp;
+                <!--支持数：{$data.support}&nbsp;&nbsp;-->
+                <div class="pull-right"><i class="icon-time"></i> {$data.create_time|friendlyDate}</div>
+            </div>
+        </div>
+    </div>
+    <notempty name="data['best_answer_info']">
+        <div class="row best_answer">
+            <div style="padding-left: 50px">
+                <div style="border-bottom: 1px dashed #ddd"></div>
+                <div class="pull-left padding-top-10 text-left">
+                    <img style="border-radius:3px;width: 40px" src="{$data.best_answer_info.user.avatar128}">
+                </div>
+                <div style="padding-left: 50px;">
+                    <div class="margin-top-10">
+                        <p class="text-ellipsis text-muted">{$data['best_answer_info']['content']}</p>
+                    </div>
+                    <div class="q_black_info">{:L("_ANSWER_WITH_COLON_")}
+                    <a ucard="{$data['best_answer_info']['user']['uid']}"  href="{$data['best_answer_info']['user']['space_url']}" target="_blank">
+                    {$data['best_answer_info']['user']['nickname']}</a>&nbsp;{:L("_SHARE_WITH_SPACE_")}{$data.best_answer_info.support}{:L("_HUMAN_SUPPORT_")}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <else/>
+    </notempty>
+</div>

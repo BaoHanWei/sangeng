@@ -1,0 +1,24 @@
+<extend name="Base/common" />
+<block name="header"> <include file="Public/nav" /> </block>
+<block name="body">
+<link type="text/css" rel="stylesheet" href="__CSS__/question.css" />
+<div class="container common_block_border" style="min-height: 700px">
+	<div class="row">
+		<div class="col-xs-9">
+			<h2>
+				<i class="icon-tasks"></i>{:L("_HOT_ISSUES_")}
+			</h2>
+			<div class=" clearfix">
+				<div class="question_list" style="padding: 0 5px">
+					<notempty name="list"> <volist name="list" id="data">
+					<include file="Public/_default_list" /> </volist> <else />
+					<div style="font-size: 3em; padding: 2em 0; color: #ccc; text-align: center">{:L("_THIS_TYPE_OF_NO_PROBLEM_YO_WITH_WAVE_")}</div>
+					</notempty>
+					<div class="text-right">{:getPagination($totalCount,20)}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-3">{:W('Question/RightBlock/recommend')}</div>
+	</div>
+</div>
+</block>

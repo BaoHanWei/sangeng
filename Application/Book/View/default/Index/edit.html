@@ -1,0 +1,84 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link href="__CSS__/book.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
+    <style>
+        #book-content .container{width: auto !important;max-width: none !important;;min-width: 0 !important;}
+        .syntaxhighlighter{border-radius: 0px !important;}
+    </style>
+</block>
+<block name="header">
+    <include file="Public/nav"/>
+</block>
+<block name="body">
+    <div style="min-height: 560px;">
+        <div class="col-xs-3" style="height: 200px;">
+            <div class="tree_block">
+                <div class="tree_title">
+                    <img src="__IMG__/book-icon.gif" class="book-icon"/>
+                    <a href="{:U('Book/Index/read',array('id'=>$book['id']))}">《{$book.title}》</a>
+                </div>
+                <div class="tree_content">
+                    <include file="_tree"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <div id="book-content" class="common_block_border">
+                <include file="_edit_content"/>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/js/ext/zclip/jquery.zclip.min.js"></script>
+    <script src="__STATIC__/ueditor/ueditor.parse.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__STATIC__/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+    <script>
+        var book_id="{$book_id}";
+        var section_id="{$section_id}";
+        $(function(){
+            $('[data-role="book_section"]').click(function(){
+                $('[data-role="book_section"]').removeClass('active');
+                $(this).addClass('active');
+                var section_id=$(this).attr('data-id');
+                $.post(U('Book/Index/loadSection'),{section_id:section_id},function(html){
+                    if(html.status===undefined){
+                        $('#book-content').html(html);
+                    }else{
+                        handleAjax(html);
+                    }
+                });
+                var parent_li=$(this).parent();
+                if(parent_li.attr('aria-expanded')!=undefined){
+                    if(parent_li.attr('aria-expanded')=='true'){
+                        $(this).prev().addClass('tree-parent-collapsed');
+                        parent_li.attr('aria-expanded','false');
+                        $(this).next().addClass('tree-group-collapsed');
+                    }else{
+                        $(this).prev().removeClass('tree-parent-collapsed');
+                        $(this).next().removeClass('tree-group-collapsed')
+                        parent_li.attr('aria-expanded','true');
+                    }
+                }
+            });
+            if(book_id==''){
+                var target=$('[data-id='+section_id+']');
+                target.addClass('active');
+                target.parents('.child_ul').each(function(){
+                    $(this).removeClass('tree-group-collapsed');
+                    $(this).prev().prev().removeClass('tree-parent-collapsed');
+                    $(this).parents('li').attr('aria-expanded','true');
+                });
+            }
+            open_default();
+        });
+        var open_default=function(){
+            $('[data-role="default-open"]').each(function(){
+                $(this).children('a.tree-parent').removeClass('tree-parent-collapsed');
+                $(this).children('ul').removeClass('tree-group-collapsed');
+                $(this).attr('aria-expanded','true');
+            });
+        }
+    </script>
+</block>

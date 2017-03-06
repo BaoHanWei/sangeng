@@ -1,0 +1,59 @@
+<if condition="!empty($tutorial)">
+    <div class="group_header common-block">
+    <div class="group_header_block ">
+        <div class="col-md-4 hidden-xs hidden-sm">
+            <php> if($tutorial['logo']){</php>
+            <img class="logo"  src="{$tutorial.logo|getThumbImageById=173,231}"
+                 alt="{$tutorial.title|op_t}">
+            <php>}else{</php>
+            <img class="logo" src="__IMG__/default.png" alt="{$tutorial.title|op_t}">
+            <php>}</php>
+        </div>
+        <div class="col-md-8 info">
+            <h1 class="title col-md-12 text-more" style="margin-left: -15px;">
+                <a href="{:U('tutorial/index/tutorial',array('id'=>$tutorial['id']))}" title="{$tutorial.title}">{$tutorial.title}</a>
+            </h1>
+            <div class="clearfix" style="font-size: 13px;padding: 10px 0 10px 0;">
+                <a href="{$tutorial.user.space_url}" class="e-user" ucard="{$tutorial.user.uid}">
+                <img class="user-avatar" ucard="{$tutorial.user.uid}" width="30" height="30" src="{$tutorial.user.avatar128}">{$tutorial.user.nickname}
+                </a>
+            </div>
+
+            <div class="clearfix" style="font-size: 13px;padding: 5px 0 5px 0;">
+                {:L('_MODULE_')}{:L('_TYPE_')}：{:$tutorial['type']?L('_PRIVATE_').L('_MODULE_'):L('_PUBLIC_').L('_MODULE_')}
+            </div>
+            <div class="clearfix group_count" style="font-size: 13px;padding: 5px 0 5px 0;">
+                章节：<a href="{:U('index/tutorial',array('type'=>'post','id'=>$tutorial_id))}">{$tutorial.post_count}</a>
+                学员：<a href="{:U('index/tutorial',array('type'=>'member','id'=>$tutorial_id))}">{$tutorial.member_count}</a>
+                {:L('_CATEGORY_')}：<a href="{:U('index/index',array('cate'=>$tutorial['type_id']))}">{$tutorial.type_id|get_type_name}</a>
+            </div>
+            <div class="clearfix" style="font-size: 13px;padding: 5px 0 5px 0;">
+                <php>if(check_auth('Tutorial/Manager/*',get_tutorial_admin($tutorial['id']))){</php>
+                <a class="pull-left btn btn-primary" href="{:U('Tutorial/Manage/index',array('tutorial_id'=>$tutorial['id']))}"
+                   style="margin-right: 5px"> {:L('_MANAGE_')}</a>
+                <php>}</php>
+                <if condition="is_login() neq $tutorial['uid']">
+
+                <php>if(is_joined($tutorial['id']) == 1){
+                </php>
+                <a class="pull-left btn btn-primary" data-role="group_quit" data-group-id="{$tutorial.id}">{:L('_EXIT_')}{:L('_MODULE_')}</a>
+
+                <php> }elseif(is_joined($tutorial['id']) == 2){</php>
+                <a class="pull-left btn btn-default">{:L('_AUDITING_')}</a>
+                <php>}else{</php>
+                <a class="pull-left btn btn-primary" data-role="group_attend" data-group-id="{$tutorial.id}">+{:L('_IN_')}{:L('_MODULE_')}</a>
+                <php>
+                    }
+                </php>
+            </if>
+            </div>
+            <div class="clearfix" style="font-size: 13px;padding: 5px 0 5px 0;">
+                <if condition="ACTION_NAME neq 'detail'">
+                 {:W('Common/Share/detailShare',array(array('share_text'=>$tutorial['title'].'-'.L('_MODULE_'))))}
+                 </if>
+            </div>
+        </div>
+    </div>
+    </div>
+</if>
+

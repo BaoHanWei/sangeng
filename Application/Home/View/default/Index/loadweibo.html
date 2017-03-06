@@ -1,0 +1,18 @@
+<volist name="weibo" id="weibo">
+<div class="box tweet">
+    <a class="box-fl" href="{$weibo.user.space_url}" target="_blank" title="{$weibo.user.nickname}">
+        <figure>
+            <img class="tweet-uimg" src="{$weibo.user.avatar32}">
+        </figure>
+    </a>
+    <div class="box-aw">
+        <p class="tweet-content wrap"><span class="tweet-user"><a href="{$weibo.user.space_url}" target="_blank" title="{$weibo.user.nickname}" style="color:#3879D9">{$weibo.user.nickname}</a>：{$weibo.content}</p>
+        <div class="box vertical justify toolbox">
+            <span>{$weibo.create_time|friendlyDate}<a class="commened" href="{:U('Weibo/Index/weiboDetail',array('id'=>$weibo['id']))}" target="_blank" style="padding-left:8px">({$weibo.comment_count}评)</a>&nbsp;</span>
+            <a href="{:U('Weibo/Index/weiboDetail',array('id'=>$weibo['id']))}" style="font-size:12px;padding-left:8px;color: #9B9B9B;">({$weibo.repost_count}赞)</a>
+           <a href="{:U('Weibo/Index/weiboDetail',array('id'=>$weibo['id']))}" style="font-size:12px;padding-left:8px;color: #9B9B9B;">查看</a>
+        </div>
+    </div>
+</div>
+</volist>
+

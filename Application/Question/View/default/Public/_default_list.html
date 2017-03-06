@@ -1,0 +1,41 @@
+<section class="stream-list__item">
+   <div class="qa-rank">
+        <div class="votes hidden-xs">
+            {$data.good_question}<small>投票</small>
+        </div>
+        <if condition="$data['answer_num'] eq 0">
+	        <div class="answers">
+	            {$data.answer_num}<small>回答</small>
+	        </div>
+	     </if>
+	     <if condition="($data['answer_num'] neq 0) and ($data['best_answer'] eq 0)">
+	     	<div class="answers answered">
+	            {$data.answer_num}<small>回答</small>
+	        </div>
+	     </if>
+	     <if condition="($data['answer_num'] neq 0) and ($data['best_answer'] gt 0)">
+	     	<div class="answers answered solved">
+	            {$data.answer_num}<small>解决</small>
+	        </div>
+	     </if>
+        <div class="views hidden-xs viewsword0to99">
+            <span>{$data.views}</span>
+            <small>浏览</small>
+        </div>
+    </div>
+    <div class="summary">
+        <ul class="author list-inline">
+              <li><a href="{$data.user.space_url}">{$data.user.nickname}</a><span class="split"></span>
+              		<a href="{:U('Question/Index/detail',array('id'=>$data['id']))}" class="askDate">{$data.create_time|friendlyDate}</a>
+              </li>
+        </ul>
+        <h2 class="title"><a href="{:U('Question/Index/detail',array('id'=>$data['id']))}">{$data.title}</a></h2>
+        <php>if(!empty($data['tags'])){</php>
+        <ul class="taglist--inline ib">
+        	<php>$tags=explode(',',$data['tags']);for($i=0;$i<count($tags);$i++){</php>
+            <li class="tagPopup"><a class="tag tag-sm" href="{:U('Question/Index/tag',array('name'=>$tags[$i]))}"><php>echo $tags[$i];</php></a></li>    
+            <php>}</php>
+        </ul>
+        <php>}</php>
+     </div>
+</section>

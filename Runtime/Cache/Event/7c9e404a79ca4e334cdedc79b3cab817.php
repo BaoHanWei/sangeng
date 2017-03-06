@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>我的活动——活动

@@ -1,0 +1,95 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link href="__CSS__/center.css" rel="stylesheet" type="text/css"/>
+    <link href="__CSS__/usercenter.css" rel="stylesheet" type="text/css"/>
+</block>
+<block name="header">
+    <br/>
+    <div class="space-banner">
+    	<include file="_top"/>
+    </div>
+</block>
+<block name="body">
+    <div class="col-xs-12 usercenter">
+        <div class="uc">
+        	<div class="col-xs-3">
+        		<include file="_left_link"/>
+				<include file="_right_link"/>
+        	</div>
+        	 <div class="col-xs-9 main-article">
+                    <div style="margin-top:20px;width:100%">
+	                    <div class="row">
+                        	<div class="way_nav">
+								<h3 style="margin-left:30%;font-weight:600;line-height: 50px">{$rankInfo.title}申请表</h3>
+                        	</div>
+                    		<div style="margin-left:20px">
+                                <form class="form-horizontal ajax-form" role="form" action="{:U('Ucenter/Index/verify')}" method="post">
+                                    <input type="hidden" name="id" id="id" value="{$data.id}"/>
+                                    <input type="hidden" name="uid" value="{$data.uid}"/>
+                                    <input type="hidden" name="rank_id" value="{$rankInfo.id}">
+                                    <input type="hidden" name="rank_user_id" value="{$data.id}">
+                                    <div class="form-group has-feedback">
+                                        <label for="title" class="col-xs-1 control-label" style="width: 10%">真实姓名</label>
+                                        <div class="col-xs-8">
+                                            <input id="title" name="truename" class="form-control form_check" check-type="Text" value="{$data.truename}" placeholder="请填写真实姓名"/>
+                                        </div>
+                                    </div>
+                                   <div class="form-group has-feedback">
+                                        <label for="QQ" class="col-xs-1 control-label" style="width: 10%">常用QQ</label>
+                                        <div class="col-xs-8">
+                                            <input id="QQ" name="qq" class="form-control form_check" check-type="QQ" value="{$data.qq}" placeholder="务必填写常用QQ"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="city" class="col-xs-1 control-label" style="width: 10%">所在城市</label>
+                                        <div class="col-xs-8">
+                                            <input id="city" name="city" class="form-control form_check" check-type="Text" value="{$data.city}" placeholder="请填写所在城市"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="company" class="col-xs-1 control-label" style="width: 10%">所在公司</label>
+                                        <div class="col-xs-8">
+                                            <input id="company" name="company" class="form-control form_check" check-type="Text" value="{$data.company}" placeholder="请填写所在公司"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="technology" class="col-xs-1 control-label" style="width: 10%">擅长技术</label>
+                                        <div class="col-xs-8">
+                                            <input id="technology" name="technology" class="form-control form_check" check-type="Text" value="{$data.technology}" placeholder="务必填写最擅长的5种技术,以英文,隔开"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reason" class="col-xs-1 control-label" style="width: 10%">申请理由</label>
+
+                                        <div class="col-xs-10">
+                                            <php>
+                                                $config="toolbars:[['source','|','bold','italic','underline','fontsize','forecolor','fontfamily','backcolor','|','link','emotion','scrawl','attachment','insertvideo','insertimage','insertcode','wordimage']]";</php>
+                                            </php>
+                                            {:W('Common/Ueditor/editor',array('myeditor_edit','reason',$data['detail']['reason'],'700px','250px',$config))}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-1 col-xs-1" style="width: 10%">
+                                            <button type="submit" class="btn btn-primary " href="javascript:;">{:L('_SUBMIT_')}
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <button onclick="history.go(-1);" class="btn btn-default " href="javascript:;">{:L('_RETURN_')}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                    	</div>
+                </div>
+             </div>
+        </div>
+    </div>
+    <link href="__CORE_CSS__/form_check.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__CORE_JS__/form_check.js"></script>
+    <script type="text/javascript">
+    $(function (e) {
+        $("#title").focus();
+    })
+    </script>>
+</block>

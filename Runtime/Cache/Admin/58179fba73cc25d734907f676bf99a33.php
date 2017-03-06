@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>Group/post?group_id=6

@@ -1,0 +1,113 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/tutorial.css"/>
+    <script type="text/javascript" src="__JS__/common.js"></script>
+    <div id="wrapper">
+	    <div id="navsecond">
+			<div class="sidebar-box">
+			<ul>
+				<li class="design"><a href="{:U('tutorials')}"
+	            <if condition="!$group_cate">class="active"</if>
+	            >
+	            {:L('_ALL_')}
+	            </a></li>
+	            <volist name="parent" id="type">
+	                <li class="design"><a href="{:U('tutorials',array('cate'=>$type['id']))}" data-id="{$type['id']}" class="ptype <if condition="
+	                   $group_cate eq $type['id']">active</if>">
+	                {$type.title}
+	                </a></li>
+	            </volist>
+			</ul>
+			</div>
+		</div>
+		<div id="project-content">
+			<volist name="result" id="vo">
+			  <div class="pro-list" style="display: block;">
+			    <div class="item-title">
+			      <h2>{$vo.title}</h2></div>
+			    <div class="pro-list-content">
+				  <if condition="$vo['list'] neq null">
+				  	<volist name="vo.list" id="val">
+				      <div class="pro-item">
+				        <a href="{:U('tutorial/index/tutorial',array('id'=>$val['id']))}" title="{$val.title}">
+				          <div class="pro-item-img">
+				            <img src="{$val.logo|getThumbImageById=300,300}" alt="{$val.title}" title="{$val.title}"></div>
+				          <div class="pro-item-desc">
+				            <h4>{$val.title}</h4>
+				            <p>{$val.detail}...</p>
+				          </div>
+				        </a>
+				       </div>
+				     </volist>
+				  </if>
+			    </div>
+			  </div>
+		  </volist>
+		</div>
+	</div>
+    <!-- <div class="common_block_border group_info margin-bottom-15">
+        <div class="group_tags group_types" style="padding: 15px;">
+            <a href="{:U('groups')}"
+            <if condition="!$group_cate">class="active"</if>
+            >
+            {:L('_ALL_')}
+            </a>
+            <volist name="parent" id="type">
+                <a href="{:U('groups',array('cate'=>$type['id']))}" data-id="{$type['id']}" class="ptype <if condition="
+                   $group_cate eq $type['id']">active</if>">
+                {$type.title}
+                </a>
+            </volist>
+        </div>
+    </div>
+    <volist name="child" id="vo">
+        <php> if(!empty($vo)){</php>
+        <div class="common_block_border group_info chile_type" id="type_{$key}" style="margin-top: -10px; ">
+            <div class="group_tags group_types" style="padding: 15px;">
+                <a href="{:U('groups',array('cate'=>$key))}"
+                <if condition="!$group_cate">class="active"</if>
+                >
+                {:L('_ALL_')}
+                </a>
+                <volist name="vo" id="type">
+                    <a href="{:U('groups',array('cate'=>$type['id']))}"
+                    <if condition="$group_cate eq $type['id']">class="active"</if>
+                    >
+                    {$type.title}
+                    </a>
+                </volist>
+            </div>
+        </div>
+        <php>}</php>
+    </volist>
+    <div class="row" style="min-height:600px;">
+        <div class="col-md-12">
+            <div>
+                <div class="">
+                    <section class="group_lists">
+                        <if condition="!$group_list">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p class="text-muted" style="text-align: center; font-size: 3em;">
+                                        <br/><br/>
+                                        {:L('')}
+                                        <br/><br/><br/>
+                                    </p>
+                                </div>
+                            </div>
+                        </if>
+                        <volist name="group_list" id="vo">
+                            {:W('Group/Detail/group',array('group_id'=>$vo))}
+                        </volist>
+                        <div class="item_page clearfix pull-right">
+                            {:getPagination($totalCount,$r)}
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</block>

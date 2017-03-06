@@ -1,0 +1,532 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <include file="Public/head"/>
+    <link href="__CSS__/index.css" type="text/css" rel="stylesheet">
+    <link href="__CSS__/public_index.css" type="text/css" rel="stylesheet">
+    <php> D('Member')->need_login();</php>
+</head>
+<body>
+<include file="Public/header"/>
+<div class="header_nav">
+<!--头部导航开始-->
+    <div class="header clearfix ">
+        <h1 class="logo fl"><a href="http://www.hiapk.com/" title="安卓网www.hiapk.com">安卓网www.hiapk.com</a></h1>
+        <div class="mainnav fl">
+            <ul class="clearfix">
+                <li>
+                <a href="http://news.hiapk.com/" target="_blank"><b>资讯</b></a>
+                <a href="http://news.hiapk.com/brands/" target="_blank">手机圈</a>
+                <a href="http://news.hiapk.com/internet/" target="_blank">互联</a>
+                <a href="http://news.hiapk.com/tech/" target="_blank">科技</a><br>
+
+                <a href="http://mobile.hiapk.com/" target="_blank"><b>手机</b></a>
+                <a href="http://mobile.hiapk.com/evaluate/" target="_blank">评测室</a>
+                <a href="http://product.hiapk.com/" target="_blank">手机大全</a>
+                </li>
+                <li>
+                <a href="http://game.hiapk.com/" target="_blank"><b>游戏</b></a>
+                <a href="http://game.hiapk.com/syzq/" target="_blank">专区</a>
+                <a href="http://game.hiapk.com/handbook/" target="_blank">攻略</a>
+                <a href="http://hao.hiapk.com/" target="_blank">礼包</a><br>
+
+                <a href="http://app.hiapk.com/" target="_blank"><b>软件</b></a>
+                <a href="http://app.hiapk.com/category/" target="_blank">最新</a>
+                <a href="http://app.hiapk.com/essential/" target="_blank">必备</a>
+                <a href="http://app.hiapk.com/apps/" target="_blank">排行</a>
+                </li>
+                <li>
+                <a href="http://vr.hiapk.com/" target="_blank"><b>VR频道</b></a>
+                <a href="http://vr.hiapk.com/news/" target="_blank">VR资讯</a>
+                <a href="http://vr.hiapk.com/videos/" target="_blank">VR视频</a><br>
+
+                <a href="http://bbs.hiapk.com/" target="_blank"><b>论坛</b></a>
+                <a href="http://bbs.hiapk.com/forum-474-1.html" target="_blank">活动</a>
+                <a href="http://apk.hiapk.com/" target="_blank"><b>安卓市场</b></a>
+                </li>
+                <li>
+                <a href="http://pic.hiapk.com/" target="_blank"><b>图库</b></a>
+                <a href="http://pic.hiapk.com/sjbizhi/fl/" target="_blank">壁纸</a>
+                <a href="http://joy.hiapk.com/" target="_blank">乐翻</a>
+                <a href="http://pic.hiapk.com/jc/" target="_blank">内涵</a><br>
+
+                <a href="http://news.hiapk.com/column/" target="_blank"><b>专栏</b></a>
+                <a href="http://news.hiapk.com/column/days/" target="_blank">安卓日报</a>
+                <a href="http://news.hiapk.com/column/geek/" target="_blank">Geek说</a>
+
+                </li>
+                <li>
+                <a href="http://guide.hiapk.com/" target="_blank"><b>教程</b></a>
+                <a href="http://guide.hiapk.com/jichu/" target="_blank">基础</a>
+                <a href="http://guide.hiapk.com/jinjie/" target="_blank">进阶</a>
+                <a href="http://guide.hiapk.com/meihua/" target="_blank">美化</a><br>
+
+                <a href="http://rom.hiapk.com/" target="_blank"><b>刷机</b></a>
+                <a href="http://rom.hiapk.com/roms/" target="_blank">ROM</a>
+                <a href="http://rom.hiapk.com/drive/" target="_blank">驱动</a>
+                <a href="http://rom.hiapk.com/root/" target="_blank">Root</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--头部位置导航结束-->
+</div>
+<div class="wrapper" style="min-height:800px;">
+    <div class="recommend mt30 clearfix">
+        <ul class="fl recommend_tab" id="tabHnadle8">
+            <li class="on">用户推荐</li>
+            <li class="">活跃用户</li>
+        </ul>
+        <div class="fl search">
+            <div class="fl search_drop">
+            <span id="search_drop" class="dropon">全部</span>
+            <ul class="search_title" id="search_title" style="display: none;">
+                <li class="on">全部</li> 
+                <li>游戏</li>
+                <li>软件</li>
+                <li>教程</li>
+                <li>机型</li>
+                <li>资讯</li>
+            </ul>
+            </div>
+            <input type="text" class="fl st_box" autocomplete="off" value="输入您要搜索的内容" name="0">
+            <input type="submit" class="fl st_baidu" value="搜百度">
+            <div class="fl st_bor"><span></span></div>
+            <input type="submit" class="fl st_btn" value="搜站内">
+        </div>
+        <div class="fr funzone">
+            <p class="weixin">微信<em style="display: none;"><img src="http://p3.image.hiapk.com/uploads/images/index/weixin.jpg"><i></i></em></p>
+            <p class="weibo"><a href="http://weibo.com/hiapkbbs" target="_blank">微博</a><em style="display: none;"><img src="http://p3.image.hiapk.com/uploads/images/index/weibo.jpg"><i></i></em></p>
+            <p class="client"><a href="http://www.hiapk.com/client/" target="_blank">客户端</a><em style="display: none;"><img src="http://p3.image.hiapk.com/uploads/images/index/kehud.jpg"><i></i></em></p>
+        </div>
+    </div>
+    <div class="mt20 recommend_con" id="tabBody8">
+        <div class="recom_apk con" style="display: block;">
+            <ul class="clearfix">
+                <volist name="signUser" id="vo">
+                    <li>
+                        <a href="{$vo.space_url}">
+                            <img class="lazy" width="45" height="45" alt=" " src="{$vo.avatar64}"  style="display: block;"><span>{$vo.nickname} </span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        <div class="recom_apk con" style="display: none;">
+            <ul class="fl img_li_d clearfix">
+                <volist name="signUser" id="vo">
+                    <li>
+                        <a href="{$vo.space_url}">
+                            <img class="lazy" width="45" height="45" alt=" " src="{$vo.avatar64}"  style="display: block;"><span>{$vo.nickname} </span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <!--头条+轮播开始-->
+    <div class="mt20 clearfix">
+        <div class="headline w385 overh fl">
+            <volist name="recommendNews" id="vo">
+                <h2>
+                    <a title="{$vo.title}" href="{:U('News/index/detail',array('id'=>$vo['id']))}">{$vo.title}</a>
+                </h2>
+                <p class="mb10 clearfix">
+                    <span><a title="{$vo.description}" href="{:U('News/index/detail',array('id'=>$vo['id']))}">
+                    <php>echo mb_substr(text($vo['description']), 0, 30, 'utf-8');</php>...</a>
+                </p>
+            </volist>
+        </div>
+        <div class="w765 fr">
+            <!-- 轮播 -->
+            <div class="slide pr">
+                <a class="prev" href="javascript:void(0);" style="display: none;">&lt;</a>
+                <a class="next" href="javascript:void(0);" style="display: none;">&gt;</a>
+                <ul class="slide_con clearfix" id="tabBody1">
+                    <volist name="slideIndex" id="vo">
+                        <li <php>if($key==0){echo "style='display: list-item;'";}else{echo "style='display: none;'";}</php>>
+                            <a  href="{$vo.url}" target="{$vo.target}"><img width="765" height="332" alt="{$vo.title}" src="{$vo.img}"><strong class="tit">{$vo.title}</strong></a>
+                        </li>
+                    </volist>
+                    
+                </ul>
+                <ul class="slide_tab pa clearfix" id="tabHnadle1">
+                    <volist name="slideIndex" id="vo">
+                        <li <php>if($key==0){echo "class='on'";}else{echo "class=''";}</php>></li>
+                    </volist>
+                </ul>
+            </div>
+            <!-- /轮播 -->
+        </div>
+    </div>
+    <!--头条+轮播结束-->
+    <div class="mt30 clearfix">
+        <div class="w385 fl newhot">
+        <ul class="newhot_tab clearfix" id="tabHnadle9">
+        <li class="on">最新</li>
+        <li class="">热门</li>
+        </ul>
+        <div class="mt5 newhot_con" id="tabBody9">
+        <div class="con newhot_new" style="display: block;">
+            <ul class="txt_li_t mt15 clearfix">
+                <volist name="newNews" id="vo" offset="0" length='7'>
+                    <php>if($key==0){</php>
+                        <li class="hx"><a title="{$vo.title}" href="{:U('News/index/detail',array('id'=>$vo['id']))}">{$vo.title}</a></li>
+                    <php>}else{</php>
+                        <li><a class="type" href="{:U('News/index/index',array('category'=>$vo['category']))}">{$vo.category_name}</a><a title="{$vo.title}" href="{:U('News/index/detail',array('id'=>$vo['id']))}">{$vo.title}</a></li>
+                    <php>}</php>
+                </volist>
+            </ul>
+            <ul class="txt_li_t mt15 clearfix">
+                <volist name="newNews" id="vo" offset="7" length='7'>
+                   <php>if($key==7){</php>
+                        <li class="hx"><a title="{$vo.title}" href="{:U('News/index/detail',array('id'=>$vo['id']))}">{$vo.title}</a></li>
+                    <php>}else{</php>
+                        <li><a class="type" href="{:U('News/index/index',array('category'=>$vo['category']))}">{$vo.category_name}</a><a title="{$vo.title}" href="{:U('News/index/detail',array('id'=>$vo['id']))}">{$vo.title}</a></li>
+                    <php>}</php>
+                </volist>
+            </ul>
+        </div>
+        <div class="con" style="display: none;">
+            <ul class="img_li_s clearfix">
+                <volist name="hotNews" id="vo">
+                    <li>
+                        <a title="{$vo.title}" href="{:U('News/index/detail',array('id'=>$vo['id']))}">
+                            <img class="lazy" src="{$vo.img}" alt="{$vo.title}" width="77" height="58" style="display: block;">
+                            <b>{$vo.title}</b>
+                            <span><php>echo mb_substr(text($vo['description']), 0, 30, 'utf-8');</php>...</span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        </div>
+        </div>
+        <div class="w765 fr">
+        <div class="fl w375">
+        <div class="azzb">
+        <div class="azzb_con" id="tabBody_azzb">
+            <volist name="hotTopic" id="vo">
+                <div class="con" <php> if($key==0){ </php> style="display: block;" <php>}else{</php> style="display: none;" <php>}</php> >
+                    <div class="box_tit box_tit2 clearfix">
+                        <h4 class="fl">热门话题</h4>
+                        <a class="fr more" href="{:U('Weibo/topic/topic')}">查看更多</a>
+                    </div>
+                    <a class="title" href="{:U('Weibo/topic/index?topk='.urlencode($vo['name']))}"><i></i>#{$vo.name}#</a>
+                    <p class="clearfix info"><php>echo mb_substr(text($vo['intro']), 0, 56, 'utf-8');</php>...<a style="color:#3EB158"  href="{:U('Weibo/topic/index?topk='.urlencode($vo['name']))}">[详情]</a></p>
+                </div>
+            </volist>
+        </div>
+        <div class="azzb_tab clearfix" id="tabHnadle_azzb">
+            <volist name="hotTopic" id="vo">
+                <a <php>if($key==0){</php> class="on" <php>}else{</php> class="" <php>}</php> href="javascript:;"></a>
+            </volist>
+        </div>
+        </div>
+        <div class="mt20 rmhd">
+            <div class="box_tit box_tit2 clearfix">
+                <h4 class="fl">热门活动</h4>
+                <a class="fr more" href="{:U('Event/index/index')}">活动版块</a>
+            </div>
+            <div class="con mt20 pr">
+                <a class="rmhd_prev" href="javascript:;" id="rmhd_prev">&lt;</a>
+                <a class="rmhd_next" href="javascript:;" id="rmhd_next">&gt;</a>
+                <div class="rmhd_slide" id="rmhd_slide">
+                    <ul style="width: 2250px;">
+                        <volist name="hotEvent" id="vo">
+                            <li><a target="_blank" href="{:U('Event/Index/detail',array('id'=>$vo['id']))}"><img class="lazy" width="375" height="179" alt="{vo.title}" src="{$vo.cover_id|getThumbImageById=320,210}"  style="display: inline;"><strong>{$vo.title}</strong></a></li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mt20 pljj">
+            <div class="box_tit box_tit2 clearfix">
+                <h4 class="fl">热门评论</h4>
+                <a class="fr more"  href="{:U('News/index/index')}">查看更多</a>
+            </div>
+            <volist name="hotComment" id="vo">
+                <div class="pljj_con" id="tabBody_pljj">
+                    <div class="con" <php> if($key==0){ </php> style="display: block;" <php>}else{</php> style="display: none;" <php>}</php>>
+                    <a class="title"  href="{:U('News/index/detail',array('id'=>$vo['id']))}" title="{$vo.title}"><i></i>{$vo.title}</a>
+                    <p class="clearfix info">评论(<span class="cy_cmt_participate">{$vo.view}</span>人查看，<span class="cy_cmt_count">{$vo.comment}</span>条评论，<span>{$vo.collection}</span>人收藏)</p>
+                    </div>
+                </div>
+            </volist>
+            <div class="pljj_tab clearfix" id="tabHnadle_pljj">
+                <volist name="hotComment" id="vo">
+                    <a <php>if($key==0){</php> class="on" <php>}else{</php> class="" <php>}</php> href="javascript:;"></a>
+                </volist>
+            </div>
+        </div>
+        </div>
+        <div class="fr w350">
+            <include file="_quickweibo"/>
+            <div id="weibo_list">
+                <include file="loadweibo"/>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--资讯+微博模块结束-->
+    <!--通栏广告开始-->
+    <!--通栏广告结束-->
+    <!--教程频道开始-->
+    <div class="mt20 clearfix">
+        <div class="fl w790">
+            <div class="col_tit clearfix">
+            <h3><a target="_blank" href="http://game.hiapk.com/"><span class="green">教程</span>频道</a></h3>
+            <p class="col_tit_tag">
+            <a target="_blank" href="http://game.hiapk.com/lab/newgames/">新游</a>
+            <a target="_blank" href="http://game.hiapk.com/lab/pic/">评测</a>
+            <a target="_blank" href="http://game.hiapk.com/lab/test/">试玩</a>
+            <a target="_blank" href="http://game.hiapk.com/chanye/cy/">产业</a>
+            <a target="_blank" href="http://game.hiapk.com/chanye/sj/">数据</a>
+            </p>
+            </div>
+            <div class="mt20 clearfix">
+                <div class="tutorial-item">
+                    <volist name="tutorialList" id="vo">
+                        <a href="" class="tutorial-box" title="{$vo.title}">
+                        <img src="{$vo.img|getThumbImageById=320,210}" alt="{$vo.title}" title="{$vo.title}">                  
+                        <h3>{$vo.title}</h3>
+                        </a>
+                    </volist>
+                </div>
+            </div>
+        </div>
+        <div class="fr w350 hao">
+            <div class="col_tit clearfix">
+                <h3><a target="_blank" href="http://hao.hiapk.com/">游戏礼包</a></h3>
+                <a class="fr more" target="_blank" href="http://hao.hiapk.com/">发号中心</a>
+            </div>
+            <div class="mt20 hao_list">
+                <div class="tutorial-item">
+                    <volist name="tutorialList" id="vo">
+                            <a href="" class="tutorial-box" title="{$vo.title}">
+                            <img src="{$vo.img|getThumbImageById=320,210}" alt="{$vo.title}" title="{$vo.title}">                  
+                            <h3>{$vo.title}</h3>
+                            </a>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--教程频道结束-->
+    <!--问答频道开始-->
+    <div class="mt20 clearfix">
+        <div class="fl w790">
+            <div class="col_tit clearfix">
+                <h3><a target="_blank" href="http://game.hiapk.com/"><span class="green">问答</span>频道</a></h3>
+                <p class="col_tit_tag">
+                <a target="_blank" href="http://game.hiapk.com/lab/newgames/">新游</a>
+                <a target="_blank" href="http://game.hiapk.com/lab/pic/">评测</a>
+                <a target="_blank" href="http://game.hiapk.com/lab/test/">试玩</a>
+                <a target="_blank" href="http://game.hiapk.com/chanye/cy/">产业</a>
+                <a target="_blank" href="http://game.hiapk.com/chanye/sj/">数据</a>
+                </p>
+            </div>
+            <div class="mt20 clearfix">
+                <div class="question_list">
+                    <volist name="tutorialList" id="vo">
+                        
+                    </volist>
+                </div>
+            </div>
+        </div>
+        <div class="fr w350 hao">
+            <div class="col_tit clearfix">
+                <h3><a target="_blank" href="http://hao.hiapk.com/">热门标签</a></h3>
+                <a class="fr more" target="_blank" href="http://hao.hiapk.com/">发号中心</a>
+            </div>
+            <div class="mt20 hao_list">
+                <div class="tutorial-item">
+                    <volist name="tutorialList" id="vo">
+                            <a href="" class="tutorial-box" title="{$vo.title}">
+                            <img src="{$vo.img|getThumbImageById=320,210}" alt="{$vo.title}" title="{$vo.title}">                  
+                            <h3>{$vo.title}</h3>
+                            </a>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--问答频道结束-->
+    <!--博客系统开始-->
+    <div class="mt20 clearfix">
+        <div class="fl w790">
+        <div class="col_tit clearfix">
+        <h3><a target="_blank" href="http://vr.hiapk.com/"><span class="green">VR</span>频道</a></h3>
+        </div>
+        <div class="mt20 clearfix">
+        <div class="fl w385">
+        <div class="smzdm_c pr">
+            <div id="tabHnadle_vr" style="display:none;">
+                <a class=""></a>
+                <a class="on"></a>
+                <a class=""></a>
+                <a class=""></a>
+                <a class=""></a>
+            </div>
+            <a class="prev_vr" href="javascript:void(0);">&lt;</a>
+            <a class="next_vr" href="javascript:void(0);">&gt;</a>
+            <ul class="w385 img_li clearfix" id="tabBody_vr">
+                
+                <li style="display: none;"><a target="_blank" href="http://vr.hiapk.com/business/s58b39c2dad92.html"><img class="lazy" width="385" height="220" alt="《Hardlight Suit》将开启众筹" src="http://img.qt.baidu.com/hiapk_vr/201702/27/58b39c5eabb61.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/27/58b39c5eabb61.jpg" style="display: block;"><strong>《Hardlight Suit》将开启众筹</strong></a></li>
+                
+                <li style="display: list-item;"><a target="_blank" href="http://vr.hiapk.com/business/s58ae9cca1673.html"><img class="lazy" width="385" height="220" alt="Steam VR应用营收堪忧" src="http://img.qt.baidu.com/hiapk_vr/201702/23/58ae9cdb28cb8.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/23/58ae9cdb28cb8.jpg" style="display: block;"><strong>Steam VR应用营收堪忧</strong></a></li>
+                
+                <li style="display: none;"><a target="_blank" href="http://vr.hiapk.com/business/s58aa944e0085.html"><img class="lazy" width="385" height="220" alt="NBA发行虚拟现实应用" src="http://img.qt.baidu.com/hiapk_vr/201702/20/58aa94a2ec5b7.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/20/58aa94a2ec5b7.jpg"><strong>NBA发行虚拟现实应用</strong></a></li>
+                
+                <li style="display: none;"><a target="_blank" href="http://vr.hiapk.com/business/s58a5104a1186.html"><img class="lazy" width="385" height="220" alt="Next VR直播17年NBA" src="http://img.qt.baidu.com/hiapk_vr/201702/16/58a510cb2ce68.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/16/58a510cb2ce68.jpg"><strong>Next VR直播17年NBA</strong></a></li>
+                
+                <li style="display: none;"><a target="_blank" href="http://vr.hiapk.com/business/s58a2c42328a0.html"><img class="lazy" width="385" height="220" alt="百度风投首投AR公司8i" src="http://img.qt.baidu.com/hiapk_vr/201702/14/58a2c48dcc69d.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/14/58a2c48dcc69d.jpg"><strong>百度风投首投AR公司8i</strong></a></li>
+                
+            </ul>
+        </div>
+        <div class="mt30 smzdm_d" id="tabBody4">
+            <div class="con clearfix" style="display: block;">
+            <div class="fl pic"><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s58a50bde4262.html"><img class="lazy" width="160" height="120" alt="Oculus Rift房间尺度定位追踪存在问题" src="http://img.qt.baidu.com/hiapk_vr/201702/16/focus_58a50bd9949bb.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/16/focus_58a50bd9949bb.jpg" style="display: inline;"></a></div>
+            <div class="fr detail">
+            <h5><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s58a50bde4262.html">Oculus Rift定位追踪</a></h5>
+            <p>正在努力改进核心软件</p>
+            </div>
+            </div>
+            <div class="con clearfix" style="display: none;">
+            <div class="fl pic"><a target="_blank" href="http://vr.hiapk.com/devices/tutorials/s589435e8813e.html"><img class="lazy" width="160" height="120" alt="在任意安卓Nougat手机运行Daydream" src="http://img.qt.baidu.com/hiapk_vr/201702/03/focus_589435e3a4417.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/03/focus_589435e3a4417.jpg" style="display: inline;"></a></div>
+            <div class="fr detail">
+            <h5><a target="_blank" href="http://vr.hiapk.com/devices/tutorials/s589435e8813e.html">Nougat手机运行Daydream</a></h5>
+            <p>支持数量将会继续增加</p>
+            </div>
+            </div>
+            <div class="con clearfix" style="display: none;">
+            <div class="fl pic"><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s58784042b78f.html"><img class="lazy" width="160" height="120" alt="松下VR头显体验 搭配220FOV 6K分辨率" src="http://img.qt.baidu.com/hiapk_vr/201701/13/focus_5878402fc7643.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201701/13/focus_5878402fc7643.jpg" style="display: inline;"></a></div>
+            <div class="fr detail">
+            <h5><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s58784042b78f.html">松下VR头显体验</a></h5>
+            <p>产品将在2018年发货</p>
+            </div>
+            </div>
+            <div class="con clearfix" style="display: none;">
+            <div class="fl pic"><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s58744059da27.html"><img class="lazy" width="160" height="120" alt="华硕ZenFone AR评测 首款同时对应Daydream和Tango手机" src="http://img.qt.baidu.com/hiapk_vr/201701/10/focus_5874403289b51.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201701/10/focus_5874403289b51.jpg" style="display: inline;"></a></div>
+            <div class="fr detail">
+            <h5><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s58744059da27.html">华硕ZenFone AR评测 </a></h5>
+            <p>采用金属面板</p>
+            </div>
+            </div>
+            <div class="con clearfix" style="display: none;">
+            <div class="fl pic"><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s5847ad4796a2.html"><img class="lazy" width="160" height="120" alt="Oculus Touch评测：手部临在感来袭" src="http://img.qt.baidu.com/hiapk_vr/201612/07/focus_5847ad42420b6.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201612/07/focus_5847ad42420b6.jpg" style="display: inline;"></a></div>
+            <div class="fr detail">
+            <h5><a target="_blank" href="http://vr.hiapk.com/devices/reviews/s5847ad4796a2.html">Oculus Touch评测</a></h5>
+            <p>沉浸感变得更强</p>
+            </div>
+            </div>
+            
+        </div>
+        <div class="smzdm_tab">
+        <ul class="clearfix" id="tabHnadle4">
+            <li class="on"><em>◆</em><span>16日</span></li>
+            <li class=""><em>◆</em><span>03日</span></li>
+            <li class=""><em>◆</em><span>13日</span></li>
+            <li class=""><em>◆</em><span>10日</span></li>
+            <li class=""><em>◆</em><span>07日</span></li>
+        </ul>
+        </div>
+        </div>
+        <div class="fr w375">
+            <ul class="txt_li_t clearfix">
+                
+                <li class="hx"><a title="新冲击感应VR组件《Hardlight Suit》即将开启众筹" target="_blank" href="http://vr.hiapk.com/business/s58b39c2dad92.html">新冲击感应VR组件《Hardlight Suit》即将开启众筹</a></li>
+                
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="用VR来安抚孩子的情绪 恐惧感大幅度降低" target="_blank" href="http://vr.hiapk.com/business/s58b39be34b2a.html">用VR来安抚孩子的情绪 恐惧感大幅度降低</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="索尼GDC技术演示 让虚拟角色更像真人" target="_blank" href="http://vr.hiapk.com/business/s58b39b8b43c4.html">索尼GDC技术演示 让虚拟角色更像真人</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="ZeniMax向法院申请限制Oculus Rift的销售" target="_blank" href="http://vr.hiapk.com/business/s58afa638de64.html">ZeniMax向法院申请限制Oculus Rift的销售</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="OptiTrack Active推出全新的VR追踪系统" target="_blank" href="http://vr.hiapk.com/business/s58afa5460e90.html">OptiTrack Active推出全新的VR追踪系统</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="三星推出全新高级移动应用处理器 提升VR性能" target="_blank" href="http://vr.hiapk.com/business/s58afa456d62e.html">三星推出全新高级移动应用处理器 提升VR性能</a></li>
+                
+            </ul>
+            <ul class="txt_li_t mt10 clearfix">
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="Zappar完成375万美元融资 中国游戏发行商乐逗参投" target="_blank" href="http://vr.hiapk.com/business/s58afa3ae35a1.html">Zappar完成375万美元融资 中国游戏发行商乐逗参投</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="高通与厉动达成协议 手势交互将接入835移动平台" target="_blank" href="http://vr.hiapk.com/business/s58afa34abcfb.html">高通与厉动达成协议 手势交互将接入835移动平台</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="SteamVR定位技术开发者套件的预售今日正式开启" target="_blank" href="http://vr.hiapk.com/business/s58afa3076321.html">SteamVR定位技术开发者套件的预售今日正式开启</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="HTC Vive向开发者开放订阅服务 采取四六分成制" target="_blank" href="http://vr.hiapk.com/business/s58afa29ac642.html">HTC Vive向开发者开放订阅服务 采取四六分成制</a></li>
+                
+                <li><!--<a class="type" href="http://vr.hiapk.com/business/" target="_blank"></a>-->·  <a title="高通宣布推出全新VR头显参考设计 价格未知" target="_blank" href="http://vr.hiapk.com/business/s58af88ba931e.html">高通宣布推出全新VR头显参考设计 价格未知</a></li>
+                
+            </ul>
+        </div>
+        </div>
+        </div>
+        <div class="fr w350">
+            <div class="col_tit clearfix">
+                <h3><a target="_blank" href="http://vr.hiapk.com/videos/">视频中心</a></h3>
+                <a class="fr more" target="_blank" href="http://vr.hiapk.com/videos/">查看更多</a>
+            </div>
+            <div class="mt20 smzdm_share">
+                <ul class="img_li clearfix">
+                <li><a target="_blank" href="http://vr.hiapk.com/videos/others/s58aa9ae5ddf9.html"><img class="lazy" width="165" height="124" alt="NBA为谷歌DayDream VR平台带来原创内容" src="http://img.qt.baidu.com/hiapk_vr/201702/20/focus_58aa9ae28dc1f.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/20/focus_58aa9ae28dc1f.jpg" style="display: block;"><strong>NBA VR原创内容</strong></a></li>
+                <li><a target="_blank" href="http://vr.hiapk.com/videos/others/s589a68cb6a13.html"><img class="lazy" width="165" height="124" alt="与艺术合一 VR带你走进《蒙娜丽莎》的世界" src="http://img.qt.baidu.com/hiapk_vr/201702/08/focus_589a68c92ac88.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/08/focus_589a68c92ac88.jpg" style="display: block;"><strong>VR带你走进《蒙娜丽莎》</strong></a></li>
+                
+                <li><a target="_blank" href="http://vr.hiapk.com/videos/others/s58996c0dbba2.html"><img class="lazy" width="165" height="124" alt="开发者自制HoloLens版《传送门》 家里变成游戏场地" src="http://img.qt.baidu.com/hiapk_vr/201702/07/focus_58996c09f31f5.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/07/focus_58996c09f31f5.jpg" style="display: block;"><strong>HoloLens版《传送门》</strong></a></li>
+                
+                <li><a target="_blank" href="http://vr.hiapk.com/videos/others/s5899257903b6.html"><img class="lazy" width="165" height="124" alt="R18游戏《VR女友》新预告公布 黑丝变装福利不停" src="http://img.qt.baidu.com/hiapk_vr/201702/07/focus_5899257512849.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/07/focus_5899257512849.jpg" style="display: block;"><strong>R18游戏《VR女友》新预告公布</strong></a></li>
+                
+                <li><a target="_blank" href="http://vr.hiapk.com/videos/others/s58983090d46a.html"><img class="lazy" width="165" height="124" alt="黑客结合HTC Vive和HoloLens头盔创造“混合现实”" src="http://img.qt.baidu.com/hiapk_vr/201702/06/focus_5898308def92c.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/06/focus_5898308def92c.jpg" style="display: block;"><strong>结合HTC Vive和HoloLens头盔</strong></a></li>
+                
+                <li><a target="_blank" href="http://vr.hiapk.com/videos/others/s58982f1878c9.html"><img class="lazy" width="165" height="124" alt="亲身”体验，SpaceX为超级高铁发布360度演示视频" src="http://img.qt.baidu.com/hiapk_vr/201702/06/focus_58982f165da35.jpg" data-original="http://img.qt.baidu.com/hiapk_vr/201702/06/focus_58982f165da35.jpg" style="display: block;"><strong>超级高铁360度演示视频</strong></a></li>
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--博客系统结束-->
+    <!--友链开始-->
+    <div class="wrapper link mt30 clearfix">
+        <div class="link_tit">
+            <a class="fr more" target="_blank" href="http://www.hiapk.com/about/links.html">更多链接/申请加入</a>
+            <h3>友情链接</h3>
+        </div>
+        <div class="link_con clearfix">
+            <div class="link_list clearfix">
+                <strong>友情链接</strong>
+                <div class="link_div">
+                    <div id="partner" class="partner_con">
+                        <ul class="clearfix" style="width: 1540px;">
+                            <li><a title="vr论坛" target="_blank" href="&#9;http://bbs.ivr.baidu.com/">vr论坛</a></li>
+                            <li><a title="百度Crab服务平台" target="_blank" href="http://crab.baidu.com/">百度Crab服务平台</a></li>
+                            <li><a title="雷锋网" target="_blank" href="&#9;http://www.leiphone.com/">雷锋网</a></li>
+                            <li><a title="亿智蘑菇" target="_blank" href="&#9;http://www.yzmg.com/">亿智蘑菇</a></li>
+                            <li><a title="91助手" target="_blank" href="&#9;http://zs.91.com/">91助手</a></li>
+                            <li><a title="苹果助手" target="_blank" href="&#9;http://www.pgzs.com/">苹果助手</a></li>
+                            <li><a title="前瞻网" target="_blank" href="http://www.qianzhan.com">前瞻网</a></li>
+                            <li><a title="太平洋电脑网" target="_blank" href="http://mobile.pconline.com.cn/">太平洋电脑网</a></li>
+                            <li><a title="北斗星手机网" target="_blank" href="http://www.139shop.com/">北斗星手机网</a></li>
+                            <li><a title="手机中国" target="_blank" href="http://www.cnmo.com/">手机中国</a></li>                                                                       
+                        </ul>
+                    </div>
+                    <div class="link_arrow"> <a class="link_right" href="#" id="partnerPrev">←</a> <a class="link_left" href="#" id="partnerNext">→</a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--友链结束-->
+
+</div>
+<!-- /头部 -->
+<!-- 主体 -->
+<!-- /主体 -->
+<!-- 底部 -->
+<script type="text/javascript" src="http://hit.stat.hiapk.com/templets/default/v1/Index/script/marquee.js"></script>
+<script type="text/javascript" src="http://hit.stat.hiapk.com/templets/default/v1/Index/script/index_v4.1.js"></script> 
+<include file="Public/footer"/>
+<!-- /底部 -->
+</body>
+</html>

@@ -1,0 +1,57 @@
+<php>if(ACTION_NAME != 'create' && ACTION_NAME != 'search' ){</php>
+
+        <php>if(check_auth('Tutorial/Index/addPost',-1)){</php>
+    <div style="margin-bottom: 20px">
+        <a type="button" class="btn btn-large btn-primary-tie group_post_btn"
+           href="{:U('index/edit',array('tutorial_id'=>$tutorial_id))}">
+            {:L('_DO_POST_')}
+        </a>
+    </div>
+
+<php>}</php>
+
+<php>if($tutorial){</php>
+<div class="common-block group_info" style="padding-bottom: 10px;">
+
+
+    <header class="">
+        {:L('_MODULE_')}{:L('_FOUNDER_')}
+    </header>
+    <div class="common_block_content_right">
+        <div class="pull-left">
+            <a href="{$tutorial.user.space_url}" ucard="{$tutorial.user.uid}"><img src="{$tutorial.user.avatar128}" width="55px"
+                                                                               class="avatar-img"/></a>
+        </div>
+        <div class="pull-left" style="height: 55px;padding: 7px 0 0 20px;;">
+            <a href="{$tutorial.user.space_url}" ucard="{$tutorial.user.uid}">{$tutorial.user.nickname|op_t}</a>
+
+            <div class="" style="color: #999">
+                {:L('_OWN_')} {$tutorial.user.tutorial_count}{:L('_A_MODULE_')}
+            </div>
+        </div>
+        <div class="clearfix" style="padding:10px 0px;"><span style="font-weight: 700">[{:L('_MODULE_')}{:L('_INTRO_')}]</span> {$tutorial.detail}</div>
+    </div>
+    <if condition="$notice neq null">
+    <hr class="" style="margin-top:0;margin-bottom: 10px;">
+    <div class="common_block_content_right" >
+       <span style="font-weight: 700">[{:L('_NOTICE_')}]</span> {$notice.content}
+    </div>
+    </if>
+</div>
+<php>}</php>
+
+{:W('HotPost/lists',array('tutorial_id'=>$tutorial_id))}
+
+<div class="common_block_border group_info">
+
+ {:W('HotPeople/lists',array('tutorial_id'=>$tutorial_id))}
+</div>
+
+
+<php>}else{</php>
+
+{:W('MyAttendance/lists')}
+{:W('HotTutorial/lists')}
+
+
+<php>}</php>

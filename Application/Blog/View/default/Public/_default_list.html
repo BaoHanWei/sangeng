@@ -1,0 +1,25 @@
+ <div class="box item">
+    <div class="box-fl">
+        <a href="{$data.user.space_url}" style="display:block;">
+            <img class="blog-author" load="loaded" src="{$data.user.avatar64}" ucard="{$data.uid}">
+        </a>
+    </div>
+    <div class="box-aw">
+        <header class="box vertical blog-title-box">
+            <a href="{:U('Blog/index/detail',array('id'=>$data['id']))}" class="sc overh blog-title-link" target="_blank" title="{$data.title|text}">
+                <h2 class="blog-name sc text-ellipsis">{$data.title}</h2>
+            </a>
+            <if condition="$data['blog_type'] neq 1">
+            	<span class="blog-tag yuan">原</span>
+            <else/>
+            	<span class="blog-tag zhuan">转</span>
+            </if>
+        </header>
+        <section class="blog-brief text-gradient">{$data.description}</section>
+        <footer class="box vertical blog-footer-box">
+            <span>{$data.user.nickname}</span>
+            <span>发布于</span>
+            <span>{$data.create_time|friendlyDate}</span><span>阅读({$data.view})</span>
+        </footer>
+    </div>
+</div>  

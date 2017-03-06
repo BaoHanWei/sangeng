@@ -1,0 +1,48 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/question.css"/>
+    <div class="container" style="min-height: 700px">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="common_block_border clearfix">
+                    <div style="margin:0 10px;border-bottom: 1px solid #ddd;">
+                        <ul class="nav nav-pills">
+                            <li <eq name="type" value="q">class="question_active"</eq>>
+                                <a href="{:U('Question/Index/myQuestion',array('type'=>'q'))}" style="font-size:16px;">
+                                  {:L("_MY_PROBLEM_WITH_SPACE_")}
+                                </a>
+                            </li>
+                            <li <eq name="type" value="a">class="question_active"</eq>>
+                                <a href="{:U('Question/Index/myQuestion',array('type'=>'a'))}" style="font-size:16px;">
+                                  {:L("_MY_ANSWER_WITH_SPACE_")}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="question_list" style="padding:0 20px">
+                        <notempty name="list">
+                            <if condition="$type eq 'q'">
+                                <volist name="list" id="data">
+                                    <include file="Public/_default_list"/>
+                                </volist>
+                                <else/>
+                                <volist name="list" id="data">
+                                    <include file="Public/_answer_question"/>
+                                </volist>
+                            </if>
+                            <else/>
+                            <div style="font-size:1em;padding:2em 0;color: #ccc;text-align: center">暂时没有提任何问题吆~</div>
+                        </notempty>
+                        <div class="text-right">
+                            {:getPagination($totalCount,20)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</block>

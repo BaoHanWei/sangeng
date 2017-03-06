@@ -1,0 +1,21 @@
+<volist name="child_tree" id="book_tree" key="i">
+    <php>
+        if(count($child_tree)==$i){
+        $last_class="last";
+        }else{
+        $last_class="";
+        };
+        if($book_tree['type']==0){</php>
+    <li aria-expanded="false" class="{$last_class}" <eq name="book_tree.open_child" value="1">data-role="default-open"</eq>>
+        <a href="javascript:void(0);" class="tree-parent tree-parent-collapsed"></a>
+        <a data-role="book_section" data-id="{$book_tree['id']}" style="margin-left: 29px;color:{$book_tree['color']};">{$book_tree['title']}</a>
+        <ul class="child_ul">
+            {:W('Book/ChildTree/render',array(array('pid'=>$book_tree['id'],'book_id'=>$book_tree['book_id'])))}
+        </ul>
+    </li>
+    <php>}else{</php>
+    <li class="{$last_class}">
+        <a href="javascript:void(0);" class="tree-file" data-role="book_section" data-id="{$book_tree['id']}"  style="color:{$book_tree['color']};">{$book_tree['title']}</a>
+    </li>
+    <php>}</php>
+</volist>

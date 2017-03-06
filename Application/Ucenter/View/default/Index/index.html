@@ -1,0 +1,33 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link href="__CSS__/center.css" rel="stylesheet" type="text/css"/>
+    <link href="__CSS__/usercenter.css" rel="stylesheet" type="text/css"/>
+</block>
+<block name="header">
+    <br/>
+    <div class="space-banner">
+    	<include file="_top"/>
+    </div>
+</block>
+<block name="body">
+    <div class="col-xs-12 usercenter">
+        <div class="uc">
+        	<div class="col-xs-3">
+	        	<include file="_left_link"/>
+				<include file="_right_link"/>
+        	</div>
+        	 <div class="col-xs-9 main-article">
+        	 		<div class="panels-heading" id="panels-heading-pjax">
+				        <nav class="title sub-nav clearfix">
+				            <a href="{:U('ucenter/index/applist',array('type'=>Weibo,'uid'=>$user_info['uid']))}" class="active" id="dynamic-all">微博</a>
+				            <a href="{:U('ucenter/index/following',array('uid'=>$user_info['uid']))}" id="dynamic-tweet">关注/粉丝</a>
+				            <a href="{:U('ucenter/index/rank',array('uid'=>$user_info['uid']))}" id="dynamic-discuss">头衔</a>
+				        </nav>
+				    </div>
+                    {:W($module.'/UcenterBlock/render',array('uid'=>$user_info['uid'],'page'=>$page,'tab'=>$tab,'stab'=>$stab))}
+             </div>
+             
+        </div>
+    </div>
+</block>
+

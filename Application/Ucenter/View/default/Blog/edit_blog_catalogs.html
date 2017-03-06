@@ -1,0 +1,52 @@
+<extend name="Public/usercenter"/>
+<block name="style">
+    <link type="text/css" href="__CSS__/blog/blog_catalogs.css" rel="stylesheet">
+</block>
+<block name="body">
+    <div class="row">
+        <div class="col-xs-12">
+            <p>&nbsp;</p>
+            <h2>博客分类管理</h2>
+            <hr class="oneuser-title-hr"/>
+        </div>
+    </div>
+    <div style="min-height: 400px;" class="space-main-wrapper">
+       <div class="AdminContent MainForm BlogCatalogManage">
+			<form id="CatalogForm" action="{:U('Ucenter/Blog/edit_blog_catalogs')}" method="post">
+			    <h3> 修改博客分类 </h3>
+			    <label>分类名称：</label><input id="txt_link_name" type="text" name="title" value="{$catalog_info.title}" size="20">
+			    <label>排序值：</label><input type="text" name="sort" class="catalog_sort" value="{$catalog_info.sort}" size="5">
+			    <input type="hidden" name="id" class="catalog_id" value="{$catalog_info.id}">
+			    <span class="submit">
+			          <input type="button" value="修改&nbsp;»" tabindex="3" class="BUTTON SUBMIT edit_blog_catalogs" style="background:#4eaa4c;color:#fff">
+			          <input type="button" value="取消" class="BUTTON" onclick="location.href='{:U('Ucenter/Blog/blog_catalogs')}';">
+			        </span>
+			</form>
+			<form class="BlogCatalogs">
+				<h3>博客分类 <span>(点击分类名编辑)</span></h3>
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tbody>
+						<tr>
+							<th>序号</th>
+							<th>分类名</th>
+							<th>文章</th>
+							<th>操作</th>
+						</tr>
+						<volist name="category" id="vo">
+							<tr id="catalog_{$vo.id}">
+								<td class="idx">{$vo.sort}</td>
+								<td class="name"><a href="{:U('Ucenter/Blog/edit_blog_catalogs',array('id'=>$vo['id']))}" title="点击修改博客分类">{$vo.title}</a></td>
+								<td class="num">{$vo.count}</td>
+								<td class="opts">
+									<a href="{:U('Ucenter/Blog/edit_blog_catalogs',array('id'=>$vo['id']))}" title="点击修改博客分类">修改</a>
+									<a href="{:U('Ucenter/Blog/del_blog_catalogs',array('id'=>$vo['id']))}">删除</a>
+								</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</form>
+		</div>
+    </div>
+    <script type="text/javascript" src="__JS__/blog/blog_edit.min.js"></script>
+</block>

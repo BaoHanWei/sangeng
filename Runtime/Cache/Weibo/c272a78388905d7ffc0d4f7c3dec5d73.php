@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit(); echo ($MODULE_ALIAS); ?>-<?php echo ($website_name); ?>

@@ -1,0 +1,55 @@
+<php>
+    $sideBarUser = query_user(array('nickname', 'uid', 'title', 'score', 'avatar128'), $uid);
+    $call = $call ? $call : L('_I_');
+</php>
+<div class="row ">
+    <div class="col-xs-12">
+        <div class="with-padding">
+        	<div>
+                 <div class="user-info-panel text-center margin_bottom_10">
+                     <div>
+                         <a href="{$sideBarUser.space_url}" target="_blank"><img class="avatar-img" src="{$sideBarUser.avatar128}"></a>
+                     </div>
+                     <div style="margin-top:10px;">
+                         <a class="nickname" href="{$sideBarUser.space_url}" style="color:#333;font-size:17px;">{$sideBarUser.nickname}</a>
+                         <a href="{$sideBarUser.space_url}" target="_blank">
+                         	<i class="icon-svg icon-home icon-2x"></i>
+                         </a>
+                     </div>
+                 </div>
+             </div>
+            <div style="height:10px;"></div>
+            <!--关注按钮，在登录状态-->
+            <if condition="is_login() && $uid != get_uid()">
+                <p class="text-center">
+                    {:W('Common/Follow/follow',array('follow_who'=>$uid))}
+                </p>
+            </if>
+            <h3 class="with-padding" style="border-bottom:1px solid #e1e1e1;">分类</h3>
+            <!--导航栏-->
+            <ul class="nav nav-pills nav-stacked">
+                <li id="side_message">
+                    <a href="{:U('Ucenter/Message/message')}">
+                        {:L('_MESSAGE_CENTER_')}
+                        <span class="icon-bullhorn pull-right"></span>
+                    </a>
+                </li>
+                <li id="side_collection">
+                    <a href="{:U('Ucenter/Collection/index')}">
+                        {:L('_MY_FAVORITES_')}
+                        <span class="icon-star pull-right"></span>
+                    </a>
+                </li>
+                <li id="side_invite">
+                    <a href="{:U('Ucenter/Invite/invite')}">
+                        {:L('_FRIENDS_INV_')}
+                        <span class="icon-star pull-right"></span>
+                    </a>
+                </li>
+                <script>
+                    $('#side_' + "{$tabHash}").addClass('active');
+                </script>
+            </ul>
+        </div>
+    </div>
+</div>

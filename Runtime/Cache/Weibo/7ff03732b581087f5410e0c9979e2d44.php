@@ -1,0 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit();?>&nbsp;
+<?php if(is_array($rank_link)): $i = 0; $__LIST__ = $rank_link;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vl): $mod = ($i % 2 );++$i; if($vl['is_show']): if(empty($vl["label_content"])): if(empty($vl["logo_url"])): else: ?>
+                <img class="rank-icon" src="<?php echo ($vl["logo_url"]); ?>" title="<?php echo ($vl["title"]); ?>" alt="<?php echo ($vl["title"]); ?>"/><?php endif; ?>
+            <?php else: ?><span class="label label-badge rank-label" title="<?php echo ($vl["title"]); ?>" style="background: <?php echo ($vl["label_bg"]); ?> !important;color:<?php echo ($vl["label_color"]); ?> !important;"><?php echo ($vl["label_content"]); ?></span><?php endif; endif; endforeach; endif; else: echo "" ;endif; ?>

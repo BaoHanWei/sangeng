@@ -1,0 +1,75 @@
+<!-- <div class="uc_top_bg">
+    <if condition="$user_info['cover_id']">
+        <img class="uc_top_img_bg" src="{$user_info['cover_path']}" style="width: 100%;height: 100%">
+        <else/>
+        <img class="uc_top_img_bg" src="__IMG__/user_top_default_bg.jpg" style="width: 100%;height: 100%">
+    </if>
+    <if condition="is_login() && $user_info['uid'] eq is_login()">
+        <div class="change_cover"><a data-type="ajax" data-url="{:U('Ucenter/Public/changeCover')}" data-toggle="modal" data-title="{:L('_UPLOAD_PERSONAL_COVER_')}" style="color: white;"><img class="img-responsive" src="__CORE_IMAGE__/fractional.png"></a>
+        </div>
+    </if>
+</div> -->
+<div class="row uc_info container" style="margin:0 auto;height:180px;">
+    <div class="col-xs-3" style="padding-top:21px;float:left;height:100%;width:160px">
+     	<a href="{$user_info.space_url}" title="">
+            <img src="{$user_info.avatar128}" class="avatar-img img-responsive top_img"/>
+        </a>      
+    </div>
+    <div class="col-xs-6" style="padding-top:21px;float:left;height:100%;">
+        <div class="uc_main_info">
+            <div class="uc_m_t_12 uc_m_b_12 uc_uname">
+                <span class="nickname" style="cursor:pointer">
+                    <!-- <a ucard="{$user_info.uid}" href="{$user_info.space_url}" title=""> -->{$user_info.nickname|htmlspecialchars}<!--</a>-->
+                </span>
+                <span>
+                       {:W('Common/UserRank/render',array($user_info['uid']))}
+            	</span>
+            	<span class="address"><php>if(in_array($user_info['province'],array('北京市','天津市','重庆市','上海市'))){</php>{$user_info.city} - {$user_info.district}
+	            	<php>}else{</php>
+	            	<php>if(!empty($user_info['province'])){</php>{$user_info.province} - {$user_info.city} - {$user_info.district}<php>}else{</php>地球 - 中国某个旮旯角<php>}</php>
+	            	<php>}</php>
+            	</span>
+            </div>
+            <div class="uc_m_b_12 text-more" style="width: 100%">{:L('_SIGNATURE_')}{:L('_COLON_')}
+	            <span>
+	                <if condition="$user_info['signature'] eq ''">
+	                    {:L('_NO_IDEA_')}
+	                    <else/>
+	                    <attr title="{$user_info.signature}">{$user_info.signature}</attr>
+	                </if>
+	            </span>
+            </div>
+            <div class="uc_m_b_12"><span>{:L('_GRADE_')}{:L('_COLON_')}{$user_info.title}</span> <if condition="is_login() && $user_info['uid'] == get_uid()"><a href="{:U('ucenter/config/index')}" target="_blank" class="btn btn-default btn-green-border btn-edit no-select"><i class="icon-svg icon-pen-green"></i>编辑个人资料</a></if></div>
+            <div class="uc_m_b_12">
+            <if condition="is_login() && $user_info['uid'] != get_uid()">
+	            <div class="uc_follow" style="margin-top:10px;">
+	                <button type="button" class="btn btn-default btn-green-border" style="width:65px;margin-right:15px" onclick="talker.start_talk({$user_info['uid']})"
+	                       style="margin-right:15px; ">{:L('_CHAT_')}
+	                </button>
+	                {:W('Common/Follow/follow',array('follow_who'=>$user_info['uid']))}
+	            </div>
+	    	<else/>
+	    		<span style="color:#999">加入于 {$user_info.reg_time|date="Y/m/d",###}</span>
+	    	</if>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4" style="padding-top:45px;float:left;height:100%;">
+    	<div style="width:100%;margin-left:130px;height:70%">
+              <div class="col-xs-3 text-center" style="font-size:16px;">
+                  <a href="{:U('Ucenter/Index/fans',array('uid'=>$user_info['uid']))}" title="{:L('_FANS_NUMBER_')}" style="font-size:36px;color:#4eaa4c;font-weight:600">{$user_info.fans}</a><br>{:L('_FANS_')}
+              </div>
+              <div class="col-xs-3 text-center" style="font-size:16px;">
+                  <a href="{:U('Ucenter/Index/following',array('uid'=>$user_info['uid']))}" title="{:L('_FOLLOWERS_NUMBER_')}" style="font-size:36px;color:#4eaa4c;font-weight:600">{$user_info.following}</a><br>{:L('_FOLLOWERS_')}
+              </div>
+              <div class="col-xs-3 text-center" style="font-size:16px;">
+                  <a href="{:U('Ucenter/Index/following',array('uid'=>$user_info['uid']))}" title="{:L('_FOLLOWERS_NUMBER_')}" style="font-size:36px;color:#4eaa4c;font-weight:600">{$user_info.score}</a><br>{:L('_POINT_')}
+              </div>
+          </div>
+          <if condition="is_login() && $user_info['uid'] != get_uid()">
+	          <div class="text-center" style="margin-left:30px;">
+	          		<p><span style="color:#999">加入于 {$user_info.reg_time|date="Y/m/d",###}</span><span style="color:#999;padding-left:5px;">最后登录： {$user_info.last_login_time|date="Y/m/d H:i",###}</span></p>
+	          </div>
+          </if>
+    </div>
+</div>

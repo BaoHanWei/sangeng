@@ -1,0 +1,50 @@
+<div class="content-top">
+    <div class="top clearfix">
+        <h1>{$book_section.title}</h1>
+    </div>
+    <div class="line"></div>
+</div>
+<div id="content-content"  class="content-content">
+    <div class="content" style="margin-top: 15px;">
+        <form action="{:U('Book/Index/editSection')}" method="post" class="form-horizontal" id="edit-section-form" style="width: 800px;">
+            <input type="hidden" name="section_id" value="{$book_section.id}"/>
+            <div class="form-group">
+                <php>$config="toolbars:[['source','|','bold','italic','underline','fontsize','forecolor','fontfamily','backcolor','|','link','emotion','scrawl','attachment','insertvideo','insertimage','insertcode']]";</php>
+
+                {:W('Common/Ueditor/editor',array('myeditor','content',$book_section['content'],'800px','650px',$config))}
+            </div>
+
+            <p>&nbsp;</p>
+
+            <p class="pull-right">
+                <button type="button" class="btn btn-large btn-primary" id="submit-button">{:L("_EDIT_ARTICLE_")}</button>
+            </p>
+        </form>
+    </div>
+    <style>
+        .form-horizontal .form-group{
+            margin-left: 0px;
+        }
+        .form-group{
+            margin-bottom: 1px;
+        }
+    </style>
+    <script>
+        $(function(){
+           $('#submit-button').click(function(){
+               var action=$('#edit-section-form').attr('action');
+               var param=$('#edit-section-form').serialize();
+               $.post(action,param,function(msg){
+                    if(msg.status){
+                        toast.success("{:L('_EDITOR_SUCCESS_WITH_EXCLAMATION_WITH_SINGLE_')}");
+                        setTimeout(function(){
+                            location.href=msg.url;
+                        },1500);
+                    }else{
+                        handleAjax(msg);
+                    }
+               });
+           });
+        });
+    </script>
+</div>

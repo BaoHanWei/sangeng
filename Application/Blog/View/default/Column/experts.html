@@ -1,0 +1,115 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/_nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/blog.css"/>
+    <div class="container" style="min-height: 700px;width:1160px;">
+        <div class="row">
+            <div class="col-xs-9" style="width:840px;">
+                <div class="common_block_border">
+                    {:W('Common/Adv/render',array(array('name'=>'index_top','type'=>2,'width'=>'800px','height'=>'240px','title'=>'博客首页顶部广告','data'=>array('style'=>1))))}
+                    <notempty name="now_category">
+                        <div class="common_block_title">{$now_category.title}
+                            <div class="pull-right children_news">
+                                <volist name="now_category['_']" id="cat">
+                                    &nbsp;&nbsp;<a href="{:U('Blog/index/index',array('category'=>$cat['id']))}" style="text-decoration: underline;color: #949494;">{$cat.title}</a>
+                                </volist>
+                            </div>
+                        </div>
+                        <else/>
+                         <div class="common_block_title" style="margin:5px 0 10px 0px">
+                         <!-- {:L('_BLOG_VIEW_')} -->
+                         	<ul class="blog-tabs">
+							    <li  class="">
+                                    <h1><a href="{:U('Blog/index/index',array('ordertype'=>'recommend','category'=>$_GET['category']))}">全部专家</a>
+                                    <span style="font-size: 12px;">（<i class="icon icon-sort-by-attributes-alt"></i> &nbsp;按上周发表原创(翻译)文章数量排序）</span>
+                                    </h1>
+                                </li>
+							</ul>
+                         </div> 
+                    </notempty>
+                    <div>
+                        <section id="contents" class="blog-list experts_list_wrap">
+                            <notempty name="experts">
+                                <volist name="experts" id="vo">
+                                    <include file="Public/_default_experts_list"/>
+                                </volist>
+                                <else/>
+                                <div style="font-size:1em;padding:2em 0;color: #ccc;text-align: center">该类型下没有专家~</div>
+                            </notempty>
+                        </section>
+                        <div class="text-right">
+                            {:getPagination($totalCount,modC('NEWS_PAGE_NUM',20,'Blog'))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3" style="width:300px;">
+                {:W('Common/Adv/render',array(array('name'=>'index_right_top','type'=>1,'width'=>'340px','height'=>'120px','margin'=>'0 0 10px 0','title'=>'博客首页右侧最顶部广告')))}
+                {:W('Common/Adv/render',array(array('name'=>'index_bottom_top','type'=>1,'width'=>'340px','height'=>'120px','margin'=>'10px 0 0 0','title'=>'博客首页右侧最底部广告')))}
+                 <div class="common_block_border event_right">
+	                 <div>
+					    <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">技术领域</h1>
+					    <div class="blog_category">
+				            <ul class="category_list tracking-ad">
+				            	<volist name="tree" id="vo">
+		                        <li <php>if($vo['id']==$category){echo "class='active'";} </php>>
+		                           <a href="{:U('Blog/column/experts', array('category' => $vo['id']))}" class="<?php $array=explode('_',$vo['title']);echo $array[1]; ?>">
+		                           		<php>echo $array[0];</php>
+		                           </a>
+		                        </li>
+		                        </volist>            
+				            </ul>
+				          </div>
+				           <div style="clear:both"></div>
+				         </div>
+				        
+				         <div>
+				          <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">热门专家</h1>
+				          <div>
+					         <volist name="hotexperts" id="user">
+                                <div class="col-xs-3">
+                                    <dl>
+                                        <a href="{$user.space_url}">
+                                            <dt><img style="width: 45px;height: 45px" ucard="{$user.uid}" src="{$user.avatar128}" class="avatar-img img-responsive">
+                                            </dt>
+                                            <dd ucard="{$user.uid}" class="text-more" style="width: 100%">{$user.truename}</dd>
+                                        </a>
+                                    </dl>
+                                </div>
+                            </volist>
+						  	</div>
+						  	<div style="clear:both"></div>
+						  </div>
+						  <div>
+						   <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">最新加入</h1>
+				          <div>
+					          <volist name="newexperts" id="user">
+                                <div class="col-xs-3">
+                                    <dl>
+                                        <a href="{$user.space_url}">
+                                            <dt><img style="width: 45px;height: 45px" ucard="{$user.uid}" src="{$user.avatar128}" class="avatar-img img-responsive">
+                                            </dt>
+                                            <dd ucard="{$user.uid}" class="text-more" style="width: 100%">{$user.truename}</dd>
+                                        </a>
+                                    </dl>
+                                </div>
+                            </volist>
+						  </div>
+						  <div style="clear:both"></div>
+						 </div>
+				</div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+     var aColumn = $(".column_list_link");
+	 aColumn.hover(function () {
+            $(this).find(".column_list_b").show().end().siblings().find(".column_list_b").hide();
+        }, function () {
+            $(this).find(".column_list_b").hide().end().siblings().find(".column_list_b").show();
+        });
+    </script>
+</block>

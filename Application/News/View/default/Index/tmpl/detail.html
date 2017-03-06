@@ -1,0 +1,104 @@
+<extend name="Base/common"/>
+<block name="header">
+    <link type="text/css" rel="stylesheet" href="__CSS__/news.css"/>
+     <include file="Public/_nav"/>
+</block>
+<block name="body">
+        <div class="row">
+            <div class="col-xs-9" style="width:900px;">
+                <if condition="is_login() eq 2">
+                <div style="clear:right;">
+                </if>
+                <div class="common_block_border">
+                    <div class="common_block_title clearfix" style="">
+                        <h2 style="padding-bottom:0px;">{$info.title}</h2>
+                        <!--<p class="clearfix from">
+                            <if condition="check_auth('News/Index/edit',-1)||(($info['uid'] eq is_login())&&($info['status'] neq 1))">
+                                <a title="{:L('_EDIT_')}" href="{:U('News/index/edit',array('id'=>$info['id']))}" style="float: right"><i class="icon-edit" style="font-size: 16px;"><span style="font-family:Microsoft YaHei">{:L('_EDIT_')}</span></i></a>
+                            </if>
+                            <span class="pull-left" style="font-size:14px;color:#898989">
+                                <span class="author">
+                                    <img class="avatar-img" src="{$author.avatar32}"/>&nbsp;&nbsp;&nbsp;<a href="{$author.space_url}" ucard="{$info.uid}" style="color:#3EB158">{$author.nickname}</a>
+                                </span>
+                                <span> {:L('_RELEASE_AT_')} {$info.create_time|date='Y-m-d H:i',###}</span>
+                                <span>阅读({$info.view})</span>
+				                <span style="">评论({$info.comment})</span>
+                            </span>
+                            <if condition="($info['status'] eq 1)&&($info['dead_line'] gt time())">
+                                <span class="pull-right" style="margin-right: 10px">{:W('Weibo/Share/shareBtn',array('param'=>array('title'=>$info['title'],'content'=>$info['description'],'img'=>getThumbImageById($info['cover'],160,160),'from'=>L('_MODULE_'),'site_link'=>U('news/index/detail',array('id'=>$info['id']))),'text'=>'站内分享'))}</span>
+                            </if>
+                        </p>-->
+                    </div>
+                    <hr/>
+                    <!--<div class="pull-right" style="margin-top:-48px;margin-right: 15px;">{:W('Common/Share/detailShare')}</div>-->
+                    <section id="contents">
+                        <if condition="$info['source'] neq ''"><div style="margin-bottom: 20px;color: #C0C0C0;"><i class="icon-chrome"></i> {:L('_SOURCE_')}：<a target="_blank" href="{$info.source}">{$info.source}</a></div></if>
+                        <div class="news-content">{$info.detail.content|render}</div>
+                    </section>
+                    <div class="news-info">
+				        <div>本站文章除注明转载外，均为本站原创或编译。欢迎任何形式的转载，但请务必注明出处，尊重他人劳动共创和谐社区。</div>
+				        <div><span class="gray">转载请注明：</span>文章转载自 开源中国社区 <a href="/" class="green">[http://www.oschina.net]</a></div>
+				        <div><span class="gray">本文标题：</span>{$info.title}</div>
+				        <div>
+				            <span class="gray">本文地址：</span><a href="{:U('News/index/detail',array('id'=>$info['id']))}" class="green">{:U('News/index/detail',array('id'=>$info['id']))}</a>
+				        </div>
+				    </div>
+                    <div style="padding-top: 0">
+                        {:hook('localComment', array('path'=>"News/index/$info[id]", 'uid'=>$info['uid'],'count_model'=>'news','count_field'=>'comment','this_url'=>'news/index/detail'))}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3" style="width:300px;">
+                <if condition="is_login() eq 2">
+                    <div style="clear:right;">
+                </if>
+                <div class="common_block_border">
+                    <div class="common_block_title">{:L('_AUTHOR_')}</div>
+                    <div class="col-xs-4">
+                        <img class="avatar-img" src="{$author.avatar64}"/>
+                    </div>
+                    <div class="col-xs-8">
+                        <a href="{$author.space_url}">{$author.nickname}</a>
+                        <br/>
+                        <p class="text-more" style="width: 100%">{$author.signature}</p>
+                        <br/>文章：{$author.news_count}
+                    </div>
+                    <div class="clearfix" style="padding: 10px"></div>
+                </div>
+                {:W('Position/lists',array('position'=>4,'category'=>$info['category']))}
+                {:W('Hot/lists',array('category'=>$info['category']))}
+                {:hook('Advs',array('pos'=>'news_right_below_all','type'=>1,'width'=>'360px','height'=>'100px','title'=>'资讯右侧下方广告'))}
+            </div>
+        </div>
+    <script type="text/javascript" charset="utf-8" src="__STATIC__/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-gallery').each(function () { // the containers for all your galleries
+                $(this).magnificPopup({
+                    delegate: '.popup',
+                    type: 'image',
+                    tLoading: 'Loading image #%curr%...',
+                    mainClass: 'mfp-img-mobile',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+                    },
+                    image: {
+                        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                        titleSrc: function (item) {
+                            /*           return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';*/
+                            return '';
+                        }
+                    }
+                });
+            });
+            $('.col-xs-8>.col-xs-4').insertAfter('.col-xs-8');
+            $('.container>.col-xs-4').insertAfter('.container>.row>.col-xs-8');
+        });
+    </script>
+</block>

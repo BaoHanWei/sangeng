@@ -1,0 +1,406 @@
+#main-container,.container {
+  width: 1200px !important;
+  max-width: 1200px !important;
+  min-width: 1200px !important;
+}
+.tree_block {
+  width: 285px;
+  position: relative;
+  background: #fff;
+  clear: both;
+  padding: 0;
+}
+.tree_block .tree_title {
+  padding: 5px 10px;
+  font-size: 18px;
+  border-bottom: dashed #939393 1px;
+}
+.tree_block .tree_title img {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+.tree_block .tree_title a {
+  padding: 5px 0px;
+  font-size: 16px;
+}
+.tree_block .tree_content {
+  overflow-x: scroll;
+  min-height: 400px;
+  padding: 10px;
+}
+#book-content .content-content {
+  margin-top: 1px;
+  /*height: 800px;
+  overflow: scroll;*/
+}
+#book-content .top {
+  /*border-bottom: 1px solid #8DACD0;*/
+}
+#book-content .top h1 {
+  margin-top: 4px;
+  float: left;
+}
+#book-content .top .copy-link {
+  margin-top: 15px;
+  margin-left: 10px;
+  float: left;
+}
+#book-content .top a {
+  color: #538ED3;
+}
+#book-content .line {
+  width: 100%;
+  border-top: 6px solid #CAD7E7;
+}
+#book-content .keywords {
+  margin: 8px 0;
+  padding: 8px 16px;
+  background-color: #F0F7FD;
+  color: #0382AD;
+}
+#book-content .summary blockquote {
+  border-left: 5px solid #D0E3F0;
+  margin: 8px 0;
+  padding: 8px 16px;
+  background-color: #F0F7FD;
+  color: #0382AD;
+}
+ul {
+  list-style-type: none;
+}
+.bookList .one-book dl {
+  text-align: center;
+}
+.bookList .one-book dl dt {
+  position: relative;
+}
+.bookList .one-book dl dt .lock-img {
+  position: absolute;
+  bottom: 4px;
+  right: 15px;
+}
+.bookList .one-book dl dt .book-cover {
+  width: 150px;
+  height: 212px;
+  border: 1px solid #DDDDDD;
+  border-bottom: none;
+  border-right: none;
+  box-shadow: 3px 3px 7px 1px #A1A1A1;
+  background: url("../images/book.png") no-repeat no-repeat;
+}
+.bookList .one-book dl dt .book-cover div {
+  width: 115px;
+  margin-left: 25px;
+  margin-top: 65px;
+  color: #525252;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: right;
+}
+.bookList .one-book dl dd {
+  margin-top: 5px;
+}
+.bookList .one-book dl dd .title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 150px;
+  margin-left: 11px;
+}
+.bookList .type-title {
+  font-size: 16px;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+/* ----------------------------------- new css ----------------------------------- */
+div#wrapper{
+  margin: 25px auto 45px;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    min-height: 600px;
+    text-align: left;
+    background: #ffffff;
+    overflow: hidden;
+}
+#wrapper .bread-nav {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+#wrapper .bread-nav img {
+  vertical-align: middle;
+}
+#wrapper .bread-nav a {
+  text-decoration: none;
+}
+ div#wrapper {
+  background: none;
+}
+div#navsecond, div#sidebar {
+  background: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+div#navsecond h2, div#sidebar h2{
+    font-size: 14px;
+    margin: 10px 0 2px 12px;
+    word-wrap: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+ .sidebar-box {
+  background: #FFF;
+  margin-bottom: 15px;
+}
+.sidebar-box .tcode {
+  margin: 10px 0;
+  text-align: center;
+}
+div#navsecond,div#sidebar {
+  float: left;
+  border: 0;
+  width: 215px;
+  margin-bottom: -9999px;
+    padding-bottom: 9999px;
+}
+.sidebar-box{
+     background: #FFF;
+    margin-bottom: 15px;
+}
+div#course{
+  background-color: #B6B6B6;
+    padding: 7px 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+div#navsecond div#course h2, div#sidebar div#course h2 {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    font-family: 微软雅黑;
+    text-align: center;
+    letter-spacing: 3px;
+    margin: 0px;
+}
+div#navsecond a:link, div#navsecond a:visited, div#sidebar a:link, div#sidebar a:visited{
+  text-decoration: none;
+    color: #000;
+    background: transparent;
+}
+ div#navsecond ul, #projectList div#sidebar ul, #projectList h2#allProject, #sidebar .sidebar-box ul{
+  margin: 0;padding: 0;
+}
+ div#navsecond li, #projectList div#sidebar li, #allProject, #sidebar .sidebar-box li{
+  height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #DDD;
+    padding: 0 12px;
+}
+/* ----------------------------------- projectList ------------------------------------ */
+#project-content,#projectList #maincontent {
+  float: left;
+  width: 985px;
+  background: #FFF;
+}
+#projectList #maincontent h1 {
+  margin: 0;
+}
+#projectList #maincontent div {
+  width: 884px;
+  margin: 0 20px;
+}
+div#maincontent div:first-of-type {
+  border-top: none;
+}
+.pro-list{
+  margin: 10px 0;
+}
+.item-title {
+  padding: 0 20px;
+}
+.item-title h2 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+}
+.pro-list-content {
+  margin-top: 20px;
+    overflow: hidden;
+}
+.pro-item {
+    width: 30%;
+    background-color: #f3f3f3;
+  min-height:98px;
+  float: left;
+    border-radius: 3px;
+    padding: 15px 10px;
+    margin: 0px 0px 20px 20px;
+    overflow: hidden;
+}
+div#project-content a, #tools-content a{
+  text-decoration: none;
+    color: #333;
+}
+.search-body .pro-item {
+  width: 18%;
+  height: auto;
+}
+.pro-item-img {
+  float: left;
+}
+.pro-item-img img{
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.pro-item-desc{
+  margin-left: 50px;
+  margin-top: -11px;
+}
+.pro-item-desc h4 {
+    font-size: 14px;
+    word-wrap: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.pro-item-desc p {
+  margin: 0;
+  line-height: 150%;
+  height: 40px;
+}
+#tools-content .pro-item {
+  width: 21%;
+}
+div#project-content a,#tools-content a {
+  text-decoration: none;
+  color: #333;
+}
+div#project-content a:hover,#tools-content a:hover {
+  color: #3EB158;
+}
+.e-user{
+
+}
+.e-user .user-avatar{
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #eee;
+    vertical-align: middle;
+    margin-right: 5px;
+    border:0px;
+}
+/******************************read*************************************/
+.content-links{
+    max-width: 1024px;
+    margin-top: 8px;
+    font-size: 15px;
+    color: #333;
+    overflow: hidden;
+}
+.previous-link, .next-link{
+  color: #666;
+}
+.previous-link a, .next-link a{
+  font-size: 15px;
+}
+.previous-link{
+  float: left;
+}
+.next-link{
+  float: right;
+}
+.content-top h1{
+    display: inline-block;
+    font-size: 20px;
+    color: #000;
+    font-family: "微软雅黑";
+    margin: 20px 0 0 0;
+}
+.correction{
+    display: inline-block;
+    color: #666;
+    border: 1px solid #c5c5c5;
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-size: 13px;
+    text-decoration: none;
+    float: right;
+    margin: 20px 0 0 15px;
+}
+.content-group a, #content-head-viewcount{
+    float: left;
+    display: inline-block;
+    font-size: 13px;
+    color: #666;
+    margin: 10px 20px 0 0;
+    padding: 0;
+    line-height: 28px;
+}
+.content-group a{
+  text-decoration: none;
+}
+.left-drager{
+    border-left: 1px solid #ddd;
+}
+.sidebar-space-info{
+      margin-top: 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+.sidebar-space-info > div{
+  box-sizing: content-box;
+}
+.sidebar-pro-wrapper{
+  display: table-cell;
+  padding: 0px 9px 0px 14px;
+  width: 50px;
+  min-width: 50px;
+}
+.sidebar-pro-container{
+    display: table;
+    table-layout: fixed;
+    height: 50px;
+    width: 50px;
+}
+.sidebar-pro-img{
+  border-radius: 50%;
+  overflow: hidden;
+  display: table-cell;
+  vertical-align: middle;
+  border: 1px solid #CCC;
+}
+.sidebar-pro-img img{
+    max-width: 48px;
+    max-height: 48px;
+    border: 0px none;
+    margin: auto;
+    display: block;
+}
+.pro-name-container{
+    display: table-cell;
+    vertical-align: middle;
+}
+.sidebar-pro-name {
+    padding-right: 10px;
+    vertical-align: middle;
+    -moz-hyphens: auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 100px;
+    max-width: calc(100% - 30px);
+}
+.sidebar-tree{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+.tree_content{
+  padding-left: 10px;
+}

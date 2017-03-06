@@ -1,0 +1,31 @@
+<div class="footer-bar" id="footer" style="padding: 30px 0 15px 0;background-color: #2a2c31;text-align: center;color: #999;">
+    <div class="row text-center" style="background-color:#2a2c31">
+            <p>
+				<a href="" style="color:#fff">关于我们</a> |
+				<a href="" style="color:#fff">联系我们</a> |
+				<a href="" style="color:#fff">免责声明</a> |
+				<a href="" style="color:#fff">加入我们</a>
+			</p>
+            <div class="col-xs-12" style="color:#fff">Copyright ©2016-2018 PHP之道 {:modC('ICP',L('_NOT_SET_NOW_'),'Config')} </div>
+            {$count_code}
+    </div>
+</div>
+<include file="Public/js"/>
+<block name="script"><!-- 用于加载js代码 --></block>
+<!-- 页面footer钩子，一般用于加载插件JS文件和JS代码 -->
+{:hook('pageFooter', 'widget')}
+<div class="hidden"><!-- 用于加载统计代码等隐藏元素 -->
+    <block name="hidden"></block>
+</div>
+<script type="text/javascript">
+/*window.onload = function(){
+var containerHeight = document.getElementById("container").scrollHeight;//实际高度，实际有多高就多高，与当前网页高度无关
+var footer = document.getElementById("footer")
+var allHeight = document.documentElement.clientHeight;//层在当浏览器屏幕的高度，非该层的实际高度。
+if(containerHeight < allHeight){
+	if($("#footer").hasClass("navbar-fixed-bottom")==false){
+		$("#footer").addClass("navbar-fixed-bottom");
+	}
+}
+}*/
+</script>

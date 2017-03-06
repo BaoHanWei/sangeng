@@ -1,0 +1,163 @@
+@charset "utf-8";
+/**************base**************/
+body { padding: 0; margin: 0; text-align: center; color: #666; font: normal 12px/1.8 \5b8b\4f53, Simsun, Arial, serif; }
+h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ul, li, input { padding: 0; margin: 0; }
+ul, li { list-style: none; }
+i, em { font-style: normal; }
+img { border: none; -ms-interpolation-mode: bicubic; }
+a { color: #333; text-decoration: none; }
+a:hover { color: #3EB158; text-decoration: none; }
+.clear { clear: both; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: block; zoom: 1; }
+.fl, .left { float: left; }
+.fr, .right { float: right; }
+/**************footer***************/
+.footer{ text-align:center; color:#a4a4a4!important;/*height:106px;*/width:980px; margin:10px auto 0; }
+.footer *{ color:#a4a4a4!important;font-size:12px;}
+.footer a{ color:#a4a4a4!important; font-size:12px;}
+.public_footer{ line-height:22px;}
+.public_footer_content{ width:100%; background-color:transparent; } 
+.public_footer{ width:980px; float:none; margin:0 auto; position:relative; padding:0;overflow:hidden; padding:10px 0; font-family:Arial, Helvetica, sans-serif; }
+.public_footer *{ font:normal 13px "宋体"; color:#555; text-align:center; line-height:20px; padding:0; margin:0; position:static; float:none; border:0; background:none; list-style-type:none; overflow:hidden; margin:0 2px; }
+
+.iconpolice{clear:both;margin-top:0;text-align:center}
+.iconpolice a{margin:0 10px}
+
+/*头部条*/
+.top{ height:38px; line-height:38px; font-size:12px; position:fixed; left:0; top:0; width:100%; min-width:980px; background-color:#2d2d2d;color:#CCC; z-index:1000; _position:absolute;_left:0;_top:expression(eval(document.documentElement.scrollTop)); overflow:hidden;}
+* html,* html body{background-image:url(about:blank);background-attachment:fixed}
+.top .top_r { float:right; color:#999999; line-height:38px;}
+.top .top_r a{ color:#fff; margin:0 5px;}
+.top .top_r a:hover{ color:#f25b11;}
+
+.top_l a{ margin:0 4px;}
+.top .top_l a,.top .top_l span{ margin-right:8px; display:inline-block; line-height:18px; color:#fff; vertical-align:middle; _vertical-align:bottom; vertical-align:inherit\0;  _padding-top:10px; padding-top:10px\0;}
+@-moz-document url-prefix() { .top .top_l a,.top .top_l span { vertical-align:inherit;padding-top:10px;  } }
+@media screen and (-webkit-min-device-pixel-ratio:0) { .top .top_l a,.top .top_l span { vertical-align:inherit;padding-top:10px;  } }
+.top .top_l a.co{ background:url(http://p3.image.hiapk.com/uploads/images/index/top_v2.gif) no-repeat left -35px; padding:0 5px 0 20px;}
+.top .top_l span.phone{ background:url(http://p3.image.hiapk.com/uploads/images/index/top_v2.gif) no-repeat left -54px; padding:0 5px 0 16px;}
+.top_2{ height:38px;  line-height:38px; position:fixed; background-color:#f8f8f8; width:100%; top:38px; color:#dadada; left:0; font-size:12px; font-family:\5b8b\4f53,Simsun,Arial,serif;z-index:1000; _position:absolute;_left:0;_top:expression(eval(document.documentElement.scrollTop+38)); overflow:hidden;}
+.top_2 a{ margin:0 12px; color:#5c5c5c; font:normal 12px/38px \5b8b\4f53,Simsun,Arial,serif;}
+.top_2 a.first{ margin-left:0;}
+
+.top_newszt{ height:38px;  line-height:38px; position:fixed; background-color:#f8f8f8; width:100%; top:38px; color:#dadada; left:0; font-size:12px; font-family:\5b8b\4f53,Simsun,Arial,serif;z-index:1000; _position:absolute;_left:0;_top:expression(eval(document.documentElement.scrollTop+38)); overflow:hidden;border-bottom:1px solid #DADADA;}
+.top_newszt a{ margin:0 12px; color:#5c5c5c; font:normal 12px/38px \5b8b\4f53,Simsun,Arial,serif;}
+.top_newszt a.first{ margin-left:0;}
+
+.pt86{ padding-top:76px;}
+.pt86,.pt38{ padding-top:38px;}
+.clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both; }
+.clearfix{ zoom:1;}
+
+
+/***************nav***************/
+.csnav,.nav_top,.navnew{ width:980px;height:38px; margin-bottom:0px; color:#000; text-decoration:none; border-bottom:#ff9900 6px solid;}
+.nav_top li,.navnew li{ float:left;}
+.csnav a,.nav_top li a,.navnew a{width:107px; height:37px; display:block; float:left; line-height:37px; overflow:hidden; font-size:16px; color:#666; text-align:center; border-top:#e4e4e4 1px solid; border-left:#e4e4e4 1px solid; _display:inline; -webkit-transition:all 0.1s linear; -moz-transition:all 0.1s linear;font-family:'Microsoft YaHei', '宋体', Arial, Helvetica, sans-serif; background-color:#FFF;}
+.csnav a.last,.nav_top li.last a,.navnew li.last a{ border-right:#e4e4e4 1px solid;}
+.csnav a:hover,.nav_top li a:hover,.navnew li a:hover{color:#fff; text-decoration:none; background-color:#ff9900;border-color:#ff9900;}
+.csnav a.cur,.nav_top li.on a,.navnew li.on a{color:#fff; text-decoration:none; background-color:#ff9900; width:114px; border-color:#ff9900;}
+/******news*****/
+.news_nav{ border-bottom-color:#2eac65}
+.news_nav a.cur{ background-color:#2eac65;border-color:#2eac65;}
+.news_nav a:hover{ background-color:#2eac65;border-color:#2eac65;}
+.news_nav li.on a{ background-color:#2eac65;border-color:#2eac65;}
+.news_nav li a:hover{ background-color:#2eac65;border-color:#2eac65;}
+/******app*****/
+.app_nav{ border-bottom-color:#0e91d5}
+.app_nav li.on a{ background-color:#0e91d5;border-color:#0e91d5;}
+.app_nav li a:hover{ background-color:#0e91d5;border-color:#0e91d5;}
+/******joy*****/
+.joy_nav{ border-bottom-color:#ef4e45}
+.joy_nav a.cur{ background-color:#ef4e45;border-color:#ef4e45;}
+.joy_nav a:hover{ background-color:#ef4e45;border-color:#ef4e45;}
+/******wake*****/
+.wake_nav{ border-bottom-color:#4fb91b}
+.wake_nav li.on a{ background-color:#4fb91b;border-color:#4fb91b;}
+.wake_nav li a:hover{ background-color:#4fb91b;border-color:#4fb91b;}
+/******guide*****/
+.guide_nav{ border-bottom-color:#3687bc}
+.guide_nav li.on a{ background-color:#3687bc;border-color:#3687bc;}
+.guide_nav li a:hover{ background-color:#3687bc;border-color:#3687bc;}
+/******mobile*****/
+.mobile_nav{ border-bottom-color:#006599}
+.mobile_nav li a{ width:96px;}
+.mobile_nav li.on a{ background-color:#006599;border-color:#006599; width:105px;}
+.mobile_nav li a:hover{ background-color:#006599;border-color:#006599;}
+/******pic*****/
+.pic_nav{ border-bottom-color:#333333}
+.pic_nav li.on a{ background-color:#333333;border-color:#333333;}
+.pic_nav li a:hover{ background-color:#333333;border-color:#333333;}
+/******theme*****/
+.theme_nav{ border-bottom-color:#81b201}
+.theme_nav a.cur{ background-color:#81b201;border-color:#81b201;}
+.theme_nav a:hover{ background-color:#81b201;border-color:#81b201;}
+/******game_v4*****/
+.game_nav { background:#37ad00; }
+.game_nav a {position:relative; float: left; width: 98px; height: 40px; background-color: #37ad00; text-align: center; font: 16px/40px 'Microsoft YaHei'; color: #fff; -webkit-transition: all 0.1s linear; transition: all 0.1s linear; }
+.game_nav a:hover, .game_nav a.cur { background-color: #214e0b; text-decoration: none; color: #fff; }
+.game_nav a .hot{ position:absolute; top:5px;right:-5px; z-index:9; display:block;width:19px;height:13px; background:url(http://p3.image.hiapk.com/uploads/images/game/v4/icon_hot.png) no-repeat 0 0;}
+/*pj*/
+.pj_nav{width:100%;border-bottom-color: #4fb91b;}
+.pj_nav li.on a{ background-color:#4fb91b;border-color:#4fb91b;}
+.pj_nav li a {  width: 145px;}
+.pj_nav li a:hover{ background-color:#4fb91b;border-color:#4fb91b;}
+/*wearable*/
+.wearable_nav { background: #009dd9; }
+.wearable_nav a { float: left; _display: inline; height: 50px; overflow: hidden; padding: 0 32px; background-color: #009dd9; text-align: center; font: 18px/50px 'Microsoft YaHei'; color: #fff; -webkit-transition: all 0.1s linear; transition: all 0.1s linear; }
+.wearable_nav a:hover, .wearable_nav a.cur { background-color: #0493ca; text-decoration: none; color: #fff; }
+/*头部条_v3*/
+.top_v3 { position: fixed; left: 0; top: 0; z-index: 999000; _position: absolute; _left: 0; _top:expression(eval(document.documentElement.scrollTop));
+width: 100%; min-width: 1180px; height: 38px; background-color: #2d2d2d; font: 12px/38px \5b8b\4f53, Simsun, Arial, serif; color: #eee; }
+html, body { _background: url(about:blank) fixed; }
+.top_v3 .top_l { float: left; margin: 0 4px 0 0; }
+.top_v3 .top_c { float: left; margin: 0 80px 0 0; }
+.top_v3 .site_map { float: left; }
+.top_v3 .top_r { float: right; }
+.top_v3 .top_l a, .top_v3 .top_c a, .top_v3 .top_r a { float: left; margin: 0 20px 0 0; color: #eee; }
+.top_v3 .top_l a:hover, .top_v3 .top_c a:hover, .top_v3 .top_r a:hover { color: #f25b11; }
+.top_v3 .top_home, .top_v3 .top_phone, .top_v3 .site_map_btn,.top_v3 .business_btn { background: url(http://p3.image.hiapk.com/uploads/images/index/top_v3.jpg) no-repeat 0 0; }
+.top_v3 .top_home { padding: 0 0 0 22px; }
+.top_v3 .top_phone { padding: 0 0 0 18px; background-position: 0 -38px; }
+.top_v3 .site_map_btn { float: left; padding: 0 18px 0 0; background-position: 50px -78px; color: #eee; }
+.top_v3 .site_map_btn.on { color: #f25b11; }
+.top_v3 .site_map_wrap { display: none; position: absolute; left: 0; top: 38px; z-index: 999100; width: 100%; _width:expression(eval(document.body.clientWidth));
+line-height: 24px; text-align: left; zoom: 1; }
+.top_v3 .opcity_bg { position: absolute; left: 0; top: 0; z-index: 999110; width: 100%; _width:expression(eval(document.body.clientWidth));
+height: 430px; background-color: #333; zoom: 1; }
+.top_v3 .site_map_con { position: relative; z-index: 999120; width: 1180px; height: 430px; margin: 0 auto; overflow: hidden;background-color:#333; }
+.top_v3 .site_map_row { float: left; width: 274px; height: 380px; margin-right: 20px; padding: 20px 0 0 0; border-right: 1px solid #2B2B2B; }
+.top_v3 .last { border: none; }
+.top_v3 .site_map_row h3, .top_v3 .site_map_row p { font: normal 12px/36px ""; }
+.top_v3 .site_map_row h3 { margin: 10px 0 0; }
+.top_v3 .site_map_row h3 a { color: #0a9341; }
+.top_v3 .site_map_row p { }
+.top_v3 .site_map_row p a { float: left; width: 65px; color: #ACACAC; }
+.top_v3 .site_map_row h3 a:hover, .top_v3 .site_map_row p a:hover, .top_v3 .site_map_row p a.red { color: #f30; }
+.top_v3 .login_top_r{float:left;}
+.top_v3 .business_wrap {float:left; position:relative;}
+.top_v3 .business_btn{margin-right:0;padding-right:8px;background-position: 47px -78px;}
+.top_v3 .business_btn.on { color: #f25b11; }
+.top_v3 .business_con { display: none; position: absolute; left: -10px; top: 38px; z-index: 999100; width: 146px; padding:10px; background:#333;line-height: 24px; text-align: left; zoom: 1; }
+.top_2{display:none!important;}
+.pt86{ padding-top:48px;}
+.top_bg{top:38px!important;height:150px!important;}
+/******rightfloatgg*****/
+.rightfloatgg{position:fixed; bottom:0; right:0; z-index:99999; width:310px;height:367px;overflow:hidden; background:#fff;-moz-box-shadow: 0px 0px 10px #000000;-webkit-box-shadow: 0px 0px 10px #000000;box-shadow: 0px 0px 10px #000000;}
+.rightfloatgg .title{height:35px; background:#f2f2f2;}
+.rightfloatgg .title span{float:left!important;margin:0!important;padding:0 0 0 10px;text-indent:0!important;font:bold 16px/35px "Microsoft YaHei"; color: #595b67;}
+.rightfloatgg .title a{width: auto;height: auto;margin:0 10px 0 0;padding: 0;background: none;font:bold 16px/35px Arial, Helvetica, sans-serif; color: #bcbcbc;}
+.rightfloatgg .con {margin:0;padding:10px;border:none;background:none;}
+.rightfloatgg .img_li{margin:0 -10px 0 0;}
+.rightfloatgg .img_li li { float: left; position: relative; width: 140px; margin:0 10px 0 0; overflow: hidden; }
+.rightfloatgg .img_li img { display: block; width:140px;height:105px; margin: 0 auto; }
+.rightfloatgg .img_li strong { position: absolute; left: 0; bottom: 0; display: block;width: 120px; height: 30px; overflow: hidden;margin:0; padding: 0 10px; background:url(http://p3.image.hiapk.com/uploads/images/index/v4/blocks.png) repeat-x 0 bottom; cursor: pointer;text-align: center; font: normal 12px/30px ""; }
+.rightfloatgg .img_li strong,.rightfloatgg .img_li a { color: #fff; }
+.rightfloatgg .img_li a:hover strong { color: #fc0; }
+.rightfloatgg .txt_li {}
+.rightfloatgg .txt_li li { float: left; width: 100%; height: 38px; overflow: hidden; border-bottom:1px solid #f2f2f2; text-align:left; font: 14px/38px "Microsoft YaHei"; }
+.tototop{position:fixed; bottom:105px; left:50%; margin-left:610px; z-index:9990;_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-20));}
+.tototop a{display:block; width:49px; height:49px; border:#e7e7e7 1px solid;background:#fff url(http://p3.image.hiapk.com/uploads/images/detail/spr.gif) -159px -8px;}
+.tototop a span{display:none;width:100%; height:44px;padding-top:5px;background-color:#37ad00;text-align:center;font:14px/18px 'Microsoft YaHei';color:#fff;}
+.tototop a:hover span{display:block;}

@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit(); echo (text($weibo["content"])); ?>——<?php echo ($MODULE_ALIAS); ?>

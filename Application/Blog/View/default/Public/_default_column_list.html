@@ -1,0 +1,15 @@
+ <div class="column_list comumn_new  tracking-ad">
+   <php> if(time()-strtotime($data['modify_time']) <= 86400*30){</php>
+        <span class="time_new"><php>echo date('m-d',strtotime($data['modify_time']));</php> 更新</span>
+    <php>}</php>
+  <div style="background-image:url({$data.logo_url})" class="column_bg"></div>
+  <a href="{:U('Blog/column/show',array('id'=>$data['first_document']))}" class="column_list_link" target="_blank">
+        <div class="column_c">
+          <p class="column_list_p">{$data.project_name}</p>
+          <div class="column_list_b" style="display: none;">
+            <div class="column_list_b_l fl" style="margin-left: 20px;"><i class="icon icon-file-text-o" style="color:#fff"></i><span>19</span></div>
+            <div class="column_list_b_r fr" style="margin-right: 10px;"><i class="icon icon-eye-open" style="color:#fff"></i><span>3479</span></div>
+          </div>
+        </div>
+   </a>
+</div>

@@ -1,0 +1,106 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/_nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/blog.css"/>
+    <div class="container" style="min-height: 700px;width:1160px;">
+        <div class="row">
+            <div class="col-xs-9" style="width:840px;">
+                <div class="common_block_border">
+                    {:W('Common/Adv/render',array(array('name'=>'index_top','type'=>2,'width'=>'800px','height'=>'240px','title'=>'博客首页顶部广告','data'=>array('style'=>1))))}
+                    <notempty name="now_category">
+                        <div class="common_block_title">{$now_category.title}
+                            <div class="pull-right children_news">
+                                <volist name="now_category['_']" id="cat">
+                                    &nbsp;&nbsp;<a href="{:U('Blog/index/index',array('category'=>$cat['id']))}" style="text-decoration: underline;color: #949494;">{$cat.title}</a>
+                                </volist>
+                            </div>
+                        </div>
+                        <else/>
+                         <div class="common_block_title" style="margin:5px 0 10px 0px">
+                         <!-- {:L('_BLOG_VIEW_')} -->
+                         	<ul class="blog-tabs">
+							    <li  class="tab <php>if($ordertype=='recommend'){</php>active <php>}</php>"><h1><a href="{:U('Blog/index/index',array('ordertype'=>'recommend','category'=>$_GET['category']))}">最新推荐</a></h1></li>
+							    <li  class="tab <php>if($ordertype=='todayhot'){</php>active <php>}</php>"><h1><a href="{:U('Blog/index/index',array('ordertype'=>'todayhot','category'=>$_GET['category']))}">今日热门</a></h1></li>
+							    <li  class="tab <php>if($ordertype=='weekhot'){</php>active <php>}</php>"><h1><a href="{:U('Blog/index/index',array('ordertype'=>'weekhot','category'=>$_GET['category']))}">本周热门</a></h1></li>
+							    <li  class="tab <php>if($ordertype=='newblog'){</php>active<php>}</php>"><h1><a href="{:U('Blog/index/index',array('ordertype'=>'newblog','category'=>$_GET['category']))}">最新博客</a></h1></li>
+							</ul>
+                         </div> 
+                    </notempty>
+                    <div>
+                        <section id="contents" class="blog-list">
+                            <notempty name="list">
+                                <volist name="list" id="data">
+                                    <include file="Public/_default_list"/>
+                                </volist>
+                                <else/>
+                                <div style="font-size:1em;padding:2em 0;color: #ccc;text-align: center">该类型下没有文章~</div>
+                            </notempty>
+                        </section>
+                        <div class="text-right">
+                            {:getPagination($totalCount,modC('NEWS_PAGE_NUM',20,'Blog'))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3" style="width:300px;">
+                {:W('Common/Adv/render',array(array('name'=>'index_right_top','type'=>1,'width'=>'340px','height'=>'120px','margin'=>'0 0 10px 0','title'=>'博客首页右侧最顶部广告')))}
+                {:W('Common/Adv/render',array(array('name'=>'index_bottom_top','type'=>1,'width'=>'340px','height'=>'120px','margin'=>'10px 0 0 0','title'=>'博客首页右侧最底部广告')))}
+                 <div class="common_block_border event_right">
+	                 <div>
+					    <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">博客分类</h1>
+					    <div class="blog_category">
+				            <ul class="category_list tracking-ad" data-mod="popu_257">
+				            	<volist name="tree" id="vo">
+		                        <li <php>if($vo['id']==$cid){echo "class='active'";} </php> >
+		                           <a href="{:U('Blog/index/index', array('category' => $vo['id']))}" class="<?php $array=explode('_',$vo['title']);echo $array[1]; ?>">
+		                           		<php>echo $array[0];</php>
+		                           </a>
+		                        </li>
+		                        </volist>            
+				            </ul>
+				          </div>
+				           <div style="clear:both"></div>
+				         </div>
+				        
+				         <div>
+				          <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">本周最受欢迎 TOP</h1>
+				          <div>
+					          <ul class="TOP_OSCER">
+						        <li><a href="https://my.oschina.net/xxiaobian" target="_blank"><img src="https://static.oschina.net/uploads/user/714/1428332_100.jpg?t=1400110163000" alt="小小编辑" title="小小编辑" class="LargePortrait" align="absmiddle"><span class="name">小小编辑</span></a></li>
+						        <li><a href="https://my.oschina.net/u/1584569" target="_blank"><img src="https://static.oschina.net/uploads/user/792/1584569_100.jpg?t=1414902936000" alt="liuzhengyang" title="liuzhengyang" class="LargePortrait" align="absmiddle"><span class="name">liuzhengyang</span></a></li>
+						        <li><a href="https://my.oschina.net/wangzhenchao" target="_blank"><img src="https://static.oschina.net/uploads/user/1423/2846411_100.jpg?t=1468051245000" alt="zhenchao" title="zhenchao" class="LargePortrait" align="absmiddle"><span class="name">zhenchao</span></a></li>
+						        <li><a href="https://my.oschina.net/JasonZhang" target="_blank"><img src="https://static.oschina.net/uploads/user/83/166585_100.jpg?t=1455612636000" alt="Jason-ZH" title="Jason-ZH" class="LargePortrait" align="absmiddle"><span class="name">Jason-ZH</span></a></li>
+						        <li><a href="https://my.oschina.net/qiangdada" target="_blank"><img src="https://static.oschina.net/uploads/user/1456/2912341_100.png?t=1473453284000" alt="qiangdada" title="qiangdada" class="LargePortrait" align="absmiddle"><span class="name">qiangdada</span></a></li>
+						        <li><a href="https://my.oschina.net/tudouatudou" target="_blank"><img src="https://static.oschina.net/uploads/user/1448/2896879_100.jpg?t=1472811008000" alt="王练" title="王练" class="LargePortrait" align="absmiddle"><span class="name">王练</span></a></li>
+						        <li><a href="https://my.oschina.net/sexgirl" target="_blank"><img src="https://static.oschina.net/uploads/user/58/116366_100.jpg?t=1348021411000" alt="涩女郎" title="涩女郎" class="LargePortrait" align="absmiddle"><span class="name">涩女郎</span></a></li>
+						        <li><a href="https://my.oschina.net/moziqi" target="_blank"><img src="https://static.oschina.net/uploads/user/688/1376052_100.jpg?t=1419055382000" alt="executor" title="executor" class="LargePortrait" align="absmiddle"><span class="name">executor</span></a></li>
+						        <li><a href="https://my.oschina.net/huangxiujie" target="_blank"><img src="https://static.oschina.net/uploads/user/506/1012086_100.jpg?t=1476021971000" alt="秀杰" title="秀杰" class="LargePortrait" align="absmiddle"><span class="name">秀杰</span></a></li>
+						      </ul>
+						  	</div>
+						  	<div style="clear:both"></div>
+						  </div>
+						  <div>
+						   <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">本周最勤奋 TOP</h1>
+				          <div>
+					          <ul class="TOP_OSCER">
+						        <li><a href="https://my.oschina.net/xxiaobian" target="_blank"><img src="https://static.oschina.net/uploads/user/714/1428332_100.jpg?t=1400110163000" alt="小小编辑" title="小小编辑" class="LargePortrait" align="absmiddle"><span class="name">小小编辑</span></a></li>
+						        <li><a href="https://my.oschina.net/u/1584569" target="_blank"><img src="https://static.oschina.net/uploads/user/792/1584569_100.jpg?t=1414902936000" alt="liuzhengyang" title="liuzhengyang" class="LargePortrait" align="absmiddle"><span class="name">liuzhengyang</span></a></li>
+						        <li><a href="https://my.oschina.net/wangzhenchao" target="_blank"><img src="https://static.oschina.net/uploads/user/1423/2846411_100.jpg?t=1468051245000" alt="zhenchao" title="zhenchao" class="LargePortrait" align="absmiddle"><span class="name">zhenchao</span></a></li>
+						        <li><a href="https://my.oschina.net/JasonZhang" target="_blank"><img src="https://static.oschina.net/uploads/user/83/166585_100.jpg?t=1455612636000" alt="Jason-ZH" title="Jason-ZH" class="LargePortrait" align="absmiddle"><span class="name">Jason-ZH</span></a></li>
+						        <li><a href="https://my.oschina.net/qiangdada" target="_blank"><img src="https://static.oschina.net/uploads/user/1456/2912341_100.png?t=1473453284000" alt="qiangdada" title="qiangdada" class="LargePortrait" align="absmiddle"><span class="name">qiangdada</span></a></li>
+						        <li><a href="https://my.oschina.net/tudouatudou" target="_blank"><img src="https://static.oschina.net/uploads/user/1448/2896879_100.jpg?t=1472811008000" alt="王练" title="王练" class="LargePortrait" align="absmiddle"><span class="name">王练</span></a></li>
+						        <li><a href="https://my.oschina.net/sexgirl" target="_blank"><img src="https://static.oschina.net/uploads/user/58/116366_100.jpg?t=1348021411000" alt="涩女郎" title="涩女郎" class="LargePortrait" align="absmiddle"><span class="name">涩女郎</span></a></li>
+						        <li><a href="https://my.oschina.net/moziqi" target="_blank"><img src="https://static.oschina.net/uploads/user/688/1376052_100.jpg?t=1419055382000" alt="executor" title="executor" class="LargePortrait" align="absmiddle"><span class="name">executor</span></a></li>
+						        <li><a href="https://my.oschina.net/huangxiujie" target="_blank"><img src="https://static.oschina.net/uploads/user/506/1012086_100.jpg?t=1476021971000" alt="秀杰" title="秀杰" class="LargePortrait" align="absmiddle"><span class="name">秀杰</span></a></li>
+						    </ul>
+						  </div>
+						  <div style="clear:both"></div>
+						 </div>
+				</div>
+            </div>
+        </div>
+
+    </div>
+</block>

@@ -1,0 +1,3 @@
+<?php
+//000000000000a:1:{i:0;a:18:{s:2:"id";s:1:"1";s:3:"uid";s:3:"101";s:7:"rank_id";s:1:"1";s:8:"truename";s:9:"包汉伟";s:2:"qq";s:9:"978350126";s:4:"city";s:6:"北京";s:7:"company";s:36:"北京天地在线广告有限公司";s:10:"technology";s:3:"PHP";s:6:"reason";s:107:"1、热爱技术2、乐于助人&nbsp;&nbsp;3、喜欢结交志同道合4、希望提高技术5、木有啦";s:7:"is_show";s:1:"1";s:11:"create_time";s:10:"1486915647";s:6:"status";s:1:"1";s:5:"title";s:12:"博客专家";s:8:"logo_url";s:45:"/Uploads/Picture/2016-12-05/58456f9917653.png";s:13:"label_content";s:12:"博客专家";s:8:"label_bg";s:7:"#F5A623";s:11:"label_color";s:0:"";s:3:"num";i:1;}}
+?>

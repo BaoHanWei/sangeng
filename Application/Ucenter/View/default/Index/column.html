@@ -1,0 +1,54 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link href="__CSS__/center.css" rel="stylesheet" type="text/css"/>
+    <link href="__CSS__/usercenter.css" rel="stylesheet" type="text/css"/>
+</block>
+<block name="header">
+    <br/>
+    <div class="space-banner">
+    	<include file="_top"/>
+    </div>
+</block>
+<block name="body">
+    <div class="col-xs-12 usercenter">
+        <div class="uc">
+        	<div class="col-xs-3">
+	        	<include file="_left_link"/>
+				<include file="_right_link"/>
+        	</div>
+        	 <div class="col-xs-9 main-article">
+        	 		<div class="panels-heading" id="panels-heading-pjax">
+				        <nav class="title sub-nav clearfix">
+				            <a href="javascript:;" class="active" id="dynamic-all">专栏列表</a>
+                    <if condition="$uid eq get_uid()">
+                    <a href="{:U('ucenter/index/columnEdit')}"" class="btn btn-default btn-green-border btn-edit no-select" style="font-size:14px;line-height:22px;float:right;background:#3EB158;color:#fff;text-shadow:0 0 0 #fff;margin-top:5px;margin-right:-2px"><i class="icon-svg icon-pen-green"></i>新增专栏</a>
+                    </if>
+				        </nav>
+				    </div>
+                    <div class="project-list"> 
+                        <volist name="project" id="vo">   
+                            <div class="box">
+                                 <strong><a href="{:U('ucenter/document/index',array('id'=>$vo['id']))}" target="_blank">{$vo.project_name}</a></strong>
+                                 <dl class="clearfix">
+                                 <notempty name="vo.logo_url">
+                                     <dt><a href="/xfsc/lxzs/14491.html" target="_blank"><img src="{$vo.logo_url}" title="{$vo.project_name}" alt="{$vo.project_name}"></a></dt>
+                                 </notempty>
+                                     <dd><p class="intro">{$vo.description}</p>
+                                     <p class="info">
+                                        <span title="" data-toggle="tooltip" data-placement="bottom" data-original-title="创建时间"><i class="icon icon-time"></i> 2017/02/08 16:17</span>
+                                       <span style="display: inline-block;padding-left: 10px;" title="创建者"><i class="icon icon-user"></i>admin</span> 
+                                       <span style="display: inline-block;padding-left: 10px;" title="文档数量"><i class="icon icon-file"></i> 1</span> 
+                                       <span style="display: inline-block;padding-left: 10px;" title="项目角色"><i class="icon icon-group"></i> 拥有者 </span> 
+                                       <span style="display: inline-block;padding-left: 10px;" title="最后编辑"><i class="icon icon-pencil"></i> 最后编辑: admin 于 2017-02-08 16:17</span> 
+                                    </p>
+                                    </dd>
+                                 </dl>
+                             </div>
+                     </volist>
+                  </div>
+             </div>
+             
+        </div>
+    </div>
+</block>
+

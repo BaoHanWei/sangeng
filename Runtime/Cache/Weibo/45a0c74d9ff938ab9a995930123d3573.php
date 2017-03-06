@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit(); echo (text($weibo["title"])); ?>,<?php echo ($website_name); ?>,<?php echo ($MODULE_ALIAS); ?>

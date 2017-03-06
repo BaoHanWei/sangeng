@@ -1,0 +1,111 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/_nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/blog.css"/>
+    <div class="container" style="min-height: 700px;width:1160px;">
+        <div class="row rankList">
+            <div class="ranking ranking_min">
+                <h3 class="rank_t">文章周排行</h3>
+                <ul class="ranking_c">
+                    <volist name="articleRank" id="vo">
+                        <li>   
+                          <em><php>echo $key+1;</php>.</em>
+                            <label>
+                                <a href="" class="article_t" title="{$vo.title}">{$vo.title}</a><span class="article_span"><i class="icon icon-eye-open" style="color:#9AA7AF"></i>&nbsp;&nbsp;<b>{$vo.view}</b></span>
+                            </label>
+                         </li>
+                    </volist>
+                </ul>
+              </div>
+              <div class="ranking ranking_min">
+                <h3 class="rank_t">博客周排行</h3>
+                <ul class="ranking_c">
+                    <volist name="blogWeekRank" id="vo">
+                        <li>   
+                          <em><php>echo $key+1;</php>.</em>
+                            <label class="blog_pad">
+                                <a href="{$vo.space_url}">
+                                    <img src="{$vo.avatar128}" alt="img" class="blog_img">
+                                </a>
+                                <a href="{$vo.space_url}" class="blog_a blog_a_top">{$vo.nickname}</a>
+                                <span class="blog_span"><i class="icon icon-file-text-o" style="color:#9AA7AF;"></i>&nbsp;&nbsp;<b class="blog_b_margin">{$vo.comment_count}</b>&nbsp;&nbsp;<i class="icon icon-eye-open" style="color:#9AA7AF"></i>&nbsp;&nbsp;<b>{$vo.view_count}</b></span>
+                            </label>
+                         </li>
+                    </volist>
+                </ul>
+              </div>
+              <div class="ranking ranking_min">
+                <h3 class="rank_t">评论周排行</h3>
+                <ul class="ranking_c">
+                    <volist name="commentWeekRank" id="vo">
+                        <li>   
+                          <em><php>echo $key+1;</php>.</em>
+                            <label>
+                                <a href="{}" class="article_t" title="{$vo.title}">{$vo.title}</a><span class="article_span"><i class="icon icon-file-text-o" style="color:#9AA7AF;"></i>&nbsp;&nbsp;<b>{$vo.comment}</b></span>
+                            </label>
+                         </li>
+                    </volist>
+                </ul>
+              </div>
+              <div class="ranking ranking_min">
+                <h3 class="rank_t">受欢迎的专栏</h3>
+                <ul class="ranking_c">
+                    <volist name="projectWeekRank" id="vo">
+                        <li>   
+                          <em><php>echo $key+1;</php>.</em>
+                          <label class="blog_pad" style="padding:5px 0px">
+                            <a href="/column/details/androidluo.html"><img src="{$vo.logo_url}" alt="img" class="column_img"></a>
+                            <a href="/column/details/androidluo.html" class="blog_a blog_a_top">{$vo.project_name}</a>
+                            <span class="blog_span"><i class="fa">访问量</i><b>{$vo.view}</b></span>
+                          </label>
+                         </li>
+                    </volist>
+                </ul>
+              </div>
+              <div class="ranking ranking_min">
+                <h3 class="rank_t">受欢迎的博客</h3>
+                <ul class="ranking_c">
+                    <volist name="hotBlog" id="vo">
+                        <li>   
+                          <em><php>echo $key+1;</php>.</em>
+                            <label class="blog_pad">
+                                <a href="{$vo.space_url}">
+                                    <img src="{$vo.avatar128}" alt="img" class="blog_img">
+                                </a>
+                                <a href="{$vo.space_url}" class="blog_a blog_a_top">{$vo.nickname}</a>
+                               <span class="blog_span"><i class="fa">访问量</i><b>{$vo.view_count}</b></span>
+                            </label>
+                         </li>
+                    </volist>
+                </ul>
+              </div>
+              <div class="ranking ranking_min">
+                <h3 class="rank_t">原创博客周排行</h3>
+                <ul class="ranking_c">
+                    <volist name="originalBlogRank" id="vo">
+                        <li>   
+                          <em><php>echo $key+1;</php>.</em>
+                            <label class="blog_pad">
+                                <a href="{$vo.space_url}">
+                                    <img src="{$vo.avatar128}" alt="img" class="blog_img">
+                                </a>
+                                <a href="{$vo.space_url}" class="blog_a blog_a_top">{$vo.nickname}</a>
+                               <span class="blog_span"><i class="fa">原创文章</i><b>{$vo.count}</b></span>
+                            </label>
+                         </li>
+                    </volist>
+                </ul>
+              </div>
+        </div>
+    </div>
+    <script>
+     var aColumn = $(".column_list_link");
+	 aColumn.hover(function () {
+            $(this).find(".column_list_b").show().end().siblings().find(".column_list_b").hide();
+        }, function () {
+            $(this).find(".column_list_b").hide().end().siblings().find(".column_list_b").show();
+        });
+    </script>
+</block>

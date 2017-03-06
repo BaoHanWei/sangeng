@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>deleteRank?id=1

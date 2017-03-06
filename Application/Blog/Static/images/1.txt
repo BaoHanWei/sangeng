@@ -1,0 +1,66 @@
+最近有点纠结,
+
+纠结背景：
+
+我现在利用业余时间正在开发一个技术社区。
+最初的定位是：PHP论坛（暂取名：PHP之道），内容围绕着PHP程序员（从前端到后端、服务器、架构为纵轴）展开的，
+暂定涵盖问答、博客、招聘、教程（例如：微信开发教程）等功能模块，主要目标服务于中低级程序员。
+
+纠结点：
+
+1、貌似没吸引人点，怎么才能突出特色？
+
+2、仅局限于PHP，是不是面有点窄？
+
+3、社区功能模块没特点
+
+
+以上权当抛砖引玉，不知道大家有何建议或者想法？或者有木有推荐的社区或者论坛参照下
+
+
+
+http://www.4908.cn/html/Old/indexp(*).html    完   http://www.4908.cn/html/ShiJieZhiZui/世界之最
+
+http://www.4908.cn/html/War/indexp(*).html    完   
+
+http://www.4908.cn/html/Story/indexp(*).html
+
+http://www.4908.cn/html/History/indexp(*).html
+
+http://www.4908.cn/html/Found/indexp(*).html
+
+http://www.4908.cn/html/Unknown/indexp(*).html  完  http://www.4908.cn/html/Science/     科学奥秘
+
+http://www.4908.cn/html/YuZhou/indexp(*).html
+
+http://www.4908.cn/html/Hearsay/indexp(*).html
+
+http://www.4908.cn/html/Ghosts/indexp(*).html   完
+
+http://www.4908.cn/html/QuWenYiShi/indexp(*).html
+
+
+
+
+
+
+http://www.4908.cn/html/Earth/       神奇地球
+http://www.4908.cn/html/Animals/     奇趣动物
+http://www.4908.cn/html/ShiJieZhiZui/世界之最
+http://www.4908.cn/html/Universe/    宇宙奥秘
+
+
+
+
+
+
+
+http://www.4908.cn/html/Old/
+http://www.4908.cn/html/War/
+http://www.4908.cn/html/Story/
+http://www.4908.cn/html/History/
+http://www.4908.cn/html/Unknown/
+http://www.4908.cn/html/Hearsay/
+http://www.4908.cn/html/QuWenYiShi/
+
+

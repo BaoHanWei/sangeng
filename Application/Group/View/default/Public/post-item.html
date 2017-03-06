@@ -1,0 +1,42 @@
+<div class="clearfix item">
+    <div class="col-xs-2">
+        <div class="text-center alert ">
+            <strong>{$vo.support_count}</strong><br/> {:L('_LIKE_')}
+        </div>
+    </div>
+    <div class="col-xs-10">
+        <div class="item-heading">
+            <!-- <div class="pull-right"><a href="###"><i class="icon-pencil"></i> 编辑</a> &nbsp;<a
+                     href="#"><i
+                     class="icon-remove"></i> 删除</a></div>-->
+            <h4 class="text-more" style="width: 100%">
+                <a target="_blank" href="{:U('index/group?id='.$vo['group_id'])}" class="label label-success">{$vo.group.title}</a>&nbsp;
+                <a target="_blank" href="{:U('group/index/detail',array('id'=>$vo['id']))}">{$vo.title}</a>
+            </h4>
+        </div>
+        <div class="item-content">
+            <neq name="vo.cover" value="">
+                <div class="media pull-right">
+                    <a target="_blank" href="{:U('group/index/detail',array('id'=>$vo['id']))}">
+                        <div class="img-thumbnail-wrap"
+                             style="width:80px;height:80px;line-height:80px">
+                            <img class="" src="{$vo.cover}">
+                        </div>
+                    </a>
+                </div>
+            </neq>
+
+            <div class="text">
+                <a target="_blank" href="{:U('group/index/detail',array('id'=>$vo['id']))}">{$vo.summary}...</a>
+            </div>
+        </div>
+        <div class="item-footer">
+            <!-- <span class="label">tag1</span>-->
+            &nbsp;
+            <a target="_blank" href="{:U('group/index/detail',array('id'=>$vo['id']))}" class="text-muted"><i
+                    class="icon-comments"></i> {$vo.reply_count}</a>&nbsp;
+            <span class="text-muted">{$vo.create_time|friendlyDate}</span>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="common_block_border" style="margin-top: 0">
+    <div class="common_block_title" style="border-bottom:1px solid #ddd">{$title}</div>
+    <ul class="userList clearfix" style="padding-left:25px;">
+        <volist name="user" id="u">
+            <li style="text-align: center;margin-right:20px;margin-bottom:10px;margin-left:0px;">
+                <a href="{$u.user.space_url}"><img ucard="{$u.id}" class="avatar-img " style="width: 45px;height: 45px" src="{$u.user.avatar64}"/></a>
+                <br/><a href="{$u.user.space_url}" title="{$u.user.nickname|op_t}" class="text-more" style="width: 100%">{$u.user.nickname|op_t}</a>
+            </li>
+        </volist>
+    </ul>
+</div>

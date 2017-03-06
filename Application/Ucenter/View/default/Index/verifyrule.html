@@ -1,0 +1,35 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link href="__CSS__/center.css" rel="stylesheet" type="text/css"/>
+    <link href="__CSS__/usercenter.css" rel="stylesheet" type="text/css"/>
+</block>
+<block name="header">
+    <br/>
+    <div class="space-banner">
+    	<include file="_top"/>
+    </div>
+</block>
+<block name="body">
+    <div class="col-xs-12 usercenter">
+        <div class="uc">
+        	<div class="col-xs-3">
+        		<include file="_left_link"/>
+				<include file="_right_link"/>
+        	</div>
+        	 <div class="col-xs-9 main-article">
+                    <div style="margin-top:20px;width:100%">
+	                    <div class="row">
+                        	<div class="way_nav">
+								<h3 style="text-align: center;line-height: 30px">申请{$rankInfo.title}规则</h3>
+                        	</div>
+                    		<div style="margin-left:20px">{$rankInfo.rule_content}</div>
+                    		<div style="text-align: center;margin-top: 40px;">
+                    			<a href="{:U('Ucenter/Index/applyExpert',array('rank_id'=>$rankInfo['id']))}" class="btn btn-default btn-green-border btn-edit no-select"><i class="icon-svg icon-pen-green"></i>提交申请</a>
+                    			<a href="{:U('Ucenter/Index/rankVerify')}" class="btn btn-default btn-green-border btn-edit no-select"><i class="icon-svg icon-pen-green"></i>放弃申请</a>
+                    		</div>
+                    	</div>
+                </div>
+             </div>
+        </div>
+    </div>
+</block>

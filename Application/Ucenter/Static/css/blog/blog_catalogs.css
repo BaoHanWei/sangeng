@@ -1,0 +1,68 @@
+@charset 'UTF-8';
+.space-main-wrapper .BlogCatalogManage form{
+	margin-bottom: 30px;
+}
+.space-main-wrapper .BlogCatalogManage h3{
+    font-size: 15px;
+    margin-bottom: 5px;
+	display: block;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+.space-main-wrapper .BlogCatalogManage label{
+	font-weight:400;
+}
+.space-main-wrapper input{
+	line-height: 1.6;
+    border-radius: 2px;
+}
+input, textarea{
+	padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.space-main-wrapper .rndbutton, .space-main-wrapper a.rndbutton, .space-main-wrapper input[type='submit'], .space-main-wrapper input[type='reset'], .space-main-wrapper input[type='button']
+{
+	font-size: 14px;
+    line-height: 1.6;
+    padding: 3px 8px !important;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    outline: none;
+    background: #4eaa4c;
+}
+.space-main-wrapper input[type='button']{
+	color: #666;
+    background: #e1e1e1;
+}
+.space-main-wrapper .BlogCatalogManage .BlogCatalogs table{
+	width: 90%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+.space-main-wrapper .BlogCatalogManage .BlogCatalogs table th{
+	background: #eee;
+}
+.space-main-wrapper .BlogCatalogManage .BlogCatalogs table th, .space-main-wrapper .BlogCatalogManage .BlogCatalogs table td{
+	border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+.space-main-wrapper .AdminContent th, .space-main-wrapper .AutoCommitJSONForm th, .space-main-wrapper .MainForm th{
+	font-weight: 400;
+    min-width: 110px;
+    padding-right: 10px;
+    text-align: right;
+}
+.space-main-wrapper .AdminContent th, .space-main-wrapper .AdminContent td, .space-main-wrapper .AutoCommitJSONForm th, .space-main-wrapper .AutoCommitJSONForm td, .space-main-wrapper .MainForm th, .space-main-wrapper .MainForm td{
+	padding: 5px 8px;
+}
+.space-main-wrapper .link, .space-main-wrapper .Tabs li .active, .space-main-wrapper .sidebar .Mod .caption ol .active, .space-main-wrapper .Msgs .ostable .msg a, .space-main-wrapper .BlogCommentList .ostable .msg a, .space-main-wrapper .AdminContent a, .space-main-wrapper .AutoCommitJSONForm a, .space-main-wrapper .MainForm a{
+	color: #4eaa4c;
+}

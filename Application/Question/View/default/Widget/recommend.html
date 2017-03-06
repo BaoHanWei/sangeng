@@ -1,0 +1,35 @@
+<div class="common-block blog_position">
+    <header>
+      {:L("_RECOMMENDATION_PROBLEM_WITH_SPACE_")}
+    </header>
+<notempty name="recommend_list">
+    <volist name="recommend_list" id="data">
+        <div class="clearfix" style="position: relative">
+            <div class="col-xs-12">
+                <div>
+                    <h3 class="text-more" style="width: 100%">
+                        <a title="{$data.title|op_t}" href="{:U('Question/index/detail',array('id'=>$data['id']))}">{$data.title}</a>
+                    </h3>
+                </div>
+                <div>
+                        <span class="author">
+                            &nbsp;&nbsp;{$data.create_time|date='Y-m-d H:i:s',###}
+                        </span>
+                </div>
+            </div>
+                <span class="pull-right" style="position: absolute;right: 0;bottom: 0">
+                    &nbsp;&nbsp;
+                    <span title={:L("_ANSWER_WITH_DOUBLE_")}><i class="icon-comments-alt"></i>  {$data.answer_num} </span>
+                    &nbsp;&nbsp;
+                </span>
+        </div>
+        <if condition="$i eq count($recommend_list)">
+            <div style="padding-bottom: 10px;"></div>
+            <else/>
+            <div style="border-top: 1px dashed rgb(204, 204, 204);padding-bottom: 10px;margin: 15px;"></div>
+        </if>
+    </volist>
+    <else/>
+    <div style="font-size:14px;padding:2em 0;color: #ccc;text-align: center">{:L("_NO_PROBLEM_WITH_WAVE_")}</div>
+</notempty>
+</div>

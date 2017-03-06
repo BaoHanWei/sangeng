@@ -1,0 +1,95 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link href="__CSS__/question.css" rel="stylesheet" type="text/css"/>
+</block>
+<block name="header">
+    <include file="Public/nav"/>
+</block>
+<block name="body">
+    <div class="col-xs-12">
+        <div id="frm-post-popup" class="white-popup1 boxShadowBorder col-xs-9" style="border:1px solid #fff">
+            <h2>我要{$edit_title}</h2>
+            <div class="aline" style="margin-bottom: 10px"></div>
+            <div class="row">
+                <div class="col-xs-12" style="margin-top: 30px">
+                    <form class="form-horizontal ajax-form" role="form" action="{:U('Question/Index/edit')}" method="post">
+                        <input type="hidden" name="id" id="id" value="{$data.id}"/>
+                        <div class="form-group has-feedback">
+                            <label for="title" class="col-xs-2 control-label">{:L("_TITLE_")}</label>
+                            <div class="col-xs-8">
+                                <input id="title" name="title" class="form-control form_check" check-type="Text"value="{$data.title}" placeholder="标题：一句话说清问题，用问号结尾"/>                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="category" class="col-xs-2 control-label">{:L("_CLASSIFICATION_")}</label>
+                            <div class="col-xs-5">
+                                <select id="category" name="category" class="form-control">
+                                    <volist name="category" id="top">
+                                        <option value="{$top.id}"
+                                        <eq name="data['category']" value="$top['id']"> selected</eq>
+                                        >
+                                        {$top.title}
+                                        </option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="title" class="col-xs-2 control-label">标签</label>
+                            <div class="col-xs-8">
+                                <input id="title" name="tags" class="form-control form_check" check-type="Text"value="{$data.tags}" placeholder="标签，如：php 多个可使用逗号,分隔"/>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label for="category" class="col-xs-2 control-label"> 悬赏</label>
+                            <div class="col-xs-5">
+                                <php> $field = D('Ucenter/Score')->getTypeList(array('status' => 1));
+                            </php>
+                                <select name="leixing" class="form-control">
+                                    <volist name="field" id="leixing">
+                                        <option value="{$leixing.id}">{$leixing.title} </option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <div class="col-xs-2">
+                                <select name="score_num" class="form-control">
+                                    <option value="0">悬赏0</option>
+                                    <option value="5">悬赏5</option>
+                                    <option value="10">悬赏10</option>
+                                    <option value="15">悬赏15</option>
+                                    <option value="20">悬赏20</option>
+                                    <option value="30">悬赏30</option>
+                                    <option value="50">悬赏50</option>
+                                    <option value="80">悬赏80</option>
+                                    <option value="100">悬赏100</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">{:L("_SUPPLEMENTARY_DESCRIPTION_")}</label>
+                            <div class="col-xs-10">
+                                <php>
+                                    $config="toolbars:[['source','|','bold','italic','underline','fontsize','forecolor','justifyleft','fontfamily','|','map','emotion','insertimage','insertcode']],initialContent:'<div class=\'default_css\'>1. 描述你的问题<br/><br/>2. 贴上相关代码<br/><br/>3. 贴上报错信息<br/><br/>4. 贴上相关截图<br/><br/>5.已经尝试过哪些方法仍然没解决（附上相关链接）</div>',autoClearinitialContent:true";                                </php>
+                                {:W('Common/Ueditor/editor',array('myeditor_edit','description',$data['description'],'660px','250px',$config))}                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-xs-1">
+                                <button type="submit" class="btn btn-primary ">{:L("_SUBMIT_")}</button>
+                            </div>
+                            <div class="col-xs-8">
+                                <button type="button" onclick="history.go(-1);" class="btn btn-default ">
+                                    {:L("_RETURN_")}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3" style="padding-right:0px;">
+            <div class="boxShadowBorder" style="border:1px solid #fff;padding: 10px;font-size: 14px;line-height: 30px;color: #BBB;">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{:L("_PLEASE_IN_THE_SEARCH_BOX_ABOVE_SEARCH_HAVE_A_LOOK_THERE_IS_NO_ASSOCIATED_PROBLEM_BEFORE_ASKING_A_QUESTION_YO_WITH_WAVE_")}</p>               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{:L("_YOU_MIGHT_HAVE_THE_ANSWER_YOU_WANT_")}^_^~~</p>            </div>
+        </div>
+    </div>
+    <link href="__CORE_CSS__/form_check.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__CORE_JS__/form_check.js"></script>
+</block>

@@ -1,0 +1,32 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/question.css"/>
+    <div class="container" style="min-height: 700px">
+        <div class="row">
+            <div class="col-xs-9" style="padding:0px;">
+                <div class="common_block_border clearfix">
+                    <div class="question_list">
+                        <notempty name="list">
+                            <volist name="list" id="data">
+                              <include file="Public/_default_list"/>
+                            </volist>
+                            <else/>
+                            <div style="font-size:3em;padding:2em 0;color: #ccc;text-align: center">{:L("_NO_QUESTION_YO_WITH_WAVE_")}</div>
+                        </notempty>
+                        <div class="text-right">
+                            {:getPagination($totalCount,20)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <a href="{:U('Question/Index/edit')}" class="upload-app"><i></i>我要提问</a>
+                {:W('Question/RightBlock/recommend')}
+            </div>
+        </div>
+    </div>
+    </div>
+</block>

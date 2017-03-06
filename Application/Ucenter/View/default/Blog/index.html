@@ -1,0 +1,66 @@
+<extend name="Public/usercenter"/>
+<block name="style">
+    <link type="text/css" href="__CSS__/blog/blog.css" rel="stylesheet">
+</block>
+<block name="body">
+    <div class="row">
+        <div class="col-xs-12 blog-user">
+            <div class="navbar flex-item">
+			    <div class="flex-item-7 flex-item-md-7">
+			        <div class="nav-tabs">
+			            <a class="nav-tab <php>if($type=='newblog'){echo 'active';}</php>" href="{:U('Ucenter/Blog/index')}">最新</a>
+			            <a class="nav-tab <php>if($type=='hotblog'){echo 'active';}</php>" href="{:U('Ucenter/Blog/index',array('type'=>'hotblog'))}">最热</a>
+			        </div>
+			    </div>
+			    <div class="flex-item-5 flex-item-md-5">
+			        <form id="searchForm" method="get" action="?" onsubmit="return false;">
+			            <div class="search">
+			                <i class="icon icon-search icon-2x icon-search-dark" style="cursor:pointer"></i>
+			                <input type="text" name="search" id="search" placeholder="#> 搜索博客" value="<php> echo $_GET['search'];</php>">
+			                <div class="enter"></div>
+			            </div>
+			        </form>
+			    </div>
+			</div>
+        </div>
+    </div>
+    <div style="min-height: 750px;" class="blog-user">
+        <if condition="!$list"><p class="text-muted" style="text-align: center; font-size:14px;">
+            <br><br>
+            	暂无博客哦
+            <br><br><br>
+        </p></if>
+        <volist name="list" id="vl">
+            <div class="list-item">
+                  <div class="layout">
+                       <div class="layout-column">
+                          <div class="title">
+                              <eq name="vl.blog_type" value="1"><span class="status-tag original" title="原创博客"> 原</span></eq>
+                              <eq name="vl.blog_type" value="2"><span class="status-tag reprint" title="转载博客"> 转</span></eq>
+                              <a href="{:U('Blog/Index/detail',array('id'=>$vl[id]))}" class="blog-title">
+                              	{$vl.title}
+                               	<eq name="vl.is_top" value="1"><span class="status-stick text-orange" title="置顶博客">::置顶</span></eq>
+                               </a>
+                          </div>
+                          <div class="data-info text-gary">
+                               <ul>
+                               	  <li class="read">{:L('_PUBLISH_')}{:L('_COLON_')}{$vl.create_time|friendlyDate}</li>
+                                  <li class="read">阅读:<span id="read">{$vl.view}</span></li>
+                                  <li class="comment">评论: <span id="comment">{$vl.comment}</span></li>
+                                  <li class="like">赞:<span id="like">{$vl.praise}</span></li>
+                                  <li class="favor">收藏: <span id="favor">{$vl.collection}</span></li>
+                                 <if condition="is_login() && $uid == get_uid()">
+                                  <li>(<span class="edit"><a href="{:U('Ucenter/Blog/editBlog',array('id'=>$vl[id]))}">编辑</a></span>&nbsp;|&nbsp;<span class="delete"><a href="javascript:;" bolg-id="{$vl.id}" cid="{$vl.cid}" class="delete_blog">删除</a></span>)</li>
+                                </if>
+                                </ul>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+        </volist>
+        <div class="pull-right">
+            {:getPagination($totalCount,15)}
+        </div>
+    </div>
+    <script type="text/javascript" src="__JS__/blog/blog_edit.min.js"></script>
+</block>

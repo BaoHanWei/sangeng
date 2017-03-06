@@ -1,0 +1,165 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link type="text/css" href="__CSS__/blog/blog-edit.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__MARKDOWN__/css/editormd.min.css" />
+</block>
+<block name="body">
+ <div class="blog-edit edit-fixed-size">
+<form id="blog-form" method="post">
+	<div class="edit-fixed edit-fixed-header">
+		<!-- 编辑页头部 -->
+		<div class="edit-header clearfix">
+			<div class="container">
+				<div class="layout-right edit-catalog">
+					<div class="select-box">
+							分类：
+							<input class="drop-input" id="self_catalog" type="hidden" name="catalog" value="{$data.cid}">
+							<span class="select-show over-hide" id="current_category" data-value="{$data.cid}">{$data.user_category}</span>
+							<i class="icon-tri select-icon"></i>
+							<div class="dropdown">
+							<div class="sort-items">
+								<volist name="category" id="vo">
+					        	<div class="select-opt self-select-opt  <php>if($data['cid']==$vo['id']){echo 'active';}</php>" data-value="{$vo.id}">
+						        	<span class="opt-name over-hide">{$vo.title}</span>
+					        	</div>
+					        	</volist>
+					        </div>
+							<div class="add-sort">
+								<input class="input-add-sort" type="text" placeholder="新的分类/回车确认" maxlength="10">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="edit-left">
+					<input class="title" id="title" type="text" name="title" placeholder="无标题博客" value="{$data.title}" maxlength="100">
+					<div>
+						<textarea class="abstract" id="description" name="abstracts" placeholder="无摘要" value="{$data.description}" maxlength="300"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 编辑器部分 -->
+	<div class="editormd" id="editormd">
+	    <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc">{$data.markdown_template}</textarea>
+	    <!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->
+	    <textarea class="editormd-html-textarea" name="editormd-html-code">{$data.content}</textarea>
+	</div>
+	<!-- 编辑器部分 -->
+	<!-- 编辑器编辑框部分 -->
+	<div class="edit-body">
+		<div class="edit-select">
+			<div class="edit-tags edit-panel">
+				<div class="row-left">
+					<input type="text" name="tags" id="input_tags" class="hide" value="">
+					标签：
+				</div>
+				<div class="row-right">
+					<div class="tags"></div>
+					<div class="add-tags-box">
+						<input type="text" class="input-tags" value="{$data.tags}" placeholder="请输入关键词，用逗号隔开，最多5个哦" maxlength="20" style="display: inline-block;">
+					</div>
+				</div>
+			</div>
+			<div class="edit-panel edit-list">
+				<ul>
+					<li class="edit-row edit-sys-sort">
+						<div class="row-left">
+							<span class="font-red">* </span>系统分类:
+						</div>
+						<div class="row-right">
+							<div class="select-box">
+								   <input class="drop-input select-input" id="sys_sort" type="hidden" name="classification" value="{$data.category}">
+							       <span class="select-show sys_category"><span class="font-gray"><php>$title=explode('_',$data['blog_category']);echo $title[0];</php></span></span>
+							       <i class="icon-tri select-icon"></i>
+							        <div class="dropdown" id="category">
+							        	<volist name="blog_category" id="vo">
+							            	<div class="select-opt sys-select-opt <php>if($data['category']==$vo['id']){echo 'active';}</php>" data-value="{$vo.id}"><php>$title=explode('_',$vo['title']);echo $title[0];</php></div>
+							            </volist>
+      								</div>
+							 </div>
+						</div>
+					</li>
+					<li class="edit-row is-original">
+						<div class="row-left">
+							文章类型:
+						</div>
+						<div class="row-right">
+							<input type="radio" name="type" id="isOriginal" value="1" <php>if($data['blog_type']==1){ echo "checked='true'";}</php> >
+							<span class="radio-label">
+								<label class="radio" for="isOriginal"></label>
+								<label for="isOriginal">原创</label>
+							</span>
+							<input type="radio" name="type" id="notOriginal" value="" <php>if($data['blog_type']==2){ echo "checked='true'";}</php>>
+							<span class="radio-label">
+								<label class="radio" for="notOriginal"></label>
+								<label for="notOriginal">转帖</label>
+								<input type="text" class="ext-url" name="origin_url" placeholder="输入转帖的原文链接" value="{$data.origin_url}" maxlength="100">
+							</span>
+						</div>
+					</li>
+					<li class="edit-row">
+						<div class="row-left">
+							<label for="isPrivate" class="label-desc">是否对所有人可见:</label>
+						</div>
+						<div class="row-right">
+							<input type="checkbox" name="privacy" id="isPrivate" value="{$data.is_private}">
+							<label class="offon <php>if($data['is_private']==1){ echo 'active';}</php>" for="isPrivate" ></label>
+						</div>
+					</li>
+					<li class="edit-row">
+						<div class="row-left">
+							<label for="isComment" class="label-desc">是否允许评论:</label>
+						</div>
+						<div class="row-right">
+							<input type="checkbox" name="deny_comment" id="isComment" value="{$data.is_comment}">
+							<label class="offon <php>if($data['is_comment']==1){ echo 'active';}</php>" for="isComment"></label>
+						</div>
+					</li>
+					<li class="edit-row">
+						<div class="row-left">
+							<label for="isStickTop" class="label-desc">是否置顶:</label>
+						</div>
+						<div class="row-right">
+							<input type="checkbox" name="as_top" id="isStickTop" value="{$data.is_top}">
+							<label class="offon <php>if($data['is_top']==1){ echo 'active';}</php>" for="isStickTop"></label>
+						</div>
+					</li>
+					<li class="edit-row <php>if($data['is_top']==1){ echo 'hide';}</php>">
+						<div class="row-left">
+							<label for="isRecommend" class="label-desc">
+	    						是否自荐:
+	    						<span class="tooltip"><i class="label">i</i><span class="tip-con">自荐成功后，会显示在首页</span></span>
+	    					</label>
+						</div>
+						<div class="row-right">
+							<input type="checkbox" name="isRecommend" id="isRecommend" value="{$data.is_recommend}">
+							<label class="offon <php>if($data['is_recommend']==1){ echo 'active';}</php>" for="isRecommend"></label>
+						</div>
+					</li>
+				</ul>
+			</div>
+	</div>
+	</div>
+	<!-- 编辑器保存按钮部分 -->
+	<div class="edit-ctrl edit-fixed-footer">
+		<div class="container">
+			<input type="hidden" value="{$data.id}" class="blog_id">
+			<input type="hidden" value="{$data.cid}" class="old_cid">
+			<button type="button" class="stash-draft">保存草稿</button>
+			<button type="button" class="btn btn-green btn-save">发 布</button>
+		</div>
+	</div>
+</form>
+</div>
+<script type="text/javascript" src="__JS__/blog/blog_edit.min.js"></script>
+<script src="__MARKDOWN__/editormd.min.js"></script>
+<script>
+var editor = editormd("editormd", {
+    width  : "100%",
+    height : 700,
+    path   : "__MARKDOWN__/lib/",
+    saveHTMLToTextarea : true
+});
+</script>
+</block>

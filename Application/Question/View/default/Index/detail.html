@@ -1,0 +1,270 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/question.css"/>
+    <div class="container" style="min-height: 700px">
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="common_block_border clearfix">
+                    <div class="question_detail">
+                        <div class="question clearfix">
+                            <div class="col-xs-12">
+                                <h2 class="question-title">
+	                                <span class="post-topheader__title--icon-symbol">问</span><!-- <span class="lead-word">问</span> -->
+	                                <span class="words">&nbsp;{$question.title}</span>
+                                </h2>
+                                <div class="q_detail">{$question.description|render}</div>
+                                <div class="q_black_info">
+                                	<span class="q_black_info">分类：</span>
+                                    <a target="_blank" href="{:U('Question/index/questions',array('category'=>$question['category']))}">{$question.category_info.title}</a>
+                                    <if condition="$question['audit_info'] neq ''">
+                                        &nbsp;&nbsp;
+                                        <span class="q_black_info">{:L("_AUDIT_STATUS_WITH_COLON_")}</span>{$question.audit_info}
+                                    </if>
+                                    <span class="q_black_info" style="padding-left:10px;">标签：</span>
+                                    <php>if(!empty($question['tags'])){</php>
+								        <ul class="taglist--inline ib">
+								        	<php>$tags=explode(',',$question['tags']);for($i=0;$i<count($tags);$i++){</php>
+								            <li class="tagPopup"><a class="tag tag-sm" style="color:#3EB158" href="{:U('Question/Index/tag',array('name'=>$tags[$i]))}"><php>echo $tags[$i];</php></a></li>    
+								            <php>}</php>
+								        </ul>
+								    <php>}</php>
+                                    <!--支持数：{$question.support}&nbsp;&nbsp;
+                                  {:L("_INVERSE_LOGARITHM_WITH_COLON_WITH_SPACE_")}{$question.oppose}&nbsp;&nbsp;-->
+                                    {:L("_CREATE_TIME_WITH_COLON_WITH_SPACE_")}{$question.create_time|friendlyDate}
+                                    <if condition="check_auth('Question/Index/edit',$question['uid'])">
+                                        &nbsp;&nbsp;<a href="{:U('Question/Index/edit',array('id'=>$question['id']))}">{:L("_EDIT_")}</a>
+                                    </if>
+                                    <php>if($question['uid']==is_login()||check_auth('Question/Edit/delQuestion')){</php>
+                                    &nbsp;&nbsp;<a  href="javascript:void(0);" onclick="delquestion($(this))" >删除</a>
+                                    <php>}</php>
+                                    <php>if(check_auth('Question/Edit/recommend')){</php>
+                                    <if condition="$question['is_recommend'] eq 1">
+                                        &nbsp;&nbsp;<a href="javascript:void(0);" onclick="recommend($(this))">取消推荐</a>
+                                        <else/>
+                                        &nbsp;&nbsp;<a href="javascript:void(0);" onclick="recommend($(this))">推荐</a>
+                                    </if>
+                                    <php>}</php>
+                                    <div class="answer_user" style="float:right;font-size:14px;margin-right:1px;width:130px">
+                                    	<div style="float: right;">
+								        	<img style="border-radius:3px;width: 40px;" src="{$question.user.avatar128}"/>&nbsp;&nbsp;
+								        </div>
+								        <div style="float: right;">
+									        <a ucard="{$question.uid}" href="{$question.user.space_url}" style="color:#259;">{$question.user.nickname}</a>&nbsp;
+									        {:W('Common/UserRank/render',array($answer['uid']))}
+									        <br/>
+									        <span class="answer_count">{$question.answer_num}回/{$question.views}阅</span>
+								        </div>
+							        </div>
+                                </div>
+                                <!-- <div>
+                                    	悬赏：<span style="color: #FF2424">{$question.score_num}{$question.leixing_title.title}</span>
+                                </div> -->
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="answer" data-role="answer-block">
+                            <notempty name="best_answer">
+                                <div class="one_answer clearfix">
+                                	<div class="accepted-flag">采纳</div>
+                                    <div class="a_info">
+                                        <div class="answer_user" style="float:right;font-size:14px;">
+									        <img style="border-radius:3px;width: 40px;float: right;" src="{$best_answer.user.avatar128}"/>&nbsp;&nbsp;
+									        <a ucard="{$best_answer.uid}" href="{$best_answer.user.space_url}" style="color:#aaa;float: right;margin-top: 6px;margin-right: 3px;">{$best_answer.user.nickname}</a>&nbsp;
+									        {:W('Common/UserRank/render',array($best_answer['uid']))}
+								        </div>
+                                        <div style="color:#999">
+                                            <notempty name="best_answer['support_user']">
+                                                <volist name="best_answer['support_user']" id="support_user">
+                                                    <a ucard="{$support_user.uid}" href="{$support_user.space_url}">{$support_user.nickname}</a>&nbsp;
+                                                </volist>
+                                                {:L("_AGREE_WITH_SPACE_")}
+                                            </notempty>
+                                        </div>
+                                        <div class="a_content">{$best_answer.content|render}</div>
+                                        <div style="clear:both;"></div>
+                                        <div>
+                                        	<div class="support_block">
+										        <if condition="$best_answer['is_support']||$best_answer['is_oppose']">
+										            <a title={:L("_SUPPORT_WITH_DOUBLE_")} <eq name="answer['is_support']" value="1">class="butt already_do"<else/>class="butt"</eq>>
+										            <i class="icon icon-thumbs-up"></i>
+										            <span class="num">{$best_answer.support}</span>
+										            </a>
+										            <a title={:L("_OBJECT_NOT_SHOWING_YOUR_NAME_WITH_DOUBLE_")} <eq name="answer['is_oppose']" value="1">class="butt already_do"<else/>class="butt"</eq>>
+										             <i class="icon icon-thumbs-down"></i>
+										           	<span class="num">{$best_answer.oppose}</span>
+										            </a>
+										            <else/>
+										            <a title={:L("_SUPPORT_WITH_DOUBLE_")} class="butt can_do" data-role="answer-support" data-id="{$best_answer.id}">
+										                <i class="icon icon-thumbs-up"></i>
+										                <span class="num">{$best_answer.support}</span>
+										            </a>
+										            <a title={:L("_OBJECT_NOT_SHOWING_YOUR_NAME_WITH_DOUBLE_")} class="butt can_do" data-role="answer-oppose" data-id="{$best_answer.id}">
+										                <i class="icon icon-thumbs-down"></i>
+										                <span class="num">{$best_answer.oppose}</span>
+										            </a>
+										        </if>
+										    </div>
+	                                        <div class="q_black_info">
+	                                            {:L("_RECOVERY_TIME_WITH_COLON_WITH_SPACE_")}{$best_answer.create_time|friendlyDate}
+	                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </notempty>
+                            <volist name="list" id="answer">
+                                <include file="Answer/_answer"/>
+                            </volist>
+                        </div>
+                        <div class="text-right">
+                            {:getPagination($totalCount,10)}
+                        </div>
+                        <!--发表回复-->
+                        <if condition="is_login()">
+                            <if condition="$question.status neq 1">
+                                <p class="text-center text-muted" style="font-size: 3em; padding-top: 2em; padding-bottom: 2em;">
+                                    {:L("_THE_PROBLEM_IS_NOT_AUDITED_OR_AUDIT_FAILURE_CAN_NOT_BE_ANSWERED_WITH_WAVE_WITH_SPACE_")}
+                                </p>
+                                <else/>
+                                <php>
+                                    $user = query_user(array('avatar128','uid','space_url'));
+                                </php>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div id="answer_block">
+                                            <form id="answer_form" action="{:U('Question/answer/edit')}" method="post" class="ajax-form">
+                                                <input type="hidden" name="question_id" value="{$question['id']}"/>
+                                                <h4>撰写{:L("_ANSWER_")}</h4>
+                                                <p>
+                                                    <php>
+                                                        $config="toolbars:[['source','|','bold','italic','underline','fontsize','forecolor','justifyleft','fontfamily','|','map','emotion','insertimage','insertcode']]";
+                                                    </php>
+                                                    {:W('Common/Ueditor/editor',array('myeditor_edit','content','','100%','200px',$config))}
+                                                </p>
+                                                <p class="pull-right">
+                                                    <input type="button" data-role="reply_button" class="btn btn-primary" value="{:L("_PUBLISH_")}Ctrl+Enter"/>
+                                                </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </if>
+                            <script>
+                                $(function(){
+                                    ue_myeditor_edit.addListener("beforeSubmit",function(){
+                                        ue_myeditor_edit.sync();
+                                        $("[data-role=reply_button]").click();
+                                        return false;
+                                    })
+                                })
+                            </script>
+                            <else/>
+                            <p class="text-center text-muted" style="font-size: 3em; padding-top: 2em; padding-bottom: 2em;">
+                                	请<a data-login="quick_login">{:L("_SIGN_IN_")}</a>{:L("_AFTER_ANSWER_")}
+                            </p>
+                        </if>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                {:W('RightBlock/category',array('category_id'=>$question['category']))}
+            </div>
+        </div>
+    </div>
+    </div>
+</block>
+<block name="script">
+ <script type="text/javascript" src="__JS__/question.js"></script>
+ <script type="text/javascript" charset="utf-8" src="__STATIC__/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+ <link rel="stylesheet" type="text/css" href="__STATIC__/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
+ <script type="text/javascript">
+     SyntaxHighlighter.all();
+ </script>
+ <script>
+ $(document).ready(function() {
+     $.post(U('Core/Public/atWhoJson'), {},
+     function(res) {
+         atwho_config = {
+             at: "@",
+             data: res,
+             tpl: "<li data-value='[at:${id}]'><img class='avatar-img' style='width:2em;margin-right: 0.6em' src='${avatar32}'/>${nickname}</li>",
+             show_the_at: true,
+             search_key: 'search_key',
+             start_with_space: false
+         };
+         ue_myeditor_edit.addListener('ready',
+         function(editor) {
+             $(this.document.body).atwho(atwho_config);
+         });
+     },
+     'json') ue_myeditor_edit.addListener("beforeSubmit",
+     function() {
+         ue_content.sync();
+         $("#reply_form").submit();
+         return false;
+     })
+     $('.popup-gallery').each(function() { // the containers for all your galleries
+         $(this).magnificPopup({
+             delegate: '.popup',
+             type: 'image',
+             tLoading: 'Loading image #%curr%...',
+             mainClass: 'mfp-img-mobile',
+             gallery: {
+                 enabled: true,
+                 navigateByImgClick: true,
+                 preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+             },
+             image: {
+                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                 titleSrc: function(item) {
+                     /*           return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';*/
+                     return '';
+                 }
+             }
+         });
+     });
+ });
+ function delquestion() {
+     if (confirm("你确定要删除此问题吗？")) {
+         var id = "{$question['id']}";
+         var url = "{:U('Question/Index/delQuestion')}";
+         $.post(url, {
+             id: id
+         },
+         function(msg) {
+             if (msg.status) {
+                 toast.success(msg.info);
+                 setTimeout(function() {
+                     window.location.href = "{:U('question/index/myquestion',array('type'=>q))}";
+                 },
+                 500);
+             } else {
+                 toast.error(msg.info);
+             }
+         },
+         'json')
+     }
+ }
+ function recommend() {
+     var id = "{$question['id']}";
+     var url = "{:U('Question/Index/recommendQuestion')}";
+     $.post(url, {
+         id: id
+     },
+     function(msg) {
+         if (msg.status) {
+             toast.success(msg.info);
+             setTimeout(function() {
+                 window.location.reload();
+             },
+             500);
+         } else {
+             toast.error(msg.info);
+         }
+     },
+     'json')
+ }
+</script>
+</block>

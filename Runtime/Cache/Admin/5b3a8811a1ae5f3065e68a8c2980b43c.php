@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>News/setDead?ids=3

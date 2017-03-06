@@ -1,0 +1,99 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/_nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/blog.css"/>
+    <div class="container" style="min-height: 700px;width:1160px;">
+        <div class="row">
+            <div class="col-xs-9" style="width:840px;">
+                <div class="common_block_border">
+                    {:W('Common/Adv/render',array(array('name'=>'index_top','type'=>2,'width'=>'800px','height'=>'240px','title'=>'博客首页顶部广告','data'=>array('style'=>1))))}
+                    <notempty name="now_category">
+                        <div class="common_block_title">{$now_category.title}
+                            <div class="pull-right children_news">
+                                <volist name="now_category['_']" id="cat">
+                                    &nbsp;&nbsp;<a href="{:U('Blog/index/index',array('category'=>$cat['id']))}" style="text-decoration: underline;color: #949494;">{$cat.title}</a>
+                                </volist>
+                            </div>
+                        </div>
+                        <else/>
+                         <div class="common_block_title" style="margin:5px 0 10px 0px">
+                         <!-- {:L('_BLOG_VIEW_')} -->
+                         	<ul class="blog-tabs">
+							    <li  class="tab <php>if($ordertype=='recommend'){</php>active <php>}</php>"><h1><a href="{:U('Blog/index/index',array('ordertype'=>'recommend','category'=>$_GET['category']))}">优秀专栏推荐</a></h1></li>
+							</ul>
+                         </div> 
+                    </notempty>
+                    <div>
+                        <section id="contents" class="blog-list">
+                            <notempty name="list">
+                                <volist name="list" id="data">
+                                    <include file="Public/_default_column_list"/>
+                                </volist>
+                                <else/>
+                                <div style="font-size:1em;padding:2em 0;color: #ccc;text-align: center">该类型下没有专栏~</div>
+                            </notempty>
+                        </section>
+                        <div class="text-right">
+                            {:getPagination($totalCount,modC('NEWS_PAGE_NUM',20,'Blog'))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3" style="width:300px;">
+                {:W('Common/Adv/render',array(array('name'=>'index_right_top','type'=>1,'width'=>'340px','height'=>'120px','margin'=>'0 0 10px 0','title'=>'博客首页右侧最顶部广告')))}
+                {:W('Common/Adv/render',array(array('name'=>'index_bottom_top','type'=>1,'width'=>'340px','height'=>'120px','margin'=>'10px 0 0 0','title'=>'博客首页右侧最底部广告')))}
+                 <div class="common_block_border event_right">
+	                 <div>
+					    <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">专栏分类</h1>
+					    <div class="blog_category">
+				            <ul class="category_list tracking-ad" data-mod="popu_257">
+				            	<volist name="tree" id="vo">
+		                        <li <php>if($vo['id']==$cid){echo "class='active'";} </php>>
+		                           <a href="{:U('Blog/column/index', array('category' => $vo['id']))}" class="<?php $array=explode('_',$vo['title']);echo $array[1]; ?>">
+		                           		<php>echo $array[0];</php>
+		                           </a>
+		                        </li>
+		                        </volist>            
+				            </ul>
+				          </div>
+				           <div style="clear:both"></div>
+				         </div>
+				        
+				         <div>
+				          <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">热门专栏</h1>
+				          <div>
+					          <ul class="TOP_OSCER">
+					          	<volist name="hotcolumn" id="vo">
+						        <li><a href="" target="_blank">
+						        	<img src="{$vo.logo_url}" alt="{$vo.project_name}" title="{$vo.project_name}" class="LargePortrait" align="absmiddle">
+						        	<span class="name">{$vo.project_name}</span></a></li>
+						        </volist>
+						      </ul>
+						  	</div>
+						  	<div style="clear:both"></div>
+						  </div>
+						  <div>
+						   <h1 style="color:#6a6a6a;border-bottom:1px solid #ddd;font-size:16px;line-height:35px;">推荐教程</h1>
+				          <div>
+					          <ul class="TOP_OSCER">
+						        <li><a href="https://my.oschina.net/xxiaobian" target="_blank"><img src="https://static.oschina.net/uploads/user/714/1428332_100.jpg?t=1400110163000" alt="小小编辑" title="小小编辑" class="LargePortrait" align="absmiddle"><span class="name">小小编辑</span></a></li>
+						    </ul>
+						  </div>
+						  <div style="clear:both"></div>
+						 </div>
+				</div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+     var aColumn = $(".column_list_link");
+	 aColumn.hover(function () {
+            $(this).find(".column_list_b").show().end().siblings().find(".column_list_b").hide();
+        }, function () {
+            $(this).find(".column_list_b").hide().end().siblings().find(".column_list_b").show();
+        });
+    </script>
+</block>

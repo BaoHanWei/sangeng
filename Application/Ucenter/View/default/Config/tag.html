@@ -1,0 +1,199 @@
+<extend name="Config/base"/>
+
+<block name="body">
+
+    <div id="center">
+        <div id="center_base" class="with-padding" style="padding: 20px">
+            <ul class="nav nav-secondary">
+                <li class="active"><a href="#base" data-toggle="tab"> {:L('_PERSONAL_TAB_SELECT_')}</a></li>
+             </ul>
+            <div class="row">
+                <div class="col-xs-12" style="margin-top:15px;margin-left:5px;">
+                <div class="FormSection">
+					<strong style="font-size:15px;font-weight:400">我是一名：</strong>
+					<select id="resume_industry" name="job">
+						<option value="程序员" <php>if($my_other_tags['job']=='程序员'){echo "selected='selected'";}</php>>程序员</option>
+						<option value="高级程序员" <php>if($my_other_tags['job']=='高级程序员'){echo "selected='selected'";}</php>>高级程序员</option>
+						<option value="技术主管" <php>if($my_other_tags['job']=='技术主管'){echo "selected='selected'";}</php>>技术主管</option>
+						<option value="产品经理" <php>if($my_other_tags['job']=='产品经理'){echo "selected='selected'";}</php>>产品经理</option>
+						<option value="网页/平面设计" <php>if($my_other_tags['job']=='网页/平面设计'){echo "selected='selected'";}</php>>网页/平面设计</option>
+						<option value="部门经理" <php>if($my_other_tags['job']=='部门经理'){echo "selected='selected'";}</php>>部门经理</option>
+						<option value="QA/测试工程师" <php>if($my_other_tags['job']=='QA/测试工程师'){echo "selected='selected'";}</php>>QA/测试工程师</option>
+						<option value="系统管理员" <php>if($my_other_tags['job']=='系统管理员'){echo "selected='selected'";}</php>>系统管理员</option>
+						<option value="数据库管理员" <php>if($my_other_tags['job']=='数据库管理员'){echo "selected='selected'";}</php>>数据库管理员</option>
+						<option value="售前工程师" <php>if($my_other_tags['job']=='售前工程师'){echo "selected='selected'";}</php>>售前工程师</option>
+						<option value="个人站长" <php>if($my_other_tags['job']=='个人站长'){echo "selected='selected'";}</php>>个人站长</option>
+						<option value="CTO(技术副总裁)" <php>if($my_other_tags['job']=='CTO(技术副总裁)'){echo "selected='selected'";}</php>>CTO(技术副总裁)</option>
+						<option value="人事招聘" <php>if($my_other_tags['job']=='人事招聘'){echo "selected='selected'";}</php>>人事招聘</option>
+						<option value="iOS工程师" <php>if($my_other_tags['job']=='iOS工程师'){echo "selected='selected'";}</php>>iOS工程师</option>
+						<option value="Android工程师" <php>if($my_other_tags['job']=='Android工程师'){echo "selected='selected'";}</php>>Android工程师</option>
+						<option value="UI设计师" <php>if($my_other_tags['job']=='UI设计师'){echo "selected='selected'";}</php>>UI设计师</option>
+						<option value="前端工程师" <php>if($my_other_tags['job']=='前端工程师'){echo "selected='selected'";}</php>>前端工程师</option>
+						<option value="后端工程师" <php>if($my_other_tags['job']=='后端工程师'){echo "selected='selected'";}</php>>后端工程师</option>
+						<option value="产品经理" <php>if($my_other_tags['job']=='产品经理'){echo "selected='selected'";}</php>>产品经理</option>
+						<option value="运营/编辑" <php>if($my_other_tags['job']=='运营/编辑'){echo "selected='selected'";}</php>>运营/编辑</option>
+						<option value="其他" <php>if($my_other_tags['job']=='其他'){echo "selected='selected'";}</php>>其他</option>
+						<option value="项目经理" <php>if($my_other_tags['job']=='项目经理'){echo "selected='selected'";}</php>>项目经理</option>
+						<option value="架构师" <php>if($my_other_tags['job']=='架构师'){echo "selected='selected'";}</php>>架构师</option>
+						<option value="运维" <php>if($my_other_tags['job']=='运维"'){echo "selected='selected'";}</php>>运维</option>
+						<option value="CEO" <php>if($my_other_tags['job']=='CEO'){echo "selected='selected'";}</php>>CEO</option>
+					</select>
+					<strong style="font-size:15px;font-weight:400">工作年限：</strong>
+					<select id="resume_workyear" name="work_years">
+						<option value="在读学生" <php>if($my_other_tags['work_years']=='在读学生'){echo "selected='selected'";}</php>>在读学生</option>
+						<option value="应届毕业生" <php>if($my_other_tags['work_years']=='应届毕业生'){echo "selected='selected'";}</php>>应届毕业生</option>
+						<option value="1 年" <php>if($my_other_tags['work_years']=='1 年'){echo "selected='selected'";}</php>>1 年</option>
+						<option value="2 年" <php>if($my_other_tags['work_years']=='2 年'){echo "selected='selected'";}</php>>2 年</option>
+						<option value="3 年" <php>if($my_other_tags['work_years']=='3 年'){echo "selected='selected'";}</php>>3 年</option>
+						<option value="4 年" <php>if($my_other_tags['work_years']=='4 年'){echo "selected='selected'";}</php>>4 年</option>
+						<option value="5 年" <php>if($my_other_tags['work_years']=='5 年'){echo "selected='selected'";}</php>>5 年</option>
+						<option value="6 年" <php>if($my_other_tags['work_years']=='6 年'){echo "selected='selected'";}</php>>6 年</option>
+						<option value="7 年" <php>if($my_other_tags['work_years']=='7 年'){echo "selected='selected'";}</php>>7 年</option>
+						<option value="8 年" <php>if($my_other_tags['work_years']=='8 年'){echo "selected='selected'";}</php>>8 年</option>
+						<option value="9 年" <php>if($my_other_tags['work_years']=='9 年'){echo "selected='selected'";}</php>>9 年</option>
+						<option value="10 年" <php>if($my_other_tags['work_years']=='10 年'){echo "selected='selected'";}</php>>10 年</option>
+						<option value="127 年"<php>if($my_other_tags['work_years']=='127 年'){echo "selected='selected'";}</php>>10年以上</option>
+					</select>
+					</div>
+                    <notempty name="tag_list">
+                        <volist name="tag_list" id="tag_group">
+                            <div class="tag-select-block clearfix">
+                                <div class="select-cate">{$tag_group.title}：</div>
+                                <div class="select-option">
+                                    <volist name="tag_group['tag_list']" id="tag">
+                                        <div class="one_tag"><a class="btn btn-default" data-role="add_tag" data-id="{$tag.id}" data-i="{$tag_group.id}">{$tag.title}</a></div>
+                                    </volist>
+                                </div>
+                            </div>
+                        </volist>
+                        <else/>
+                        <div style="text-align: center;font-size: 22px;color: #B3B3B3;">
+                            <p>
+                                <br/>
+                                <span>{:L('_PERSONAL_TAB_NONE_')}{:L('_WAVE_')}</span>
+                                <br/>
+                            </p>
+                        </div>
+                    </notempty>
+                    <div class="tag-select-block clearfix">
+                        <div class="select-cate">个人标签{:L('_COLON_')}</div>
+                        <div class="select-option my-tag-block">
+                            <div data-role="my_tag_block">
+                                <volist name="my_tag" id="tag">
+                                    <div class="one_tag"><span class="btn btn-default">{$tag.title} <a class="icon-remove" data-role="remove_tag" data-id="{$tag.id}" data-i="{$tag.pid}"></a></span></div>
+                                </volist>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                       <div style="margin-left:100px;margin-top:5px;">备注：开发平台最多选<strong style="color:#4EAA4C"> 5 </strong>个,专长领域最多选<strong style="color:#4EAA4C"> 3 </strong>个</div>
+                    </div>
+                    <div class="tag-select-block clearfix">
+                    	<input type="hidden" class="number_1" value="{$my_other_tags.number_1}">
+                    	<input type="hidden" class="number_2" value="{$my_other_tags.number_2}">
+                        <div class="select-option">
+                            <button class="btn btn-primary" data-role="set-tag">{:L('_SAVE_')}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>
+        var tag_ids="{$my_tag_ids}";
+        $(function(){
+            $('[data-role="add_tag"]').click(function(){
+                var parentId=$(this).attr('data-i');
+                if(addtagLimit(parentId)==false){
+                	return false;
+                }
+                var attachId=$(this).attr('data-id');
+                var already_show=upHiddenVal('add',attachId);
+                if(already_show==0){
+                    var title=$(this).html();
+                    $('[data-role="my_tag_block"]').append('<div class="one_tag"><span class="btn btn-default">'+title+' <a class="icon-remove" data-role="remove_tag" data-id="'+attachId+'" data-i="'+parentId+'"></a></span></div>');
+                    bind_remove();
+                }
+            });
+            bind_remove();
+            $('[data-role="set-tag"]').click(function(){
+            	var number_1=$(".number_1").val();
+            	var number_2=$(".number_2").val();
+            	var job=$("#resume_industry").val();
+                var work_years=$("#resume_workyear").val();
+                $.post(U('Ucenter/Config/tag'),{tag_ids:tag_ids,number_1:number_1,number_2:number_2,job:job,work_years:work_years},function(msg){
+                    if(msg.status){
+                        toast.success("{:L('_SUCCESS_SETTINGS_')}{:L('_EXCLAMATION_')}");
+                        setTimeout(function(){
+                            location.reload();
+                        },1500);
+                    }else{
+                        handleAjax(msg);
+                    }
+                },'json');
+            });
+        })
+        function bind_remove(){
+            $('[data-role="remove_tag"]').unbind('click');
+            $('[data-role="remove_tag"]').click(function(){
+                var attachId=$(this).attr('data-id');
+                var parentId=$(this).attr('data-i');
+                deltagLimit(parentId);
+                upHiddenVal('del',attachId);
+                $(this).parents('.one_tag').remove();
+            });
+        }
+        function upHiddenVal(type, attachId) {
+            var attachArr = tag_ids.split(',');
+            var newArr = [];
+            var already_show=0;
+
+            for (var i in attachArr) {
+                if (attachArr[i] !== '' && attachArr[i] !== attachId.toString()) {
+                    newArr.push(attachArr[i]);
+                }
+                if(attachArr[i] === attachId.toString()){
+                    already_show=1;
+                }
+            }
+            type === 'add' && newArr.push(attachId);
+            tag_ids=newArr.join(',');
+            return already_show;
+        }
+        function addtagLimit(parentId){
+        	if(parentId==1){
+        		var number_1=$(".number_1").val();
+            	if(number_1*1>=5){
+            		toast.error("开发平台最多选择5个标签");
+            		return false;
+            	}else{
+            		number_1=number_1*1+1;
+            		$(".number_1").val(number_1);
+            	}
+            }
+            if(parentId==19){
+            	number_2=$(".number_2").val();
+            	if(number_2*1>=3){
+            		toast.error("专长领域最多选择3个标签");
+            		return false;
+            	}else{
+            		number_2=number_2*1+1;
+            		$(".number_2").val(number_2);
+            	}
+            }
+        }
+        function deltagLimit(parentId){
+        	if(parentId*1==1){
+        		var number_1=$(".number_1").val();
+        		number=number_1*1-1*1;
+        		$(".number_1").val(number);
+            }
+            if(parentId*1==19){
+            	var number_2=$(".number_2").val();
+            	number=number_2*1-1*1;
+            	$(".number_2").val(number);
+            }
+        }
+    </script>
+</block>

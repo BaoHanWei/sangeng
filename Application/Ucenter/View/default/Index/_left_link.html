@@ -1,0 +1,76 @@
+<if condition="is_login() && $user_info['uid'] == get_uid()">
+      <a href="{:U('ucenter/collection/index')}" class="favorite" id="favorites-pjax">
+        <i class="icon-svg icon-favorite-star-white"></i>我的收藏夹
+      </a>
+    </if>
+<div class="panels-default panel-skills">
+  <div class="panels-heading">
+        <span class="title">常用操作</span>
+          <if condition="is_login() && $user_info['uid'] == get_uid()">
+             <a href="{:U('Ucenter/Message/message')}" class="btn-link" target="_blank">更多</a>
+            </if>
+     </div>
+  <!--导航栏-->
+        <ul class="nav nav-pills nav-stacked" style="margin-top:7px;">
+          <li id="side_collection">
+                <a href="{:U('Ucenter/Collection/index')}">
+                      <if condition="$uid eq is_login()">{:L('_I_')}<else/>{:L('_TA_')}</if>的回答<span class=" pull-right"></span>
+                </a>
+            </li>
+            <li id="side_message">
+                <a href="{:U('Ucenter/Message/message')}">
+                      <if condition="$uid eq is_login()">{:L('_I_')}<else/>{:L('_TA_')}</if>的提问<span class="pull-right"></span>
+                </a>
+            </li>
+            <li id="side_invite">
+              <if condition="$uid eq get_uid()">
+                  <a href="{:U('Ucenter/Blog/index')}">{:L('_I_')}的博客<span class="pull-right"></span></a>
+               <else/> 
+                <a href="{:U('Ucenter/Blog/index/',array('uid'=>$uid))}">{:L('_TA_')}的博客<span class="pull-right"></span></a>
+               </if>  
+            </li>
+            <li id="side_column">
+              <if condition="$uid eq get_uid()">
+                  <a href="{:U('Ucenter/Index/column')}">{:L('_I_')}的专栏<span class="pull-right"></span></a>
+               <else/> 
+                <a href="{:U('Ucenter/Index/column/',array('uid'=>$uid))}">{:L('_TA_')}的专栏<span class="pull-right"></span></a>
+               </if>  
+            </li>
+        </ul>
+</div>
+    <div class="panels-default panel-skills">
+    <div class="panels-heading">
+        <span class="title">职位技能</span>
+         <if condition="is_login() && $user_info['uid'] == get_uid()">
+           <a href="{:U('ucenter/config/tag')}" class="btn-link" target="_blank">完善信息</a>
+         </if>
+     </div>
+    <div class="panels-body">
+      <if condition="$user_info['tags']!=''">
+        <div class="skills-item">
+          <div class="title">开发平台</div>
+          <p>
+            <volist name="user_info['tags']" id="tag">
+              <php>if($tag['pid']==1){</php>
+                <span><a href="{:U('people/index/index',array('tag'=>$tag['id']))}" style="color:#4f80a1">{$tag.title}</a></span>&nbsp;&nbsp;&nbsp;
+              <php>}</php>
+            </volist>
+          </p>
+      </div>
+         <div class="skills-item">
+           <div class="title">专长领域</div>
+            <p>
+            <volist name="user_info['tags']" id="tag">
+              <php>if($tag['pid']==19){</php>
+              <span><a href="{:U('people/index/index',array('tag'=>$tag['id']))}" style="color:#4f80a1">{$tag.title}</a></span>&nbsp;&nbsp;&nbsp;
+              <php>}</php>
+            </volist>
+            </p>
+        </div>
+      <else/>
+      <div class="uc_link_info">
+        <p style="text-align: center; font-size: 16px;color:#999999"><br><br>暂无完善技能信息～ <br><br><br></p>
+      </div> 
+      </if>
+     </div>
+</div>

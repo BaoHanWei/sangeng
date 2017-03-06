@@ -1,0 +1,15 @@
+.tree{margin:0;padding:0;list-style-type:none;font-size:12px;}
+a,img{border:0;}
+#files{}
+.tree,.tree ul,.tree li{list-style:none;margin:0;padding:0;zoom: 1;}
+.tree ul{background: url(tree-line.png) repeat-y 2px 0 transparent;}
+.tree li a{color:#555;display:block;text-decoration:none;border:1px dashed #fff;white-space: nowrap;line-height: 28px;font-size: 14px;}
+.tree li a.tree-file{color:#555;padding:.1em 7px .1em 27px;display:block;text-decoration:none;border:1px dashed #fff;background:url(icon-file.gif) 3px -1px no-repeat;}
+.tree li a.tree-parent{background:url(icon-folder-open.gif) 5px 50% no-repeat;width: 29px;height: 17px;float: left;}
+.tree li a.tree-parent-collapsed{background:url(icon-folder.gif) 5px 50% no-repeat;width: 29px;height: 17px;float: left;}
+.tree li a:hover,.tree li a.tree-parent:hover,.tree li a:focus,.tree li a.tree-parent:focus,.tree li a.tree-item-active{color:#000;border:1px solid#eee;background-color:#fafafa;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
+.tree li a:focus,.tree li a.tree-parent:focus,.tree li a.tree-item-active{border:1px solid #e2f3fb;background-color:#f2fafd;}
+.tree ul.tree-group-collapsed{display:none;}
+.tree a.active{background-color: #F0F7FD!important;}
+.tree .child_ul li{padding-left: 18px;background:url(tree-li.png) no-repeat;}
+.tree .child_ul li.last{padding-left: 18px;background: url(tree-li-last.png) 2px 9px no-repeat;}

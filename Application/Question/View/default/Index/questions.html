@@ -1,0 +1,62 @@
+<extend name="Base/common"/>
+<block name="header">
+    <include file="Public/nav"/>
+</block>
+<block name="body">
+    <link type="text/css" rel="stylesheet" href="__CSS__/question.css"/>
+    <div class="container" style="min-height: 700px">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="questions">
+                    <div class="common_block_border margin-bottom-15">
+                        <div class="tags" style="padding: 15px;">
+                            <a href="{:U('Question/Index/questions')}" <if condition="!$question_cate">class="active"</if>>
+                            {:L("_ALL_WITH_SPACE_")}
+                            </a>
+                            <volist name="parent" id="type">
+                                <a href="{:U('Question/Index/questions',array('category'=>$type['id']))}" data-id="{$type['id']}" class="ptype <if condition="$question_cate eq $type['id']">active</if>">
+                                {$type.title}
+                                </a>
+                            </volist>
+                        </div>
+                        <volist name="child" id="vo">
+                            <php> if(!empty($vo)){</php>
+                            <div class="tags" style="padding: 7px;"> <a>{$title}</a></div>
+                            <php>}</php>
+                        </volist>
+                    </div>
+                    <volist name="child" id="vo">
+                        <php> if(!empty($vo)){</php>
+                        <div class="common_block_border chile_type" id="type_{$key}" style="margin-top: -10px; ">
+                            <div class="tags" style="padding: 7px;">
+                                <volist name="vo" id="type">
+                                    <php>if($type['pid']==$question_cate){</php>
+                                    <a href="{:U('Question/Index/questions',array('category'=>$type['id']))}" <if condition="$question_cate eq $type['id']">class="active"</if>>
+                                    {$type.title}
+                                    </a>
+                                    <php>}</php>
+                                </volist>
+                            </div>
+                        </div>
+                        <php>}</php>
+                    </volist>
+                </div>
+                <div class="common_block_border clearfix">
+                    <div class="question_list" style="padding:0 20px">
+                        <notempty name="list">
+                            <volist name="list" id="data">
+                                <include file="Public/_default_list"/>
+                            </volist>
+                            <else/>
+                            <div style="font-size:3em;padding:2em 0;color: #ccc;text-align: center">{:L("_THIS_TYPE_OF_NO_PROBLEM_YO_WITH_WAVE_")}</div>
+                        </notempty>
+                        <div class="text-right">
+                            {:getPagination($totalCount,20)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</block>
