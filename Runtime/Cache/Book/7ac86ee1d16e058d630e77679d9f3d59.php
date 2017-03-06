@@ -5,7 +5,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-7" style="width: 1150px;border: 1px solid #F0F6F3;">
                     <a href="<?php echo U($MODULE_INFO['entry']);?>" class="navbar-brand logo" style="">
                         <!-- <i class="icon-<?php echo ($brand["icon"]); ?>"></i> --> 
-                        <?php if(!empty($menu_list['first']['title'])){ echo $menu_list['first']['title'];}else{if(MODULE_NAME=='Weibo'){echo '微博';}else{echo $brand['title'];}} ?>专区
+                        <?php if(!empty($menu_list['first']['title'])){ echo $menu_list['first']['title'];}else{if(MODULE_NAME=='Weibo'){echo '微博';}else if(MODULE_NAME=='Event'){echo '活动';}else{echo $brand['title'];}} ?>专区
                     </a>
                     <ul class="nav navbar-nav" style="height:100px;float: left;">
                         <?php if(is_array($menu_list["left"])): $i = 0; $__LIST__ = $menu_list["left"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i; if($menu['children']): ?><!--二级菜单-->
