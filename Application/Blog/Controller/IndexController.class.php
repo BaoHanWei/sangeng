@@ -214,7 +214,7 @@ class IndexController extends Controller{
     {
         $aId=I('post.id',0,'intval');
         $data['category']=I('post.category',0,'intval');
-
+        print_r($_POST);die;
         if($aId){
             $data['id']=$aId;
             $now_data=$this->blogModel->getData($aId);

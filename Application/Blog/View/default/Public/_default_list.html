@@ -9,7 +9,7 @@
             <a href="{:U('Blog/index/detail',array('id'=>$data['id']))}" class="sc overh blog-title-link" target="_blank" title="{$data.title|text}">
                 <h2 class="blog-name sc text-ellipsis">{$data.title}</h2>
             </a>
-            <if condition="$data['blog_type'] neq 1">
+            <if condition="$data['blog_type'] eq 1">
             	<span class="blog-tag yuan">原</span>
             <else/>
             	<span class="blog-tag zhuan">转</span>

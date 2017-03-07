@@ -15,6 +15,8 @@
 <link href="/Public/zui/css/zui-theme.css" rel="stylesheet">
 <link href="/Public/css/core.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="/Public/js/ext/magnific/magnific-popup.css"/>
+<link type="text/css" rel="stylesheet" href="/Public/static/prism/prism.css"/>   
+<script type="text/javascript" src="/Public/static/prism/prism.js"></script>
 <script src="/Public/js.php?f=js/jquery-2.0.3.min.js,js/com/com.functions.js,js/com/com.toast.class.js,js/com/com.ucard.js,js/core.js"></script>
 <!--Style-->
 <!--合并前的js-->
@@ -91,11 +93,8 @@
     <!-- <div class="container" > -->
         <nav class="" id="nav_bar_container">
             <?php $logo = get_cover(modC('LOGO',0,'Config'),'path'); $logo = $logo?$logo:'/Public/images/logo.png'; ?>
-
-            <a class="navbar-brand logo" href="<?php echo U('Home/Index/index');?>"><img src="<?php echo ($logo); ?>"/></a>
-
             <div class="" id="nav_bar_main">
-
+                <a class="navbar-brand logo" href="<?php echo U('Home/Index/index');?>"><img src="<?php echo ($logo); ?>"/></a>
                 <ul class="nav navbar-nav navbar-left">
                     <?php $__NAV__ = D('Channel')->lists(true);$__NAV__ = list_to_tree($__NAV__, "id", "pid", "_"); if(is_array($__NAV__)): $i = 0; $__LIST__ = $__NAV__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$nav): $mod = ($i % 2 );++$i; if(($nav['_']) != ""): ?><li class="dropdown">
                                 <a title="<?php echo ($nav["title"]); ?>" class="dropdown-toggle nav_item" data-toggle="dropdown"
@@ -247,7 +246,7 @@
                         </li>
                         <li class="spliter "></li><?php endif; ?>
                 </ul>
-
+                <div style="clear: both;"></div>>
             </div>
             <!--导航栏菜单项-->
 
@@ -283,7 +282,7 @@
 	<!-- 主体 -->
 	<div class="main-wrapper" id="container">
     
-    <link type="text/css" rel="stylesheet" href="/Application/Blog/Static/css/news.css"/>
+    <link type="text/css" rel="stylesheet" href="/Application/Blog/Static/css/blog.css"/>
      <?php echo W('Common/SubMenu/render',array($sub_menu,$tab,array('icon'=>'rss'),''));?>
 
     <!--顶部导航之后的钩子，调用公告等-->

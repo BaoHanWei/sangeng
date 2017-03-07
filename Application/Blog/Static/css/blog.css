@@ -810,3 +810,20 @@ h2{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+/*#contents code, #contents pre{
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 13px;
+}
+#contents pre, #contents pre code{
+    overflow-x: auto;
+    border-radius: 4px;
+    padding: 10px;
+    line-height: 1.4;
+    word-wrap: normal;
+    display: block;
+    font-size: 13px;
+    background: #3f3f3f;
+    color: #dcdcdc;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}*/

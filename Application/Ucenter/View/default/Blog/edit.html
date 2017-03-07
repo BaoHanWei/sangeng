@@ -159,6 +159,11 @@ var editor = editormd("editormd", {
     height : 700,
     path   : "__MARKDOWN__/lib/",
     saveHTMLToTextarea : true
+     htmlDecode : true // Decode all html tags & attributes
+    // Filter tags/attributes expression : tagName,tagName,...|attrName,attrName,...
+    htmlDecode : "style,script,iframe,sub,sup|on*"  // Filter tags, and all on* attributes
+    //htmlDecode : "style,script,iframe,sub,sup|*"    // Filter tags, and all attributes
+    //htmlDecode : "style,script,iframe,sub,sup,embed|onclick,title,onmouseover,onmouseout,style" // Filter tags, and your custom attributes
 });
 </script>
 </block>

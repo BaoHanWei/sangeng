@@ -322,7 +322,7 @@
             <a href="<?php echo U('Blog/index/detail',array('id'=>$data['id']));?>" class="sc overh blog-title-link" target="_blank" title="<?php echo (text($data["title"])); ?>">
                 <h2 class="blog-name sc text-ellipsis"><?php echo ($data["title"]); ?></h2>
             </a>
-            <?php if($data['blog_type'] != 1): ?><span class="blog-tag yuan">原</span>
+            <?php if($data['blog_type'] == 1): ?><span class="blog-tag yuan">原</span>
             <?php else: ?>
             	<span class="blog-tag zhuan">转</span><?php endif; ?>
         </header>

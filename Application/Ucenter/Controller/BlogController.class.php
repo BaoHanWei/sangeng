@@ -176,6 +176,7 @@ class BlogController extends BaseController{
     }
     private function _doEdit()
     {
+
         $aId=I('post.id',0,'intval');
         $data['category']=I('post.category',0,'intval');
         if($aId){
@@ -206,8 +207,9 @@ class BlogController extends BaseController{
             $data['origin_url']=I('post.origin_url','','text');
             $data['is_comment']=I('post.is_comment','','intval');
             $data['is_recommend']=I('post.is_recommend','','intval');
-            $data['content']=I('post.content','','text');
+            $data['content']=I('post.content','',false);
             $data['markdown_template']=I('post.markdown_template','','text');
+
             $old_cid=I('post.old_cid','','intval');
             if(!mb_strlen($data['title'],'utf-8')){
                 $result['status']=0;
@@ -219,6 +221,7 @@ class BlogController extends BaseController{
                 $result['info']="博客内容不能为空";
                 $this->ajaxReturn($result);
             }
+
             $res=D('Blog/blog')->editData($data);
             if($res){
                 $this->do_blog_user_category(array('cid'=>$old_cid,'type'=>'del'));
@@ -263,7 +266,6 @@ class BlogController extends BaseController{
         $data['is_recommend']=I('post.is_recommend',0,'intval');
         $data['content']=I('post.content','','text');
         $data['markdown_template']=I('post.markdown_template','','text');
-        die;
         if(!mb_strlen($data['title'],'utf-8')){
             $result['status']=0;
             $result['info']="博客标题不能为空";
