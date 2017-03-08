@@ -1,4 +1,19 @@
 <if condition="$lists neq false">
+<div class="tjyd">
+    <div class="box_tit border_t">
+        <h3>相关资讯</h3>
+    </div>
+    <div class="box_con">
+        <ul class="txt_li_t clearfix">
+            <volist name="lists" id="data">
+                <li><a href="{:U('News/index/detail',array('id'=>$data['id']))}" title="{$data.title}">{$data.title}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+</if>
+<!--
+<if condition="$lists neq false">
     <div class="common_block_border blog_position clearfix">
 
         <div class="common_block_title">
@@ -50,3 +65,4 @@
         </volist>
     </div>
 </if>
+-->

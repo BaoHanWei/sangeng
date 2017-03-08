@@ -289,64 +289,45 @@
     <div id="main-container" class="container">
         <div class="row">
             
-        <div class="row">
-            <div class="col-xs-9" style="width:900px;">
-                <?php if(is_login() == 2): ?><div style="clear:right;"><?php endif; ?>
-                <div class="common_block_border">
-                    <div class="common_block_title clearfix" style="">
-                        <h2 style="padding-bottom:0px;"><?php echo ($info["title"]); ?></h2>
-                        <!--<p class="clearfix from">
-                            <?php if(check_auth('News/Index/edit',-1)||(($info['uid'] == is_login())&&($info['status'] != 1))): ?><a title="<?php echo L('_EDIT_');?>" href="<?php echo U('News/index/edit',array('id'=>$info['id']));?>" style="float: right"><i class="icon-edit" style="font-size: 16px;"><span style="font-family:Microsoft YaHei"><?php echo L('_EDIT_');?></span></i></a><?php endif; ?>
-                            <span class="pull-left" style="font-size:14px;color:#898989">
-                                <span class="author">
-                                    <img class="avatar-img" src="<?php echo ($author["avatar32"]); ?>"/>&nbsp;&nbsp;&nbsp;<a href="<?php echo ($author["space_url"]); ?>" ucard="<?php echo ($info["uid"]); ?>" style="color:#3EB158"><?php echo ($author["nickname"]); ?></a>
-                                </span>
-                                <span> <?php echo L('_RELEASE_AT_');?> <?php echo (date('Y-m-d H:i',$info["create_time"])); ?></span>
-                                <span>阅读(<?php echo ($info["view"]); ?>)</span>
-				                <span style="">评论(<?php echo ($info["comment"]); ?>)</span>
-                            </span>
-                            <?php if(($info['status'] == 1)&&($info['dead_line'] > time())): ?><span class="pull-right" style="margin-right: 10px"><?php echo W('Weibo/Share/shareBtn',array('param'=>array('title'=>$info['title'],'content'=>$info['description'],'img'=>getThumbImageById($info['cover'],160,160),'from'=>L('_MODULE_'),'site_link'=>U('news/index/detail',array('id'=>$info['id']))),'text'=>'站内分享'));?></span><?php endif; ?>
-                        </p>-->
+    <div class="row" style="width: 1180px;">
+        <div class="col-xs-8" style="width: 800px;float: left">
+            <div class="article">
+                <h1 class="article_title"><?php echo ($info["title"]); ?></h1>
+                <div class="time">
+                    <span>作者：<a href="<?php echo ($author["space_url"]); ?>" ucard="<?php echo ($info["uid"]); ?>" style="color:#3EB158"><?php echo ($author["nickname"]); ?></a></span>&nbsp;&nbsp;
+                    <span>时间：<?php echo (date('Y-m-d H:i:s',$info["create_time"])); ?></span>&nbsp;&nbsp;
+                    <span>来源：<?php if($info['source'] != ''): echo ($info["source"]); else: ?>原创<?php endif; ?></span>&nbsp;&nbsp;
+                    <span>阅读：<?php echo ($info["view"]); ?></span>&nbsp;&nbsp;
+                    <span>评论：<?php echo ($info["comment"]); ?></span>&nbsp;&nbsp;
+                    <span><?php if(check_auth('News/Index/edit',-1)||(($info['uid'] == is_login())&&($info['status'] != 1))): ?><a title="<?php echo L('_EDIT_');?>" href="<?php echo U('News/index/edit',array('id'=>$info['id']));?>">
+                            <i class="icon-edit"><?php echo L('_EDIT_');?></i>
+                        </a><?php endif; ?></span>
+                </div>
+                <div class="article_con clearfix">
+                        <div class="detailc"><?php echo (render($info["detail"]["content"])); ?></div>                      
+                </div>
+                <div class="news-info">
+                    <div>本站文章除注明转载外，均为本站原创或编译。欢迎任何形式的转载，但请务必注明出处，尊重他人劳动共创和谐社区。</div>
+                    <div><span class="gray">转载请注明：</span>文章转载自 三更网社区 <a href="/" class="green">[http://www.sangeng.org]</a></div>
+                    <div><span class="gray">本文标题：</span><?php echo ($info["title"]); ?></div>
+                    <div>
+                        <span class="gray">本文地址：</span><a href="<?php echo U('News/index/detail',array('id'=>$info['id']));?>" class="green">http://www.sangeng.org<?php echo U('News/index/detail',array('id'=>$info['id']));?></a>
                     </div>
-                    <hr/>
-                    <!--<div class="pull-right" style="margin-top:-48px;margin-right: 15px;"><?php echo W('Common/Share/detailShare');?></div>-->
-                    <section id="contents">
-                        <?php if($info['source'] != ''): ?><div style="margin-bottom: 20px;color: #C0C0C0;"><i class="icon-chrome"></i> <?php echo L('_SOURCE_');?>：<a target="_blank" href="<?php echo ($info["source"]); ?>"><?php echo ($info["source"]); ?></a></div><?php endif; ?>
-                        <div class="news-content"><?php echo (render($info["detail"]["content"])); ?></div>
-                    </section>
-                    <div class="news-info">
-				        <div>本站文章除注明转载外，均为本站原创或编译。欢迎任何形式的转载，但请务必注明出处，尊重他人劳动共创和谐社区。</div>
-				        <div><span class="gray">转载请注明：</span>文章转载自 开源中国社区 <a href="/" class="green">[http://www.oschina.net]</a></div>
-				        <div><span class="gray">本文标题：</span><?php echo ($info["title"]); ?></div>
-				        <div>
-				            <span class="gray">本文地址：</span><a href="<?php echo U('News/index/detail',array('id'=>$info['id']));?>" class="green"><?php echo U('News/index/detail',array('id'=>$info['id']));?></a>
-				        </div>
-				    </div>
-                    <div style="padding-top: 0">
-                        <?php echo hook('localComment', array('path'=>"News/index/$info[id]", 'uid'=>$info['uid'],'count_model'=>'news','count_field'=>'comment','this_url'=>'news/index/detail'));?>
-                    </div>
+                </div>
+                <div style="padding-top: 0">
+                    <?php echo hook('localComment', array('path'=>"News/index/$info[id]", 'uid'=>$info['uid'],'count_model'=>'news','count_field'=>'comment','this_url'=>'news/index/detail'));?>
                 </div>
             </div>
-            <div class="col-xs-3" style="width:300px;">
-                <?php if(is_login() == 2): ?><div style="clear:right;"><?php endif; ?>
-                <div class="common_block_border">
-                    <div class="common_block_title"><?php echo L('_AUTHOR_');?></div>
-                    <div class="col-xs-4">
-                        <img class="avatar-img" src="<?php echo ($author["avatar64"]); ?>"/>
-                    </div>
-                    <div class="col-xs-8">
-                        <a href="<?php echo ($author["space_url"]); ?>"><?php echo ($author["nickname"]); ?></a>
-                        <br/>
-                        <p class="text-more" style="width: 100%"><?php echo ($author["signature"]); ?></p>
-                        <br/>文章：<?php echo ($author["news_count"]); ?>
-                    </div>
-                    <div class="clearfix" style="padding: 10px"></div>
-                </div>
+        </div>    
+        <div style="width: 350px;float: right">
+            <div class="bg bor right_box">
                 <?php echo W('Position/lists',array('position'=>4,'category'=>$info['category']));?>
-                <?php echo W('Hot/lists',array('category'=>$info['category']));?>
-                <?php echo hook('Advs',array('pos'=>'news_right_below_all','type'=>1,'width'=>'360px','height'=>'100px','title'=>'资讯右侧下方广告'));?>
+                <?php echo W('Hot/lists',array('category'=>0));?>
+                <?php echo W('New/lists',array('category'=>0));?>
+                <?php echo W('Wonderful/lists',array('category'=>0));?>
             </div>
         </div>
+    </div>
     <script type="text/javascript" charset="utf-8" src="/Public/static/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
     <link rel="stylesheet" type="text/css" href="/Public/static/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
     <script type="text/javascript">

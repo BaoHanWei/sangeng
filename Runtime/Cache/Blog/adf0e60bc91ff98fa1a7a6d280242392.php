@@ -15,8 +15,6 @@
 <link href="/Public/zui/css/zui-theme.css" rel="stylesheet">
 <link href="/Public/css/core.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="/Public/js/ext/magnific/magnific-popup.css"/>
-<link type="text/css" rel="stylesheet" href="/Public/static/prism/prism.css"/>   
-<script type="text/javascript" src="/Public/static/prism/prism.js"></script>
 <script src="/Public/js.php?f=js/jquery-2.0.3.min.js,js/com/com.functions.js,js/com/com.toast.class.js,js/com/com.ucard.js,js/core.js"></script>
 <!--Style-->
 <!--合并前的js-->
@@ -291,89 +289,101 @@
     <div id="main-container" class="container">
         <div class="row">
             
-        <div class="row">
-            <div class="col-xs-8" >
-                <?php if(is_login() == 2): ?><div style="clear:right;"><?php endif; ?>
-                <div class="common_block_border">
-                    <?php if(!empty($now_category)): ?><div class="common_block_title"><?php echo ($now_category["title"]); ?>
-                            <div class="pull-right children_blog">
-                                <?php if(is_array($now_category['_'])): $i = 0; $__LIST__ = $now_category['_'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cat): $mod = ($i % 2 );++$i;?><a href="<?php echo U('News/index/index',array('category'=>$cat['id']));?>"><?php echo ($cat["title"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+    <div class="row" style="width: 1180px;">
+        <div class="col-xs-8" style="width: 800px;float: left">
+            <div class="article">
+                <h1 class="article_title"><?php echo ($info["title"]); ?></h1>
+                <div class="time">
+                    <span>来源：<a href="http://www.ououba.com" target="_blank">网络，侵删</a></span>
+                    <span>时间：2017-03-06</span>
+                </div>
+                <div class="article_con clearfix">
+                        <div class="detailc"><?php echo (render($info["detail"]["content"])); ?></div>                      
+                </div>
+                <div class="mt20 pb30 clearfix">
+                    <div class="fl tags">
+                        <em>标签</em><a href="/e/tags/?tagname=%E8%B4%AD%E4%B9%B0%E4%BC%9F%E5%93%A5" target="_blank">购买伟哥</a>&nbsp;<a href="/e/tags/?tagname=%E4%B8%87%E8%89%BE%E5%8F%AF" target="_blank">万艾可</a>&nbsp;<a href="/e/tags/?tagname=%E5%8B%83%E8%B5%B7%E5%8A%9F%E8%83%BD" target="_blank">勃起功能</a>&nbsp;<a href="/e/tags/?tagname=%E6%9C%8B%E5%8F%8B" target="_blank">朋友</a>&nbsp;<a href="/e/tags/?tagname=%E7%BD%91%E7%AB%99" target="_blank">网站</a>                           
+                    </div>
+                </div>
+                <div class="rela_news clearfix">
+                    <div class="tit">相关文章</div>
+                    <ul class="clearfix">
+                        <li><a target="_blank" href="/fqsh/nxzy/15766.html" title="东莞女技师揭秘东莞大保健流程示意图">东莞女技师揭秘东莞大保健流程示意图</a></li>
+                        <li><a target="_blank" href="/fqsh/nxzy/8749.html" title="信不信：“吃”精液让女人更妩媚">信不信：“吃”精液让女人更妩媚</a></li>
+                        <li><a target="_blank" href="/fqsh/nxzy/8755.html" title="男人要多少才算是性欲亢奋">男人要多少才算是性欲亢奋</a></li>
+                        <li><a target="_blank" href="/fqsh/nxzy/8737.html" title="常做四个小动作让男人更雄壮">常做四个小动作让男人更雄壮</a></li>
+                        <li><a target="_blank" href="/fqsh/nxzy/8741.html" title="壮阳宝典：丁丁“衰老”该如何补救">壮阳宝典：丁丁“衰老”该如何补救</a></li>
+                        <li><a target="_blank" href="/fqsh/nxzy/8712.html" title="男性壮阳喝生鸡蛋壮阳真的有效吗">男性壮阳喝生鸡蛋壮阳真的有效吗</a></li>
+                    </ul>
+                </div>
+                <div style="padding: 20px;padding-top: 0">
+                    <?php echo hook('localComment', array('path'=>"News/index/$info[id]", 'uid'=>$info['uid'],'count_model'=>'news','count_field'=>'comment','this_url'=>'news/index/detail'));?>
+                </div>
+            </div>
+        </div>    
+        <div style="width: 350px;float: right">
+            <div class="bg bor right_box">
+                        <div class="tjyd">
+                            <div id="_zone_425" class="g2_right">
+                                <script src="/d/js/acmsd/thea3.js"></script>
                             </div>
                         </div>
-                        <?php else: ?>
-                        <div class="common_block_title"><?php echo L('_NEW_VIEW_');?></div><?php endif; ?>
-                    <div class="common_block_title clearfix">
-                        <?php if($info['cover'] != 0): ?><div class="col-xs-4" >
-                                <a title="<?php echo (op_t($info["title"])); ?>" href="<?php echo U('News/index/detail',array('id'=>$info['id']));?>">
-                                    <img alt="<?php echo (op_t($info["title"])); ?>" src="<?php echo (getthumbimagebyid($info["cover"],200,146)); ?>" style="width: 200px;height: 146px">
-                                </a>
+                        <div class="tjyd">
+                            <div class="box_tit border_t">
+                                <h3>新闻头条</h3>
                             </div>
-                            <div class="col-xs-8" >
-                                <h2><?php echo ($info["title"]); ?></h2>
-                                <p class="clearfix">
-                                    <?php if(check_auth('News/Index/edit',-1)||(($info['uid'] == is_login())&&($info['status'] != 1))): ?><a title="<?php echo L('_EDIT_');?>" href="<?php echo U('News/index/edit',array('id'=>$info['id']));?>" style="float: right"><i class="icon-edit" style="font-size: 16px;"><?php echo L('_EDIT_');?></i></a><?php endif; ?>
-				                    <span class="pull-left">
-                                        <span class="author"><a href="<?php echo ($author["space_url"]); ?>" ucard="<?php echo ($author["uid"]); ?>"><?php echo ($author["nickname"]); ?></a></span>
-					                    <span> <?php echo L('_RELEASE_AT_');?> <?php echo (date('Y-m-d H:i',$info["create_time"])); ?></span>
-                                                 </span>
-                                    <?php if(($info['status'] == 1)&&($info['dead_line'] > time())): ?><span class="pull-right" style="margin-right: 10px"><?php echo W('Weibo/Share/shareBtn',array('param'=>array('title'=>$info['title'],'content'=>$info['description'],'img'=>getThumbImageById($info['cover'],160,160),'from'=>L('_MODULE_'),'site_link'=>U('news/index/detail',array('id'=>$info['id']))),'text'=>'分享'));?></span><?php endif; ?>
-                                </p>
-                                <div style="color: #999;font-size: 14px;"><?php echo ($info["description"]); ?></div>
+                            <div class="box_con">
+                                <ul class="txt_li_t clearfix">
+                                    <li><a href="/fqsh/nxzy/16783.html" title="吃伟哥有什么感觉，能治早泄吗？" target="_blank">吃伟哥有什么感觉，能治早泄吗？</a></li>
+                                    <li><a href="/fqsh/nxzy/16782.html" title="男人吃伟哥后女人的感觉会更好吗？" target="_blank">男人吃伟哥后女人的感觉会更好吗？</a></li>
+                                    <li><a href="/fqsh/nxzy/16781.html" title="吃伟哥的效果如何，能增加性欲吗" target="_blank">吃伟哥的效果如何，能增加性欲吗</a></li>
+                                    <li><a href="/fqsh/nxzy/16780.html" title="正常人可以吃伟哥吗，作用机理是什么" target="_blank">正常人可以吃伟哥吗，作用机理是什么</a></li>
+                                    <li><a href="/fqsh/nxzy/16779.html" title="男人那方面不行为什么要吃伟哥" target="_blank">男人那方面不行为什么要吃伟哥</a></li>
+                                </ul>
                             </div>
-                            <?php else: ?>
-                            <h2><?php echo ($info["title"]); ?></h2>
-                            <p class="clearfix">
-                                <?php if(check_auth('News/Index/edit',-1)||(($info['uid'] == is_login())&&($info['status'] != 1))): ?><a title="<?php echo L('_EDIT_');?>" href="<?php echo U('News/index/edit',array('id'=>$info['id']));?>" style="float: right"><i class="icon-edit" style="font-size: 16px;"><?php echo L('_EDIT_');?></i></a><?php endif; ?>
-                                <span class="pull-left">
-                                    <span class="author">
-                                        <a href="<?php echo ($author["space_url"]); ?>" ucard="<?php echo ($info["uid"]); ?>"><?php echo ($author["nickname"]); ?></a>
-                                    </span>
-                                    <span> <?php echo L('_RELEASE_AT_');?> <?php echo (date('Y-m-d H:i',$info["create_time"])); ?></span>
-                                </span>
-                                <?php if(($info['status'] == 1)&&($info['dead_line'] > time())): ?><span class="pull-right" style="margin-right: 10px"><?php echo W('Weibo/Share/shareBtn',array('param'=>array('title'=>$info['title'],'content'=>$info['description'],'img'=>getThumbImageById($info['cover'],160,160),'from'=>L('_MODULE_'),'site_link'=>U('news/index/detail',array('id'=>$info['id']))),'text'=>L('_SHARE_')));?></span><?php endif; ?>
-                            </p>
-                            <div style="color: #999;font-size: 14px;"><?php echo ($info["description"]); ?></div><?php endif; ?>
+                        </div>
+                        <div class="tjyd">
+                            <div class="box_tit border_t">
+                                <h3>热门新闻</h3>
+                            </div>
+                            <div class="box_con">
+                                <ul class="img_li app_li mt15 clearfix">
+                                    <li><a href="/fqsh/nxzy/15766.html" target="_blank" title="东莞女技师揭秘东莞大保健流程示意图"><img src="http://www.ououba.com/d/file/fqsh/nxzy/2017-02-22/58305303946e36d3cbc00695fc527f38.jpg" alt="东莞女技师揭秘东莞大保健流程示意图">东莞女技师揭秘东莞大保健流程示意图</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tjyd">
+                            <div class="box_tit border_t">
+                                <h3>栏目热文</h3>
+                            </div>
+                            <div class="box_con mt10">
+                                <ul class="txt_li rank_li clearfix">
+                                    <li><a href="/fqsh/nxzy/15766.html" title="东莞女技师揭秘东莞大保健流程示意图" target="_blank">东莞女技师揭秘东莞大保健流程示意图</a></li>
+                                    <li><a href="/fqsh/nxzy/15761.html" title="伟哥的故事国语，吃伟哥易患皮肤癌" target="_blank">伟哥的故事国语，吃伟哥易患皮肤癌</a></li>
+                                    <li><a href="/fqsh/nxzy/15749.html" title="女人吃伟哥会怎样，有什么作用？" target="_blank">女人吃伟哥会怎样，有什么作用？</a></li>
+                                    <li><a href="/fqsh/nxzy/13983.html" title="男性包皮吃伟哥能延长时间吗" target="_blank">男性包皮吃伟哥能延长时间吗</a></li>
+                                    <li><a href="/fqsh/nxzy/14190.html" title="谁来拯救男人的腹部" target="_blank">谁来拯救男人的腹部</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="xuanting" id="xuanting">
+                            <div class="tjyd">
+                                <div class="box_tit border_t">
+                                    <h3>精彩图集</h3>
+                                </div>
+                                <div class="box_con">
+                                    <ul class="img_li app_li mt15 clearfix">
+                                        <li><a href="/yule/shehui//8557.html" target="_blank" title="韩国体大女神晒健身照 网友：同学无心上课"><img src="http://www.ououba.com/d/file/yule/shehui/2016-12-23/small4b3e324699dd052dd18cb4118c6255fc1482503795.jpg">韩国体大女神晒健身照 网友：同学无心上课</a></li>
+                                        <li><a href="/yule/qiwen//8556.html" target="_blank" title="尼泊尔“活女神”的生活：退位没人敢娶 一生凄凉"><img src="http://www.ououba.com/d/file/yule/qiwen/2016-12-23/small911e5d0ce5586b26b3293deee9e230651482503042.jpg">尼泊尔“活女神”的生活：退位没人敢娶 一生凄凉</a></li>
+                                        <li><a href="/yule/qiwen//8555.html" target="_blank" title="中国震惊世界的10大国宝"><img src="http://www.ououba.com/d/file/yule/qiwen/2016-12-23/small0fbc58151495f8e576c07a29dba398391482502946.jpg">中国震惊世界的10大国宝</a></li>
+                                        <li><a href="/yule/qiwen//8554.html" target="_blank" title="中国最惊险的七大悬空栈道，你绝对不敢上"><img src="http://www.ououba.com/d/file/yule/qiwen/2016-12-23/smalld3c33dc31dd9f5f9037370ed438424eb1482502864.jpg">中国最惊险的七大悬空栈道，你绝对不敢上</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <script src="/d/js/acmsd/thea6.js"></script>
+                        </div>
                     </div>
-                    <hr/>
-                    <div class="pull-right" style="margin-top: -20px;margin-right: 15px;">
-                        <?php echo W('Common/Share/detailShare');?>
-                    </div>
-
-                    <section id="contents">
-                        <?php if($info['source'] != ''): ?><div style="margin-bottom: 20px;color: #C0C0C0;"><i class="icon-chrome"></i> <?php echo L('_SOURCE_');?>：<a target="_blank" href="<?php echo ($info["source"]); ?>"><?php echo ($info["source"]); ?></a></div><?php endif; ?>
-                        <div class="news-content"><?php echo (render($info["detail"]["content"])); ?></div>
-                    </section>
-                    <div style="padding: 20px;">
-                        <?php echo W('Common/Adv/render',array(array('name'=>'below_article_content','type'=>1,'width'=>'690px','height'=>'100px','title'=>'资讯文章内容下方广告')));?>
-                    </div>
-                    <div style="padding: 20px;padding-top: 0">
-                        <?php echo hook('localComment', array('path'=>"News/index/$info[id]", 'uid'=>$info['uid'],'count_model'=>'news','count_field'=>'comment','this_url'=>'news/index/detail'));?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4" >
-                <?php if(is_login() == 2): ?><div style="clear:right;"><?php endif; ?>
-                <div class="common_block_border">
-                    <div class="common_block_title"><?php echo L('_AUTHOR_');?></div>
-                    <div class="col-xs-4">
-                        <img class="avatar-img" src="<?php echo ($author["avatar64"]); ?>"/>
-                    </div>
-                    <div class="col-xs-8">
-                        <a href="<?php echo ($author["space_url"]); ?>"><?php echo ($author["nickname"]); ?></a>
-                        <br/>
-                        <p class="text-more" style="width: 100%"><?php echo ($author["signature"]); ?></p>
-                        <br/>
-                        文章：<?php echo ($author["news_count"]); ?>
-                    </div>
-                    <div class="clearfix" style="padding: 10px"></div>
-                </div>
-                <?php echo W('Position/lists',array('position'=>4,'category'=>$info['category']));?>
-                <?php echo W('Hot/lists',array('category'=>$info['category']));?>
-                <?php echo hook('Advs',array('pos'=>'news_right_below_all','type'=>1,'width'=>'360px','height'=>'100px','title'=>'资讯右侧下方广告'));?>
-            </div>
         </div>
-
-
     </div>
     <script type="text/javascript" charset="utf-8" src="/Public/static/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
     <link rel="stylesheet" type="text/css" href="/Public/static/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>

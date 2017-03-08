@@ -1,0 +1,45 @@
+<if condition="$lists neq false">
+<div class="tjyd">
+    <div class="box_tit border_t">
+        <h3>最新资讯</h3>
+    </div>
+    <div class="box_con mt10">
+        <ul class="txt_li rank_li clearfix">
+            <volist name="lists" id="data">
+                <li><a href="{:U('News/index/detail',array('id'=>$data['id']))}" title="{$data.title}">{$data.title}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+</if>
+
+
+<!--<if condition="$lists neq false">
+    <div class="common_block_border blog_position">
+        <div class="common_block_title">
+            <neq name="category" value="">
+                {:L('_HOT_CATEGORY_')}
+                <else/>
+                {:L('_HOT_SITE_')}
+            </neq>
+        </div>
+        <div style="height:15px;"></div>
+        <volist name="lists" id="data">
+            <div class="clearfix" style="position: relative;">
+                <div class="col-xs-12">
+                    <div>
+                        <h3 class="margin-top-0 text-more" style="width: 100%;font-size: 15px;margin-bottom:0px"><a title="{$data.title|op_t}" href="{:U('News/index/detail',array('id'=>$data['id']))}">{$data.title}</a></h3>
+                    </div>
+                    <div style="font-size:12px;">
+                        <span class="author" style="color:#898989">{$data.create_time|date='m-d H:i',###}</span>&nbsp;&nbsp;&nbsp;<span style="color:#898989">阅读({$data.view})</span>
+                    </div>
+                </div>
+            </div>
+            <if condition="$i eq count($lists)">
+                <div style="margin: 15px"></div>
+                <else/>
+                <div style="border-bottom: 1px dashed rgb(204, 204, 204);margin:5px"></div>
+            </if>
+        </volist>
+    </div>
+</if>-->

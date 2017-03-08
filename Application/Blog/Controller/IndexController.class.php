@@ -154,9 +154,7 @@ class IndexController extends Controller{
         }
 
         $info=$this->blogModel->getData($aId);
-        if($info['dead_line']<=time()&&!check_auth('Blog/Index/edit',$info['uid'])){
-            $this->error(L('_ERROR_EXPIRE_'));
-        }
+        
         $author=query_user(array('uid','space_url','nickname','avatar64','signature'),$info['uid']);
         $author['blog_count']=$this->blogModel->where(array('uid'=>$info['uid']))->count();
         /* 获取模板 */

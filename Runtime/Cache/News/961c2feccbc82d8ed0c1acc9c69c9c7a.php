@@ -1,4 +1,15 @@
-<?php if (!defined('THINK_PATH')) exit(); if($lists != false): ?><div class="common_block_border blog_position clearfix">
+<?php if (!defined('THINK_PATH')) exit(); if($lists != false): ?><div class="tjyd">
+    <div class="box_tit border_t">
+        <h3>相关资讯</h3>
+    </div>
+    <div class="box_con">
+        <ul class="txt_li_t clearfix">
+            <?php if(is_array($lists)): $i = 0; $__LIST__ = $lists;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><li><a href="<?php echo U('News/index/detail',array('id'=>$data['id']));?>" title="<?php echo ($data["title"]); ?>"><?php echo ($data["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+        </ul>
+    </div>
+</div><?php endif; ?>
+<!--
+<?php if($lists != false): ?><div class="common_block_border blog_position clearfix">
 
         <div class="common_block_title">
             <?php if(($category) != ""): echo L('_THIS_RECOMMEND_');?>
@@ -40,3 +51,4 @@
                 <?php else: ?>
                 <div style="border-bottom: 1px dashed rgb(204, 204, 204);margin: 15px"></div><?php endif; endforeach; endif; else: echo "" ;endif; ?>
     </div><?php endif; ?>
+-->

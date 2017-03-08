@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>News/editNews?id=7

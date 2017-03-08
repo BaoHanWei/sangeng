@@ -61,7 +61,8 @@
                                 </volist>
                             </case>
                             <case value="editor">
-                                {:W('Common/Ueditor/editor',array($field['name'],$field['name'],$data[$field['name']],'500px','300px'))}
+                                $config="'enterTag':'br'";</php>
+                                {:W('Common/Ueditor/editor',array($field['name'],$field['name'],$data[$field['name']],'800px','300px',$config))}
                             </case>
                             <case value="picture">
                                 <div class="controls">

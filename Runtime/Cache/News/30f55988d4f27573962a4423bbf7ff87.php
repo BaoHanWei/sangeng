@@ -339,7 +339,7 @@
                             <label for="source" class="col-xs-1 control-label"><?php echo L('_SOURCE_');?></label>
 
                             <div class="col-xs-8">
-                                <input id="source" name="source" class="form-control" value="<?php echo ($data["source"]); ?>" placeholder="<?php echo L('_PLACEHOLDER_SOURCE_');?>"/>
+                                <input id="source" name="source" class="form-control" value="<?php echo ($data["source"]); ?>" placeholder="尊重他人劳动成果，请注明文章来源（选填）"/>
                             </div>
 
                         </div>
@@ -362,7 +362,7 @@
                             <label for="content" class="col-xs-1 control-label"><?php echo L('_DETAILS_');?></label>
 
                             <div class="col-xs-10">
-                                <?php $config="toolbars:[['source','|','bold','italic','underline','fontsize','forecolor','fontfamily','backcolor','|','link','emotion','scrawl','attachment','insertvideo','insertimage','insertcode','wordimage']]"; ?>
+                                <?php $config="toolbars:[['source','|','bold','italic','underline','fontsize','forecolor','fontfamily','backcolor','|','link','emotion','scrawl','attachment','insertvideo','insertimage','insertcode','wordimage']],'enterTag':'br' "; ?>
                                 </php>
                                 <?php echo W('Common/Ueditor/editor',array('myeditor_edit','content',$data['detail']['content'],'700px','250px',$config));?>
                             </div>

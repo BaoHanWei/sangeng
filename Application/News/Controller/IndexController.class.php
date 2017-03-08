@@ -80,7 +80,7 @@ class IndexController extends Controller{
             $cid=$now_category['pid']==0?$now_category['id']:$now_category['pid'];
             $current='category_' . $cid;
         }
-        $map['dead_line']=array('gt',time());
+        /*$map['dead_line']=array('gt',time());*/
         $map['status']=1;
 
         $order_field=modC('NEWS_ORDER_FIELD','create_time','News');
@@ -141,9 +141,9 @@ class IndexController extends Controller{
         }
 
         $info=$this->newsModel->getData($aId);
-        if($info['dead_line']<=time()&&!check_auth('News/Index/edit',$info['uid'])){
+        /*if($info['dead_line']<=time()&&!check_auth('News/Index/edit',$info['uid'])){
             $this->error(L('_ERROR_EXPIRE_'));
-        }
+        }*/
         $author=query_user(array('uid','space_url','nickname','avatar64','avatar32','signature'),$info['uid']);
         $author['news_count']=$this->newsModel->where(array('uid'=>$info['uid']))->count();
         /* 获取模板 */
